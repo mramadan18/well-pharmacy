@@ -1,6 +1,6 @@
 import Image from "next/image";
 // Images
-import receivedImg from "#/images/receivedImg.png";
+import receivedImg from "#/images/received.png";
 import Button from "../Utilities/Button";
 
 const Prepared = () => {

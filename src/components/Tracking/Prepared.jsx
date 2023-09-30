@@ -1,6 +1,6 @@
 import Image from "next/image";
 // Images
-import received from "#/images/Received.png";
+import receivedImg from "#/images/received.png";
 import Button from "../Utilities/Button";
 
 const Prepared = () => {
@@ -25,7 +25,12 @@ const Prepared = () => {
         ></span>
       </div>
 
-      <Image src={received} alt="Prepared" priority className="mx-auto mt-20" />
+      <Image
+        src={receivedImg}
+        alt="Prepared"
+        priority
+        className="mx-auto mt-20"
+      />
 
       <p className="text-2xl mt-10 max-w-[400px] mx-auto tracking-[1px]">
         We are preparing your order now. Get well soon!

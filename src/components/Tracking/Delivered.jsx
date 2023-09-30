@@ -1,6 +1,6 @@
 import Image from "next/image";
 // Images
-import received from "#/images/Received.png";
+import received from "#/images/received.png";
 import Button from "../Utilities/Button";
 import Link from "next/link";
 

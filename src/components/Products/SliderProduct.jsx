@@ -1,13 +1,6 @@
-import Image from "next/image";
 // keen library for slider
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
-// Images
-import selectedImg from "#/images/product_slider_img.png";
-import img1 from "#/images/product_slider_img_1.png";
-import img2 from "#/images/product_slider_img_2.png";
-import img3 from "#/images/product_slider_img_3.png";
-import img4 from "#/images/product_slider_img_4.png";
 
 function ThumbnailPlugin(mainRef) {
   return (slider) => {
@@ -42,7 +35,7 @@ function ThumbnailPlugin(mainRef) {
   };
 }
 
-const SliderProduct = () => {
+const SliderProduct = ({ data }) => {
   const [sliderRef, instanceRef] = useKeenSlider({
     initial: 0,
   });
@@ -61,37 +54,23 @@ const SliderProduct = () => {
     <div className="bg-white p-4 shadow-secondShadow rounded-lg">
       <div ref={sliderRef} className="keen-slider">
         <div className="keen-slider__slide number-slide">
-          <Image src={selectedImg} alt="panadol" priority />
+          <img src={data.home_image} alt={data.name_en} />
         </div>
-        <div className="keen-slider__slide number-slide">
-          <Image src={img1} alt="panadol" priority />
-        </div>
-        <div className="keen-slider__slide number-slide">
-          <Image src={img2} alt="panadol" priority />
-        </div>
-        <div className="keen-slider__slide number-slide">
-          <Image src={img3} alt="panadol" priority />
-        </div>
-        <div className="keen-slider__slide number-slide">
-          <Image src={img4} alt="panadol" priority />
-        </div>
+        {data.images?.map((img, index) => (
+          <div key={index} className="keen-slider__slide number-slide">
+            <img src={img} alt={data.name_en} />
+          </div>
+        ))}
       </div>
       <div ref={thumbnailRef} className="keen-slider thumbnail">
         <div className="keen-slider__slide number-slide">
-          <Image src={selectedImg} alt="panadol" priority />
+          <img src={data.home_image} alt={data.name_en} />
         </div>
-        <div className="keen-slider__slide number-slide">
-          <Image src={img1} alt="panadol" priority />
-        </div>
-        <div className="keen-slider__slide number-slide">
-          <Image src={img2} alt="panadol" priority />
-        </div>
-        <div className="keen-slider__slide number-slide">
-          <Image src={img3} alt="panadol" priority />
-        </div>
-        <div className="keen-slider__slide number-slide">
-          <Image src={img4} alt="panadol" priority />
-        </div>
+        {data.images?.map((img, index) => (
+          <div key={index} className="keen-slider__slide number-slide">
+            <img src={img} alt={data.name_en} />
+          </div>
+        ))}
       </div>
     </div>
   );

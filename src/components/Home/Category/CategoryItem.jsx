@@ -5,14 +5,14 @@ const CategoryItem = ({ data }) => {
     <div>
       <div className="bg-[url('/images/bg_category.png')] bg-no-repeat bg-contain h-[140px] flex justify-center items-center">
         <Image
-          src={`/images/${data.img}`}
-          alt={data.title}
+          src={data.icon_image || "/"}
+          alt={data.name_en}
           width={100}
           height={80}
           priority
         />
       </div>
-      <p className="mt-6 w-[150px]">{data.title}</p>
+      <p className="mt-6 w-[150px]">{data.name_en}</p>
     </div>
   );
 };

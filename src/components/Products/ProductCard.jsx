@@ -1,31 +1,62 @@
-import Image from "next/image";
+import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
-// Images
-import productImg from "#/images/product_img.png";
+// Components
 import Button from "../Utilities/Button";
 import Quantity from "../Utilities/Quantity";
+import { addToCart } from "@/toolkit/slices/cart/addToCartSlice";
+import { useState } from "react";
+import Loading from "../Utilities/Loading";
 
-const ProductCard = () => {
+const ProductCard = ({ data }) => {
+  const [isRequest, setIsRequest] = useState(false);
+  const { loading, product, error } = useSelector((state) => state.addToCart);
+  const dispatch = useDispatch();
+
+  const formData = {
+    product: data.id,
+    quantity: 1,
+  };
+
+  const handleRequest = () => {
+    setIsRequest(true);
+    dispatch(addToCart(formData));
+  };
+
   return (
     <div className="max-w-xs p-2 lg:p-4 bg-white border border-gray-200 rounded-lg">
       <Link
-        href="/"
-        className="w-full mx-auto flex justify-center items-center shadow-secondShadow h-[170px] rounded-md"
+        href={`/products/${data.id}`}
+        className="w-full mx-auto flex justify-center items-center shadow-secondShadow h-[170px] rounded-md overflow-hidden"
       >
-        <Image className="rounded-t-lg" src={productImg} alt="product" />
+        <img
+          className="rounded-t-lg"
+          src={data.home_image}
+          alt={data.name_en}
+        />
       </Link>
       <div className="pt-5 px-0 pb-0">
-        <a href="#">
-          <h5 className="mb-2 text-base font-bold tracking-tight">
-            Panadol Extra XX mg
-          </h5>
-        </a>
+        <h5 className="mb-2 text-base font-bold tracking-tight">
+          {data.name_en.length <= 30
+            ? data.name_en
+            : `${data.name_en.slice(0, 30)}...`}
+        </h5>
+
         <p className="mb-3 text-[#828282]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempo....
+          {data.description_en.length <= 80
+            ? data.description_en
+            : `${data.description_en.slice(0, 80)}...`}
         </p>
-        <Quantity />
-        {/* <Button className="w-full">Make a request</Button> */}
+        {isRequest ? (
+          <>
+            <Quantity />
+          </>
+        ) : (
+          <>
+            <Button className="w-full" onClick={handleRequest}>
+              {loading ? <Loading size={22} /> : "Make a request"}
+            </Button>
+          </>
+        )}
       </div>
     </div>
   );

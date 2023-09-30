@@ -1,28 +1,34 @@
+import baseUrl from "@/baseURL";
+
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
 export const getCategories = createAsyncThunk(
   "categoriesSlice/fetchCategories",
   async () => {
-    const data = await (
-      await fetch("https://backend.well-medic.com/category")
-    ).json();
+    const { data } = await baseUrl.get("/category");
     return data;
   }
 );
 
-export const categoriesSlice = createSlice({
+const categoriesSlice = createSlice({
   name: "categoriesSlice",
-  initialState: [],
+  initialState: {
+    loading: true,
+    categories: [],
+    error: "",
+  },
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getCategories.pending, (state, action) => {
-      return (state = action.payload);
+      state.loading = true;
     });
     builder.addCase(getCategories.fulfilled, (state, action) => {
-      return (state = action.payload);
+      state.loading = false;
+      state.categories = [...action.payload];
     });
     builder.addCase(getCategories.rejected, (state, action) => {
-      return (state = action.payload);
+      state.loading = false;
+      state.error = action.payload;
     });
   },
 });

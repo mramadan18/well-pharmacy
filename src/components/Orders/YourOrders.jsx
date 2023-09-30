@@ -5,7 +5,6 @@ const YourOrders = () => {
     <div className="mt-6">
       <h3 className="mb-4">Your orders</h3>
       <OrderItem />
-      <OrderItem />
     </div>
   );
 };

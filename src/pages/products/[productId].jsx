@@ -10,8 +10,20 @@ import BreadcrumbsList from "@/components/Utilities/Breadcrumbs/BreadcrumbsList"
 import Button from "@/components/Utilities/Button";
 import Quantity from "@/components/Utilities/Quantity";
 import SearchInput from "@/components/Utilities/SearchInput";
+import { getProduct } from "@/toolkit/slices/products/productSlice";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const Product = () => {
+  const router = useRouter();
+  const { productId } = router.query;
+  const { loading, product, error } = useSelector((state) => state.product);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProduct(productId));
+  }, []);
   return (
     <div>
       <HeaderDesktop />
@@ -47,8 +59,8 @@ const Product = () => {
           </div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <SliderProduct />
-          <ProductDetails />
+          <SliderProduct data={product} />
+          <ProductDetails data={product} />
         </div>
       </div>
       <Footer />

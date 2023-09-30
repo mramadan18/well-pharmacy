@@ -1,6 +1,14 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const ProfileList = ({ profileMenuRef }) => {
+  const router = useRouter();
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    router.push("/login");
+  };
+
   return (
     <div
       ref={profileMenuRef}
@@ -8,7 +16,7 @@ const ProfileList = ({ profileMenuRef }) => {
     >
       <Link href="/edit-info">Profile</Link>
       <Link href="/orders">Orders History</Link>
-      <button>Log Out</button>
+      <button onClick={handleLogOut}>Log Out</button>
     </div>
   );
 };

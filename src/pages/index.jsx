@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <>
       <HeaderDesktop />
-      <HeaderMobile logo bg="#EDEDED" />
+      <HeaderMobile logo={true} bg="#EDEDED" />
       <NavBarMobile />
       <div className="container mt-5 lg:mt-32">
         <SearchInput />

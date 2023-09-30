@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import "@/styles/globals.css";
 import store from "@/toolkit/store";
 import { Provider } from "react-redux";
+import { Toaster } from "react-hot-toast";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -21,10 +22,10 @@ export default function App({ Component, pageProps }) {
     } else {
       body.style.backgroundColor = "#ffffff";
     }
-    console.log("Change");
   }, [router]);
   return (
     <Provider store={store}>
+      <Toaster position="top-center" reverseOrder={false} />
       <Component {...pageProps} />
     </Provider>
   );

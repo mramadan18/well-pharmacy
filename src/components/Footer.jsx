@@ -9,7 +9,7 @@ import viber from "#/images/icons/viber.png";
 
 const Footer = () => {
   return (
-    <section className="bg-second mt-[30px] lg:mt-[80px] text-center py-8 text-white">
+    <section className="bg-second mt-[30px] lg:mt-[50px] text-center py-8 text-white">
       <div className="container flex justify-center items-center flex-col gap-6">
         <Image src={logoWhite} alt="logo-white-img" priority />
 

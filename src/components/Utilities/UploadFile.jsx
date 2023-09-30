@@ -5,6 +5,7 @@ import upload from "#/images/icons/arrow_up.png";
 
 const UploadFile = ({ setFile }) => {
   const [img, setImg] = useState(upload);
+
   const handleChangeFile = (e) => {
     const imgUpload = URL.createObjectURL(e.target.files[0]);
     setImg(imgUpload);

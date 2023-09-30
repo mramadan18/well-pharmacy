@@ -11,9 +11,9 @@ const ProductDetails = ({ data }) => {
   };
   return (
     <div className="flex flex-col justify-start items-start gap-2 lg:pr-10">
-      <h5 className="text-sm">{data.category.name_en}</h5>
-      <h4>{data.name_en}</h4>
-      <p className="text-[#828282]">{data.description_en}</p>
+      <h5 className="text-sm">{data?.category?.name_en}</h5>
+      <h4>{data?.name_en}</h4>
+      <p className="text-[#828282]">{data?.description_en}</p>
 
       {isRequest ? (
         <Quantity />
@@ -32,7 +32,7 @@ const ProductDetails = ({ data }) => {
           Active ingredients:
           <span className="text-[#4F4F4F] font-normal">
             {" "}
-            {data.active_ingredient_en}
+            {data?.active_ingredient_en}
           </span>
         </p>
         <p className="mb-1">
@@ -47,7 +47,7 @@ const ProductDetails = ({ data }) => {
         <p className="mb-1">
           Description:{" "}
           <span className="text-[#4F4F4F] font-normal">
-            {data.description_en}
+            {data?.description_en}
           </span>
         </p>
       </div>

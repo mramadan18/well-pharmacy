@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "./ProductCard";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getProducts } from "@/toolkit/slices/products/productsSlice";
 import Loading from "../Utilities/Loading";
 
 const ProductsList = () => {
+  const [isRequest, setIsRequest] = useState(false);
   const { loading, products, error } = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
@@ -21,7 +22,12 @@ const ProductsList = () => {
       ) : (
         <>
           {products?.map((product) => (
-            <ProductCard key={product.id} data={product} />
+            <ProductCard
+              key={product.id}
+              data={product}
+              isRequest={isRequest}
+              setIsRequest={setIsRequest}
+            />
           ))}
         </>
       )}

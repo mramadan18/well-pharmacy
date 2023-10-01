@@ -12,6 +12,7 @@ export default function App({ Component, pageProps }) {
     const body = document.querySelector("body");
     if (
       router.pathname === "/all-reviews" ||
+      router.pathname === "/cart" ||
       router.pathname === "/orders" ||
       router.pathname === "/confirmation" ||
       router.pathname === "/edit-info" ||

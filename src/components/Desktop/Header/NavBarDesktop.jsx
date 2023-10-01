@@ -39,6 +39,17 @@ const NavBarDesktop = () => {
             My orders
           </Link>
         </li>
+        <li className="relative">
+          <OrdersCount />
+          <Link
+            href="/cart"
+            className={`hover:text-primary ${
+              router.pathname === "/cart" && "text-primary"
+            }`}
+          >
+            My cart
+          </Link>
+        </li>
         <li>
           <Link
             href="/contact-us"

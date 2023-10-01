@@ -15,7 +15,7 @@ const categoriesSlice = createSlice({
   initialState: {
     loading: true,
     categories: [],
-    error: "",
+    error: {},
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -24,7 +24,7 @@ const categoriesSlice = createSlice({
     });
     builder.addCase(getCategories.fulfilled, (state, action) => {
       state.loading = false;
-      state.categories = [...action.payload];
+      state.categories = action.payload;
     });
     builder.addCase(getCategories.rejected, (state, action) => {
       state.loading = false;

@@ -1,6 +1,41 @@
+import { getHotels } from "@/toolkit/slices/hotelsSlice";
+import { getRooms } from "@/toolkit/slices/roomsSlice";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const YourInfo = () => {
+  const router = useRouter();
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [hotel, setHotel] = useState({});
+  const [room, setRoom] = useState({});
+
+  const { myHotel } = useSelector((state) => state.hotels);
+  const { myRoom } = useSelector((state) => state.rooms);
+  const dispatch = useDispatch();
+
+  const handleYouInfo = async () => {
+    const { first_name, phone } = JSON.parse(localStorage.getItem("user"));
+
+    if (!localStorage.getItem("token")) {
+      router.push("/");
+    }
+
+    await dispatch(getRooms());
+    await dispatch(getHotels());
+
+    setName(first_name);
+    setPhone(phone);
+    setHotel(myHotel);
+    setRoom(myRoom);
+  };
+
+  useEffect(() => {
+    handleYouInfo();
+  }, []);
+
   return (
     <div>
       <h3 className="mb-4">Your info</h3>
@@ -8,23 +43,29 @@ const YourInfo = () => {
         <div className="flex flex-wrap lg:flex-col gap-3 mt-4 lg:mt-0 lg:gap-6">
           <span>
             Name:{" "}
-            <span className="text-second font-semibold">Mahmoud Ramadan</span>
+            <span className="text-second font-semibold">
+              {name || "Unknown"}
+            </span>
           </span>
           <span>
-            Room Number: <span className="text-second font-semibold">A109</span>
+            Room Number:{" "}
+            <span className="text-second font-semibold">
+              {room?.room_number}
+            </span>
           </span>
         </div>
         <div className="flex flex-wrap lg:flex-col gap-3 mt-4 lg:mt-0 lg:gap-6">
           <span>
-            Hotal: <span className="text-second font-semibold">Marriott</span>
+            Hotal:{" "}
+            <span className="text-second font-semibold">{hotel?.name}</span>
           </span>
           <span>
             Phone Number:{" "}
-            <span className="text-second font-semibold">01100594017</span>
+            <span className="text-second font-semibold">{phone}</span>
           </span>
         </div>
         <Link
-          href="/"
+          href="/edit-info"
           className="flex justify-center items-center gap-3 text-primary absolute lg:static top-4 right-4"
         >
           <svg

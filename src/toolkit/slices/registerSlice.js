@@ -1,8 +1,9 @@
 import baseUrl from "@/baseURL";
+import toast from "react-hot-toast";
 
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
-export const handleRegister = createAsyncThunk(
+export const register = createAsyncThunk(
   "registerSlice/postAccount",
   async (params) => {
     const { data } = await baseUrl.post("/accounts/register/", params);
@@ -13,25 +14,29 @@ export const handleRegister = createAsyncThunk(
 const registerSlice = createSlice({
   name: "registerSlice",
   initialState: {
-    loading: true,
-    message: "",
-    error: "",
+    loading: false,
+    register: {},
+    error: {},
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(handleRegister.pending, (state, action) => {
-        state.loading = true;
+    builder.addCase(register.pending, (state, action) => {
+      state.loading = true;
+      toast.loading("Loading...");
     });
-    builder.addCase(handleRegister.fulfilled, (state, action) => {
-        state.loading = false;
-        state.message = action.payload
-        console.log(action.payload);
-    })
-    builder.addCase(handleRegister.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload
-        console.log(action.payload);
-    })
+    builder.addCase(register.fulfilled, (state, action) => {
+      state.loading = false;
+      state.register = action.payload;
+      state.error = {};
+      toast.remove();
+      toast.success("Your account has been created successfully");
+    });
+    builder.addCase(register.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+      toast.remove();
+      toast.error("Error, check the data and try again");
+    });
   },
 });
 

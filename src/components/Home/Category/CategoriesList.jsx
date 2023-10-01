@@ -33,7 +33,12 @@ const CategoriesList = () => {
         Categories
       </h2>
       <div className="container">
-        <SubTitle title="Categories" link="View all" className="mb-7" />
+        <SubTitle
+          title="Categories"
+          href="categories"
+          link="View all"
+          className="mb-7"
+        />
 
         <Swiper
           slidesPerView={2.5}

@@ -10,13 +10,12 @@ import { login } from "@/toolkit/slices/loginSlice";
 // Components
 import Loading from "../Utilities/Loading";
 import EyeIcon from "../Utilities/EyeIcon";
-import toast from "react-hot-toast";
 
 const LoginSection = () => {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
-  const [phone, setPhone] = useState("01066448428");
-  const [password, setPassword] = useState("123456789++");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
 
   const { loading, user } = useSelector((state) => state.login);
   const dispatch = useDispatch();

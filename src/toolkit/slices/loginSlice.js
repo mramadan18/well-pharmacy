@@ -13,7 +13,7 @@ const loginSlice = createSlice({
   initialState: {
     loading: false,
     user: [],
-    error: "",
+    error: {},
   },
   reducers: {},
   extraReducers: (builder) => {

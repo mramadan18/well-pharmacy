@@ -1,0 +1,42 @@
+import baseUrl from "@/baseURL";
+
+const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
+
+export const getHotels = createAsyncThunk(
+  "hotelsSlice/fetchHotels",
+  async () => {
+    const { data } = await baseUrl.get("/hotels");
+    return data;
+  }
+);
+
+const hotelsSlice = createSlice({
+  name: "hotelsSlice",
+  initialState: {
+    loading: true,
+    hotels: [],
+    myHotel: {},
+    error: {},
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(getHotels.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(getHotels.fulfilled, (state, action) => {
+      state.loading = false;
+      state.hotels = action.payload;
+      // const { hotel } = JSON.parse(localStorage?.getItem("user"));
+      // const findHotel = state.hotels?.results?.find(
+      //   (item) => item.id === hotel
+      // );
+      // state.myHotel = findHotel;
+    });
+    builder.addCase(getHotels.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    });
+  },
+});
+
+export default hotelsSlice.reducer;

@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const CategoryItem = ({ data }) => {
   return (
-    <div>
+    <Link href={`/products/${data?.id}`}>
       <div className="bg-[url('/images/bg_category.png')] bg-no-repeat bg-contain h-[140px] flex justify-center items-center">
         <Image
           src={data.icon_image || "/"}
@@ -13,7 +14,7 @@ const CategoryItem = ({ data }) => {
         />
       </div>
       <p className="mt-6 w-[150px]">{data.name_en}</p>
-    </div>
+    </Link>
   );
 };
 

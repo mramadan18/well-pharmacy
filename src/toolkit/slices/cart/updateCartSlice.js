@@ -2,8 +2,8 @@ import baseUrl from "@/baseURL";
 
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
-export const addToCart = createAsyncThunk(
-  "addToCartSlice/postCart",
+export const updateCart = createAsyncThunk(
+  "updateCartSlice/putCart",
   async (params) => {
     const token = localStorage.getItem("token");
     const config = {
@@ -11,32 +11,37 @@ export const addToCart = createAsyncThunk(
         Authorization: `Bearer ${token}`,
       },
     };
-    const { data } = await baseUrl.post("/cart/cart_items/", params, config);
+
+    const { data } = await baseUrl.put(
+      `/cart/cart_items/${params.id}/`,
+      params.params,
+      config
+    );
     return data;
   }
 );
 
-const addToCartSlice = createSlice({
-  name: "addToCartSlice",
+const updateCartSlice = createSlice({
+  name: "updateCartSlice",
   initialState: {
     loading: false,
-    product: {},
+    cart: {},
     error: {},
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(addToCart.pending, (state, action) => {
+    builder.addCase(updateCart.pending, (state, action) => {
       state.loading = true;
     });
-    builder.addCase(addToCart.fulfilled, (state, action) => {
+    builder.addCase(updateCart.fulfilled, (state, action) => {
       state.loading = false;
       state.product = action.payload;
     });
-    builder.addCase(addToCart.rejected, (state, action) => {
+    builder.addCase(updateCart.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
     });
   },
 });
 
-export default addToCartSlice.reducer;
+export default updateCartSlice.reducer;

@@ -21,8 +21,8 @@ const NavBarMobile = () => {
     {
       id: 2,
       icon: productsIcon,
-      name: "products",
-      path: "/products/all",
+      name: "Products",
+      path: "/products",
     },
     {
       id: 3,

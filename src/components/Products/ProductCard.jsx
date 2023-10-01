@@ -9,7 +9,7 @@ import Loading from "../Utilities/Loading";
 
 const ProductCard = ({ data }) => {
   const [isRequest, setIsRequest] = useState(false);
-  const { loading, product, error } = useSelector((state) => state.addToCart);
+  const { loading, product } = useSelector((state) => state.addToCart);
   const dispatch = useDispatch();
 
   const formData = {
@@ -48,7 +48,7 @@ const ProductCard = ({ data }) => {
         </p>
         {isRequest ? (
           <>
-            <Quantity />
+            <Quantity quantity={product?.quantity} loading={loading} />
           </>
         ) : (
           <>

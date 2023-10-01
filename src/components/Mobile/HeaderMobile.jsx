@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 // Components
@@ -13,10 +13,27 @@ import filterIcon from "#/images/icons/filter_icon.png";
 import BottomModal from "../Utilities/BottomModal";
 import Filter from "../Products/Filter/Filter";
 import NotifyCount from "../Utilities/NotifyCount";
+import ProfileList from "../Desktop/Header/ProfileList";
 
 const HeaderMobile = ({ bg = "#0F4392", title, logo = false, search }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
+  const [showProfileList, setShowProfileList] = useState(false);
+  // Profile
+  const profileMenuRef = useRef();
+  const profileImgRef = useRef();
+  useEffect(() => {
+    localStorage.getItem("token") ? setIsLogin(true) : setIsLogin(false);
+  }, []);
+
+  useEffect(() => {
+    // Handle open & close profile list
+    window.addEventListener("click", (e) => {
+      if (e.target !== profileMenuRef && e.target !== profileImgRef.current) {
+        setShowProfileList(false);
+      }
+    });
+  }, []);
   return (
     <header
       className="lg:hidden py-6 rounded-b-lg"
@@ -45,13 +62,27 @@ const HeaderMobile = ({ bg = "#0F4392", title, logo = false, search }) => {
         {isLogin ? (
           <div className="flex justify-between items-center gap-3 relative">
             <NotifyCount />
+            <Link href="/notification">
+              <Image
+                src={notification}
+                alt="logo"
+                priority
+                className="invert-[80%] sepia-[46%] saturate-[375%] hue-rotate-[186deg] brightness-[97%] contrast[92%]"
+              />
+            </Link>
             <Image
-              src={notification}
-              alt="logo"
+              ref={profileImgRef}
+              src={profile}
+              alt="profile"
               priority
-              className="invert-[80%] sepia-[46%] saturate-[375%] hue-rotate-[186deg] brightness-[97%] contrast[92%]"
+              onClick={() => setShowProfileList(!showProfileList)}
             />
-            <Image src={profile} alt="logo" priority />
+            {showProfileList && (
+              <ProfileList
+                profileMenuRef={profileMenuRef}
+                style={{ right: "0" }}
+              />
+            )}
           </div>
         ) : (
           <BtnsAuth />

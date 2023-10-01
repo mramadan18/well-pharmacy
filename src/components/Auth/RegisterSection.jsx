@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // react phone input
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -6,35 +6,47 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 // Get data with redux toolkit
 import { useDispatch, useSelector } from "react-redux";
-import { handleRegister } from "@/toolkit/slices/registerSlice";
+import { register } from "@/toolkit/slices/registerSlice";
+import { getHotels } from "@/toolkit/slices/hotelsSlice";
+import { login } from "@/toolkit/slices/loginSlice";
+import { getRooms } from "@/toolkit/slices/roomsSlice";
+import Loading from "../Utilities/Loading";
 
 const RegisterSection = () => {
   const router = useRouter();
   const [first_name, setFirst_name] = useState("");
   const [phone, setPhone] = useState("");
-  const [passwoed, setPasswoed] = useState("");
+  const [password, setPassword] = useState("");
   const [hotel_id, setHotel_id] = useState("");
   const [room_id, setRoom_id] = useState("");
 
-  const formData = {
-    first_name,
-    phone,
-    passwoed,
-    hotel_id,
-    room_id,
-  };
-
-  const { loading, message, error } = useSelector((state) => state.register);
+  const { hotels } = useSelector((state) => state.hotels);
+  const { rooms } = useSelector((state) => state.rooms);
+  const { loading, error } = useSelector((state) => state.register);
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(handleRegister({ ...formData }));
 
-    console.log("loading", loading);
-    console.log("message", message);
-    console.log("error", error);
+    const formData = {
+      first_name,
+      phone,
+      password,
+      hotel_id,
+      room_id,
+    };
+
+    await dispatch(register(formData));
+
+    if (!loading && JSON.stringify(error) === "{}") {
+      router.push("/login");
+    }
   };
+
+  useEffect(() => {
+    dispatch(getHotels());
+    dispatch(getRooms());
+  }, [loading]);
 
   return (
     <div className="flex flex-col justify-start items-center gap-8 pt-5 pb-10 lg:pb-0 lg:pt-20 bg-white">
@@ -99,8 +111,8 @@ const RegisterSection = () => {
             type="password"
             placeholder="Write here"
             required
-            value={passwoed}
-            onChange={(e) => setPasswoed(e.target.value)}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="flex flex-col justify-center items-start gap-3 w-full">
@@ -112,28 +124,35 @@ const RegisterSection = () => {
             value={hotel_id}
             onChange={(e) => setHotel_id(e.target.value)}
           >
-            <option>Select here</option>
-            <option value="1">Marina sharm</option>
+            <option defaultValue>Select here</option>
+            {hotels?.results?.map((hotel) => (
+              <option value={hotel.id}>{hotel.name}</option>
+            ))}
           </select>
         </div>
         <div className="flex flex-col justify-center items-start gap-3 w-full">
           <label htmlFor="room">Room Number*</label>
-          <input
+          <select
             className="w-full py-2 px-3 border border-[#AEB4B9] shadow-inner rounded-sm text-[#8C9196] outline-none"
             id="room"
             type="number"
             placeholder="Write here"
-            // required
+            required
             value={room_id}
             onChange={(e) => setRoom_id(e.target.value)}
-          />
+          >
+            <option defaultChecked>Select here</option>
+            {rooms?.results?.map((room) => (
+              <option value={room.id}>{room.room_number}</option>
+            ))}
+          </select>
         </div>
 
         <button
           type="submit"
           className="bg-primary text-white w-full py-2 rounded-sm font-semibold tracking-[1px]"
         >
-          Next
+          {loading ? <Loading size={22} /> : "Sign up"}
         </button>
       </form>
     </div>

@@ -1,8 +1,9 @@
-import { getCartItems } from "@/toolkit/slices/cart/cartItemsSlice";
+// import { getCartItems } from "@/toolkit/slices/cart/cartItemsSlice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../Utilities/Loading";
 import CartItem from "./CartItem";
+import { getCartItems } from "@/toolkit/slices/cart/cartItemsSlice";
 
 const YourCart = () => {
   const { loading, cart_items } = useSelector((state) => state.cartItems);

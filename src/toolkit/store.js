@@ -6,7 +6,7 @@ import roomsReducer from "./slices/rooms/roomsSlice";
 import roomReducer from "./slices/rooms/roomSlice";
 import loginReducer from "./slices/loginSlice";
 import updateProfileReducer from "./slices/updateProfileSlice";
-import categoriesReducer from "./slices/categoriesSlice";
+import categoriesReducer from "./slices/categories/categoriesSlice";
 import reviewsReducer from "./slices/reviews/reviewsSlice";
 import addReviewReducer from "./slices/reviews/addReviewSlice";
 import productsReducer from "./slices/products/productsSlice";
@@ -17,6 +17,8 @@ import contactusReducer from "./slices/contactusSlice";
 import cartItemsReducer from "./slices/cart/cartItemsSlice";
 import updateCartReducer from "./slices/cart/updateCartSlice";
 import ordersReducer from "./slices/orders/ordersSlice";
+import categoryProductsReducer from "./slices/categories/categoryProductsSlice";
+import searchReducer from "./slices/products/searchSlice";
 
 const store = configureStore({
   reducer: {
@@ -28,10 +30,12 @@ const store = configureStore({
     login: loginReducer,
     upadteProfile: updateProfileReducer,
     categories: categoriesReducer,
+    categoryProducts: categoryProductsReducer,
     reviews: reviewsReducer,
     addReview: addReviewReducer,
     products: productsReducer,
     product: productReducer,
+    searchProducts: searchReducer,
     cartItems: cartItemsReducer,
     addToCart: addToCartReducer,
     updateCart: updateCartReducer,

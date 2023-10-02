@@ -1,25 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "./ProductCard";
-import { useEffect, useState } from "react";
-import { getProducts } from "@/toolkit/slices/products/productsSlice";
 import Loading from "../Utilities/Loading";
-import { addToCart } from "@/toolkit/slices/cart/addToCartSlice";
 
-const ProductsList = () => {
-  const { loading: loadingMakeRequest } = useSelector(
-    (state) => state.addToCart
-  );
-  const { loading, products } = useSelector((state) => state.products);
-  const dispatch = useDispatch();
-
-  const handleRequest = (formData) => {
-    dispatch(addToCart(formData));
-  };
-
-  useEffect(() => {
-    dispatch(getProducts());
-  }, []);
-
+const ProductsList = ({ loading, products }) => {
   return (
     <div className="mt-4 grid grid-cols-2 xl:grid-cols-3 gap-2 lg:gap-4 relative">
       {loading ? (
@@ -29,17 +11,7 @@ const ProductsList = () => {
       ) : (
         <>
           {products?.map((product) => (
-            <ProductCard
-              key={product.id}
-              data={product}
-              loading={loadingMakeRequest}
-              handleRequest={() =>
-                handleRequest({
-                  product: product.id,
-                  quantity: 1,
-                })
-              }
-            />
+            <ProductCard key={product.id} data={product} />
           ))}
         </>
       )}

@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { deleteFromCart } from "@/toolkit/slices/cart/deleteFromCartSlice";
 import { getCartItems } from "@/toolkit/slices/cart/cartItemsSlice";
 import Quantity from "../Utilities/Quantity";
-// import Quantity2 from "../Utilities/Quantity2";
 
 const CartItem = ({ data }) => {
   const [count, setCount] = useState(+data?.quantity);

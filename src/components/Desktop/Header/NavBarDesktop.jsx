@@ -2,11 +2,19 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 // Components
 import OrdersCount from "@/components/Utilities/OrdersCount";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getCartItems } from "@/toolkit/slices/cart/cartItemsSlice";
 
 const NavBarDesktop = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const { cart_items } = useSelector((state) => state.cartItems);
+
+  useEffect(() => {
+    dispatch(getCartItems());
+  }, []);
+
   return (
     <nav>
       <ul className="flex justify-center items-center gap-6 text-lg font-medium">
@@ -31,7 +39,7 @@ const NavBarDesktop = () => {
           </Link>
         </li>
         <li className="relative">
-          <OrdersCount />
+          {/* <OrdersCount /> */}
           <Link
             href="/orders"
             className={`hover:text-primary ${

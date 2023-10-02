@@ -10,17 +10,20 @@ import CategoriesTagsList from "@/components/Products/CategoriesTagsList";
 import ProductsList from "@/components/Products/ProductsList";
 import FilterTagsList from "@/components/Products/Filter/FilterTagsList";
 import Footer from "@/components/Footer";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "@/toolkit/slices/products/productsSlice";
+import { useEffect } from "react";
+import { getCategoryProducts } from "@/toolkit/slices/categories/categoryProductsSlice";
+import { useRouter } from "next/router";
 
-const Products = () => {
-  const { loading, products } = useSelector((state) => state.products);
+const Category = () => {
+  const router = useRouter();
+  const { categoryId } = router.query;
+  const { loading, products } = useSelector((state) => state.categoryProducts);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProducts());
-  }, []);
+    dispatch(getCategoryProducts(categoryId));
+  }, [categoryId]);
   return (
     <div>
       <HeaderDesktop />
@@ -58,4 +61,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Category;

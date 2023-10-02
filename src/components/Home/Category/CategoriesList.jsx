@@ -15,7 +15,7 @@ import { FreeMode } from "swiper";
 
 // Get data with redux toolkit
 import { useDispatch, useSelector } from "react-redux";
-import { getCategories } from "@/toolkit/slices/categoriesSlice";
+import { getCategories } from "@/toolkit/slices/categories/categoriesSlice";
 
 const CategoriesList = () => {
   const { loading, categories, error } = useSelector(

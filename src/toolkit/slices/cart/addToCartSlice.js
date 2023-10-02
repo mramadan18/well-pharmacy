@@ -35,13 +35,13 @@ const addToCartSlice = createSlice({
       state.loading = false;
       state.product = action.payload;
       toast.remove();
-      toast.success("You are logged in successfully");
+      toast.success("The product has been added to the cart");
     });
     builder.addCase(addToCart.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
       toast.remove();
-      toast.error("Error, check the data and try again");
+      toast.error("Error, try again");
     });
   },
 });

@@ -7,9 +7,13 @@ import productsIcon from "#/images/icons/products_icon.png";
 import requestsIcon from "#/images/icons/request_icon.png";
 import contactIcon from "#/images/icons/contact_icon.png";
 import OrdersCount from "../Utilities/OrdersCount";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCartItems } from "@/toolkit/slices/cart/cartItemsSlice";
 
 const NavBarMobile = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const linksData = [
     {
@@ -27,16 +31,27 @@ const NavBarMobile = () => {
     {
       id: 3,
       icon: requestsIcon,
+      name: "My cart",
+      path: "/cart",
+    },
+    {
+      id: 4,
+      icon: requestsIcon,
       name: "My orders",
       path: "/orders",
     },
     {
-      id: 4,
+      id: 5,
       icon: contactIcon,
       name: "Contact us",
       path: "/contact-us",
     },
   ];
+  const { cart_items } = useSelector((state) => state.cartItems);
+
+  useEffect(() => {
+    dispatch(getCartItems());
+  }, []);
 
   return (
     <div className="nav-mobile fixed w-full h-[80px] bottom-0 left-0 z-50 bg-white shadow-[0_-18px_40px_rgba(0,0,0,0.12)] flex lg:hidden justify-around items-center">
@@ -48,7 +63,10 @@ const NavBarMobile = () => {
         >
           <div className="box flex flex-col justify-center items-center text-sm relative">
             {link.id === 3 && (
-              <OrdersCount className="top-[-5px] right-[5px]" />
+              <OrdersCount
+                className="top-[-5px] right-[5px]"
+                count={cart_items.count}
+              />
             )}
             <Image src={link.icon} alt={link.name} priority />
             <div>

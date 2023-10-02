@@ -4,9 +4,29 @@ import Link from "next/link";
 import Button from "../Utilities/Button";
 import { addToCart } from "@/toolkit/slices/cart/addToCartSlice";
 import Loading from "../Utilities/Loading";
+import { useEffect, useState } from "react";
 
-const ProductCard = ({ data, loading, handleRequest }) => {
+const ProductCard = ({ data }) => {
+  const { loading } = useSelector((state) => state.addToCart);
+  const [isLoading, setIsLoading] = useState(loading);
   const dispatch = useDispatch();
+
+  const handleRequest = async () => {
+    if (isLoading) {
+      const formData = {
+        product: data.id,
+        quantity: 1,
+      };
+
+      await dispatch(addToCart(formData));
+
+      setIsLoading(loading);
+    }
+  };
+
+  useEffect(() => {
+    handleRequest();
+  }, [isLoading]);
 
   return (
     <div className="max-w-xs p-2 lg:p-4 bg-white border border-gray-200 rounded-lg">
@@ -32,8 +52,8 @@ const ProductCard = ({ data, loading, handleRequest }) => {
             ? data.description_en
             : `${data.description_en.slice(0, 80)}...`}
         </p>
-        <Button className="w-full" onClick={handleRequest}>
-          {loading ? <Loading size={22} /> : "Make a request"}
+        <Button className="w-full" onClick={() => setIsLoading(true)}>
+          {isLoading ? <Loading size={22} /> : "Make a request"}
         </Button>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import CategoryItemMobile from "@/components/Mobile/Category/CategoryItemMobile";
 import HeaderMobile from "@/components/Mobile/HeaderMobile";
 import ExploreProducts from "@/components/Utilities/ExploreProducts";
-import { getCategories } from "@/toolkit/slices/categoriesSlice";
+import { getCategories } from "@/toolkit/slices/categories/categoriesSlice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 

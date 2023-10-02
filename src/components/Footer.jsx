@@ -24,7 +24,7 @@ const Footer = () => {
             <Link href="/">How to order</Link>
           </li>
           <li>
-            <Link href="/">Our policy</Link>
+            <Link href="/policy">Our policy</Link>
           </li>
         </ul>
         <span className="w-full h-[1px] bg-white"></span>

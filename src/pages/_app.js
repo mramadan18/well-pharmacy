@@ -17,7 +17,8 @@ export default function App({ Component, pageProps }) {
       router.pathname === "/confirmation" ||
       router.pathname === "/edit-info" ||
       router.pathname === "/tracking" ||
-      router.pathname === "/contact-us"
+      router.pathname === "/contact-us" ||
+      router.pathname === "/policy"
     ) {
       body.style.backgroundColor = "#ededed";
     } else {

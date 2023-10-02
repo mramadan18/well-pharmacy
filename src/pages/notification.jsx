@@ -1,7 +1,7 @@
 import NotifyItem from "@/components/Desktop/Header/NotifyItem";
 import HeaderMobile from "@/components/Mobile/HeaderMobile";
 import Loading from "@/components/Utilities/Loading";
-import { getNotifications } from "@/toolkit/slices/notificationsSlice";
+import { getNotifications } from "@/toolkit/slices/notifications/notificationsSlice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 

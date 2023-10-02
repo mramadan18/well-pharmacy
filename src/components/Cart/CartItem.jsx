@@ -1,18 +1,20 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteFromCart } from "@/toolkit/slices/cart/deleteFromCartSlice";
-import { getCartItem } from "@/toolkit/slices/cart/cartItemsSlice";
+import { getCartItems } from "@/toolkit/slices/cart/cartItemsSlice";
 import Quantity from "../Utilities/Quantity";
+// import Quantity2 from "../Utilities/Quantity2";
 
-const OrderItem = ({ data }) => {
-  const [count, setCount] = useState("");
+const CartItem = ({ data }) => {
+  const [count, setCount] = useState(+data?.quantity);
   const dispatch = useDispatch();
 
-  const handleDelete = () => {};
-
-  useEffect(() => {
-    console.log(data);
-  }, []);
+  const handleDelete = () => {
+    dispatch(deleteFromCart(data.id));
+    setTimeout(() => {
+      dispatch(getCartItems());
+    }, 500);
+  };
 
   return (
     <div className="flex justify=-start items-center gap-4 bg-white border rounded-lg p-2 lg:p-6 mb-4 relative">
@@ -61,4 +63,4 @@ const OrderItem = ({ data }) => {
   );
 };
 
-export default OrderItem;
+export default CartItem;

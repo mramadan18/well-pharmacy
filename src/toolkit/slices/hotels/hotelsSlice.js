@@ -26,11 +26,6 @@ const hotelsSlice = createSlice({
     builder.addCase(getHotels.fulfilled, (state, action) => {
       state.loading = false;
       state.hotels = action.payload;
-      // const { hotel } = JSON.parse(localStorage?.getItem("user"));
-      // const findHotel = state.hotels?.results?.find(
-      //   (item) => item.id === hotel
-      // );
-      // state.myHotel = findHotel;
     });
     builder.addCase(getHotels.rejected, (state, action) => {
       state.loading = false;

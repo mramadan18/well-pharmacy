@@ -9,11 +9,12 @@ export const updateCart = createAsyncThunk(
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
     };
-
-    const { data } = await baseUrl.put(
-      `/cart/cart_items/${params.id}/`,
+    console.log(params.params);
+    const { data } = await baseUrl.patch(
+      `/cart/cart_items/${+params.id}/`,
       params.params,
       config
     );

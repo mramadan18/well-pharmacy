@@ -1,4 +1,4 @@
-import { getNotifications } from "@/toolkit/slices/notificationsSlice";
+import { getNotifications } from "@/toolkit/slices/notifications/notificationsSlice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 

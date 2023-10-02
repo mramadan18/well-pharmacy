@@ -1,5 +1,5 @@
-import { getHotels } from "@/toolkit/slices/hotelsSlice";
-import { getRooms } from "@/toolkit/slices/roomsSlice";
+import { getHotel } from "@/toolkit/slices/hotels/hotelSlice";
+import { getRoom } from "@/toolkit/slices/rooms/roomSlice";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -9,27 +9,27 @@ const YourInfo = () => {
   const router = useRouter();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [hotel, setHotel] = useState({});
-  const [room, setRoom] = useState({});
+  const [hotel_name, setHotel_name] = useState("");
+  const [room_number, setRoom_number] = useState("");
 
-  const { myHotel } = useSelector((state) => state.hotels);
-  const { myRoom } = useSelector((state) => state.rooms);
+  const { hotel } = useSelector((state) => state.hotel);
+  const { room } = useSelector((state) => state.room);
   const dispatch = useDispatch();
 
-  const handleYouInfo = async () => {
-    const { first_name, phone } = JSON.parse(localStorage.getItem("user"));
+  const handleYouInfo = () => {
+    const { first_name, phone, hotel, room } = JSON.parse(
+      localStorage.getItem("user")
+    );
 
     if (!localStorage.getItem("token")) {
       router.push("/");
     }
 
-    await dispatch(getRooms());
-    await dispatch(getHotels());
+    dispatch(getHotel(hotel));
+    dispatch(getRoom(room));
 
     setName(first_name);
     setPhone(phone);
-    setHotel(myHotel);
-    setRoom(myRoom);
   };
 
   useEffect(() => {

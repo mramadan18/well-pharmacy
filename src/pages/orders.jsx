@@ -15,7 +15,6 @@ const Orders = () => {
     <div>
       <HeaderDesktop />
       <HeaderMobile bg="#0F4392" btnBack={true} title="My oreder" />
-      <PlaceOrder className="lg:hidden" />
       <div className="container mt-5 lg:mt-32">
         <BreadcrumbsList>
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
@@ -27,16 +26,11 @@ const Orders = () => {
           My orders
         </h2>
 
-        <div className="grid grid-1 lg:grid-cols-[1fr_40%] lg:mt-10 gap-6">
+        <div className="grid grid-1 lg:mt-10 gap-6">
           <div>
             <YourInfo />
             <YourOrders />
           </div>
-          <div className="lg:mt-11 hidden lg:block">
-            <PromoCode />
-            <PlaceOrder />
-          </div>
-          <PromoCode className="lg:hidden" />
         </div>
       </div>
       <Footer />

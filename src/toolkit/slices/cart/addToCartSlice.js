@@ -1,4 +1,5 @@
 import baseUrl from "@/baseURL";
+import toast from "react-hot-toast";
 
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
@@ -9,6 +10,7 @@ export const addToCart = createAsyncThunk(
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
     };
     const { data } = await baseUrl.post("/cart/cart_items/", params, config);
@@ -27,14 +29,19 @@ const addToCartSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(addToCart.pending, (state, action) => {
       state.loading = true;
+      toast.loading("Loading...");
     });
     builder.addCase(addToCart.fulfilled, (state, action) => {
       state.loading = false;
       state.product = action.payload;
+      toast.remove();
+      toast.success("You are logged in successfully");
     });
     builder.addCase(addToCart.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
+      toast.remove();
+      toast.error("Error, check the data and try again");
     });
   },
 });

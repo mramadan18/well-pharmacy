@@ -1,18 +1,24 @@
 import { useEffect } from "react";
 // Toolkit
 import { useDispatch, useSelector } from "react-redux";
-import { getNotifications } from "@/toolkit/slices/notificationsSlice";
+import { getNotifications } from "@/toolkit/slices/notifications/notificationsSlice";
 // Components
 import NotifyItem from "./NotifyItem";
 import Loading from "@/components/Utilities/Loading";
 // animate
 import { motion } from "framer-motion";
+import { readNotifications } from "@/toolkit/slices/notifications/readNotificationsSlice";
 
 const NotifyList = ({ notifyListRef, notifyAllReadRef }) => {
+  // const [isFoundNewNotify, setIsFoundNewNotify] = useState(false);
   const { loading, notifications } = useSelector(
     (state) => state.notifications
   );
   const dispatch = useDispatch();
+
+  const handleReadAllNotifications = () => {
+    dispatch(readNotifications());
+  };
 
   useEffect(() => {
     dispatch(getNotifications());
@@ -35,6 +41,7 @@ const NotifyList = ({ notifyListRef, notifyAllReadRef }) => {
       <div
         ref={notifyAllReadRef}
         className="text-right text-[#2C6ECB] font-semibold tracking-[1px] mb-4 cursor-pointer"
+        onClick={handleReadAllNotifications}
       >
         Make all as read
       </div>
@@ -52,11 +59,13 @@ const NotifyList = ({ notifyListRef, notifyAllReadRef }) => {
               {notifications?.results.map((notification) => {
                 if (!notification.read) {
                   return (
-                    <NotifyItem
-                      key={notification.id}
-                      newNotify={true}
-                      data={notification}
-                    />
+                    <>
+                      <NotifyItem
+                        key={notification.id}
+                        newNotify={true}
+                        data={notification}
+                      />
+                    </>
                   );
                 }
               })}

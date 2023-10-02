@@ -2,25 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 // Components
 import Button from "../Utilities/Button";
-import Quantity from "../Utilities/Quantity";
 import { addToCart } from "@/toolkit/slices/cart/addToCartSlice";
-import { useState } from "react";
 import Loading from "../Utilities/Loading";
 
-const ProductCard = ({ data }) => {
-  const [isRequest, setIsRequest] = useState(false);
-  const { loading, product } = useSelector((state) => state.addToCart);
+const ProductCard = ({ data, loading, handleRequest }) => {
   const dispatch = useDispatch();
-
-  const formData = {
-    product: data.id,
-    quantity: 1,
-  };
-
-  const handleRequest = () => {
-    setIsRequest(true);
-    dispatch(addToCart(formData));
-  };
 
   return (
     <div className="max-w-xs p-2 lg:p-4 bg-white border border-gray-200 rounded-lg">
@@ -46,17 +32,9 @@ const ProductCard = ({ data }) => {
             ? data.description_en
             : `${data.description_en.slice(0, 80)}...`}
         </p>
-        {isRequest ? (
-          <>
-            <Quantity quantity={product?.quantity} loading={loading} />
-          </>
-        ) : (
-          <>
-            <Button className="w-full" onClick={handleRequest}>
-              {loading ? <Loading size={22} /> : "Make a request"}
-            </Button>
-          </>
-        )}
+        <Button className="w-full" onClick={handleRequest}>
+          {loading ? <Loading size={22} /> : "Make a request"}
+        </Button>
       </div>
     </div>
   );

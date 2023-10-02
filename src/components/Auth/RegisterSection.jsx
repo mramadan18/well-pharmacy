@@ -7,9 +7,9 @@ import "react-phone-input-2/lib/style.css";
 // Get data with redux toolkit
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "@/toolkit/slices/registerSlice";
-import { getHotels } from "@/toolkit/slices/hotelsSlice";
+import { getHotels } from "@/toolkit/slices/hotels/hotelsSlice";
 import { login } from "@/toolkit/slices/loginSlice";
-import { getRooms } from "@/toolkit/slices/roomsSlice";
+import { getRooms } from "@/toolkit/slices/rooms/roomsSlice";
 import Loading from "../Utilities/Loading";
 
 const RegisterSection = () => {
@@ -126,7 +126,9 @@ const RegisterSection = () => {
           >
             <option defaultValue>Select here</option>
             {hotels?.results?.map((hotel) => (
-              <option value={hotel.id}>{hotel.name}</option>
+              <option key={hotel.id} value={hotel.id}>
+                {hotel.name}
+              </option>
             ))}
           </select>
         </div>
@@ -143,7 +145,9 @@ const RegisterSection = () => {
           >
             <option defaultChecked>Select here</option>
             {rooms?.results?.map((room) => (
-              <option value={room.id}>{room.room_number}</option>
+              <option key={room.id} value={room.id}>
+                {room.room_number}
+              </option>
             ))}
           </select>
         </div>

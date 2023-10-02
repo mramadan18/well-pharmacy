@@ -14,106 +14,81 @@ const YourOrders = () => {
   return (
     <div className="mt-6">
       <h3 className="mb-4">Your orders</h3>
-      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table class="w-full text-sm text-left text-gray-500">
-          <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-            <tr>
-              <th scope="col" class="px-6 py-3">
-                Product name
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table className="w-full flex flex-row flex-no-wrap bg-white rounded-lg overflow-hidden my-5">
+          <thead className="text-white">
+            <tr className="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+              <th className="p-3 text-left">Name</th>
+              <th className="p-3 text-left">Email</th>
+              <th className="p-3 text-left" width="110px">
+                Actions
               </th>
-              <th scope="col" class="px-6 py-3">
-                Color
+            </tr>
+            <tr className="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+              <th className="p-3 text-left">Name</th>
+              <th className="p-3 text-left">Email</th>
+              <th className="p-3 text-left" width="110px">
+                Actions
               </th>
-              <th scope="col" class="px-6 py-3">
-                Category
+            </tr>
+            <tr className="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+              <th className="p-3 text-left">Name</th>
+              <th className="p-3 text-left">Email</th>
+              <th className="p-3 text-left" width="110px">
+                Actions
               </th>
-              <th scope="col" class="px-6 py-3">
-                Price
-              </th>
-              <th scope="col" class="px-6 py-3">
-                Action
+            </tr>
+            <tr className="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+              <th className="p-3 text-left">Name</th>
+              <th className="p-3 text-left">Email</th>
+              <th className="p-3 text-left" width="110px">
+                Actions
               </th>
             </tr>
           </thead>
-          <tbody>
-            <tr class="bg-white border-b">
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
-                Apple MacBook Pro 17"
-              </th>
-              <td class="px-6 py-4">Silver</td>
-              <td class="px-6 py-4">Laptop</td>
-              <td class="px-6 py-4">$2999</td>
-              <td class="px-6 py-4">
-                <a href="#" class="font-medium text-blue-600 hover:underline">
-                  Edit
-                </a>
+          <tbody className="flex-1 sm:flex-none">
+            <tr className="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+              <td className="border-grey-light border hover:bg-gray-100 p-3">
+                John Covv
+              </td>
+              <td className="border-grey-light border hover:bg-gray-100 p-3 truncate">
+                contato@johncovv.com
+              </td>
+              <td className="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
+                Delete
               </td>
             </tr>
-            <tr class="border-b bg-gray-50">
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
-                Microsoft Surface Pro
-              </th>
-              <td class="px-6 py-4">White</td>
-              <td class="px-6 py-4">Laptop PC</td>
-              <td class="px-6 py-4">$1999</td>
-              <td class="px-6 py-4">
-                <a href="#" class="font-medium text-blue-600 hover:underline">
-                  Edit
-                </a>
+            <tr className="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+              <td className="border-grey-light border hover:bg-gray-100 p-3">
+                Michael Jackson
+              </td>
+              <td className="border-grey-light border hover:bg-gray-100 p-3 truncate">
+                m_jackson@mail.com
+              </td>
+              <td className="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
+                Delete
               </td>
             </tr>
-            <tr class="bg-white border-b">
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
-                Magic Mouse 2
-              </th>
-              <td class="px-6 py-4">Black</td>
-              <td class="px-6 py-4">Accessories</td>
-              <td class="px-6 py-4">$99</td>
-              <td class="px-6 py-4">
-                <a href="#" class="font-medium text-blue-600hover:underline">
-                  Edit
-                </a>
+            <tr className="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+              <td className="border-grey-light border hover:bg-gray-100 p-3">
+                Julia
+              </td>
+              <td className="border-grey-light border hover:bg-gray-100 p-3 truncate">
+                julia@mail.com
+              </td>
+              <td className="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
+                Delete
               </td>
             </tr>
-            <tr class="border-b bg-gray-50">
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
-                Google Pixel Phone
-              </th>
-              <td class="px-6 py-4">Gray</td>
-              <td class="px-6 py-4">Phone</td>
-              <td class="px-6 py-4">$799</td>
-              <td class="px-6 py-4">
-                <a href="#" class="font-medium text-blue-600">
-                  Edit
-                </a>
+            <tr className="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+              <td className="border-grey-light border hover:bg-gray-100 p-3">
+                Martin Madrazo
               </td>
-            </tr>
-            <tr>
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
-                Apple Watch 5
-              </th>
-              <td class="px-6 py-4">Red</td>
-              <td class="px-6 py-4">Wearables</td>
-              <td class="px-6 py-4">$999</td>
-              <td class="px-6 py-4">
-                <a href="#" class="font-medium text-blue-600 hover:underline">
-                  Edit
-                </a>
+              <td className="border-grey-light border hover:bg-gray-100 p-3 truncate">
+                martin.madrazo@mail.com
+              </td>
+              <td className="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer">
+                Delete
               </td>
             </tr>
           </tbody>

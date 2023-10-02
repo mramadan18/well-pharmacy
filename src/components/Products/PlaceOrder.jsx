@@ -10,6 +10,9 @@ const PlaceOrder = ({ className }) => {
 
   const handlePlaceOrder = () => {
     dispatch(createOrder());
+    setTimeout(() => {
+      dispatch(getCartItems());
+    }, 300);
   };
 
   useEffect(() => {

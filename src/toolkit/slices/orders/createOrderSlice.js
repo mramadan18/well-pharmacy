@@ -11,7 +11,7 @@ export const createOrder = createAsyncThunk(
         Authorization: `Bearer ${token}`,
       },
     };
-    const { data } = await baseUrl.post("/order/", config);
+    const { data } = await baseUrl.post("/order/", {}, config);
     return data;
   }
 );

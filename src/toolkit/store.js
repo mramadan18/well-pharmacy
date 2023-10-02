@@ -19,6 +19,7 @@ import updateCartReducer from "./slices/cart/updateCartSlice";
 import ordersReducer from "./slices/orders/ordersSlice";
 import categoryProductsReducer from "./slices/categories/categoryProductsSlice";
 import searchReducer from "./slices/products/searchSlice";
+import createOrderReducer from "./slices/orders/createOrderSlice";
 
 const store = configureStore({
   reducer: {
@@ -40,6 +41,7 @@ const store = configureStore({
     addToCart: addToCartReducer,
     updateCart: updateCartReducer,
     orders: ordersReducer,
+    createOrder: createOrderReducer,
     notifications: notificationsReducer,
     contactus: contactusReducer,
   },

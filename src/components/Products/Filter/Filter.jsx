@@ -27,7 +27,8 @@ const Filter = () => {
           <option value="FR">France</option>
           <option value="DE">Germany</option>
         </select>
-      </div>
+      </div> */}
+
       <div>
         <label htmlFor="by-uses" className="block mb-4 font-bold">
           By uses
@@ -44,7 +45,8 @@ const Filter = () => {
           ))}
         </select>
       </div>
-      <div>
+
+      {/* <div>
         <label htmlFor="by-ingredients" className="block mb-4 font-bold">
           By ingredients
         </label>
@@ -59,7 +61,7 @@ const Filter = () => {
           <option value="DE">Germany</option>
         </select>
       </div> */}
-{/* 
+
       <div className="flex justify-between items-center gap-2">
         <button className="border border-primary py-3 px-6 rounded-md font-bold bg-white text-primary w-full">
           Clear all
@@ -67,7 +69,7 @@ const Filter = () => {
         <button className="border border-primary py-3 px-6 rounded-md font-bold bg-primary text-white w-full">
           Apply
         </button>
-      </div> */}
+      </div>
     </div>
   );
 };

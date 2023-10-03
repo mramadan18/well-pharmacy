@@ -13,7 +13,7 @@ const Filter = () => {
   return (
     <div className="p-6 lg:shadow-secondShadow rounded-md bg-white">
       <h2 className="text-primary text-center mb-3">Filter by</h2>
-      <div>
+      {/* <div>
         <label htmlFor="by-diseases" className="block mb-4 font-bold">
           By diseases
         </label>
@@ -58,8 +58,8 @@ const Filter = () => {
           <option value="FR">France</option>
           <option value="DE">Germany</option>
         </select>
-      </div>
-
+      </div> */}
+{/* 
       <div className="flex justify-between items-center gap-2">
         <button className="border border-primary py-3 px-6 rounded-md font-bold bg-white text-primary w-full">
           Clear all
@@ -67,7 +67,7 @@ const Filter = () => {
         <button className="border border-primary py-3 px-6 rounded-md font-bold bg-primary text-white w-full">
           Apply
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

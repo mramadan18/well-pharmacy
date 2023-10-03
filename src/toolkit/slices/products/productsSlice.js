@@ -4,8 +4,10 @@ const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
 export const getProducts = createAsyncThunk(
   "productsSlice/fetchProducts",
-  async () => {
-    const { data } = await baseUrl.get("/product");
+  async (page) => {
+    const { data } = await baseUrl.get(
+      `/product/?limit=12&offset=${(page + 1 - 1) * 12}`
+    );
     return data;
   }
 );
@@ -15,6 +17,7 @@ const productsSlice = createSlice({
   initialState: {
     loading: false,
     products: [],
+    pagesCount: 0,
     error: {},
   },
   reducers: {},
@@ -25,6 +28,7 @@ const productsSlice = createSlice({
     builder.addCase(getProducts.fulfilled, (state, action) => {
       state.loading = false;
       state.products = action.payload.results;
+      state.pagesCount = Math.ceil(action.payload.count / 12);
     });
     builder.addCase(getProducts.rejected, (state, action) => {
       state.loading = false;

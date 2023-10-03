@@ -6,11 +6,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const Categories = () => {
-  const {
-    loading,
-    categories: categoriesData,
-    error,
-  } = useSelector((state) => state.categories);
+  const { loading, categories } = useSelector((state) => state.categories);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,7 +19,7 @@ const Categories = () => {
       <div className="container mt-6">
         <ExploreProducts />
         <div className="flex flex-wrap justify-center items-center gap-3 mt-6">
-          {categoriesData.map((category) => (
+          {categories.map((category) => (
             <CategoryItemMobile key={category.id} data={category} />
           ))}
         </div>

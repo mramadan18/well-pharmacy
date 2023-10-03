@@ -10,23 +10,29 @@ import CategoriesTagsList from "@/components/Products/CategoriesTagsList";
 import ProductsList from "@/components/Products/ProductsList";
 import FilterTagsList from "@/components/Products/Filter/FilterTagsList";
 import Footer from "@/components/Footer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "@/toolkit/slices/products/productsSlice";
 import ReactPaginate from "react-paginate";
+import { useRouter } from "next/router";
 
 const Products = () => {
-  const { loading, products } = useSelector((state) => state.products);
+  const router = useRouter();
+  const { loading, products, pagesCount } = useSelector(
+    (state) => state.products
+  );
   const dispatch = useDispatch();
 
-  const handlePageClick = (e) => {
-    setActive(e.selected + 1);
-    router.push(`/products/all/?page=${e.selected + 1}`);
+  const [activePage, setActivePage] = useState(0);
+
+  const handlePageClick = ({ selected }) => {
+    setActivePage(selected);
+    router.push(`/products/?page=${selected + 1}`);
   };
 
   useEffect(() => {
-    dispatch(getProducts());
-  }, []);
+    dispatch(getProducts(activePage));
+  }, [activePage]);
 
   return (
     <div>
@@ -40,7 +46,7 @@ const Products = () => {
       <div className="container mt-5 lg:mt-36">
         <BreadcrumbsList>
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          <BreadcrumbActive href="/poducts">Our products</BreadcrumbActive>
+          <BreadcrumbActive href="/products">Our products</BreadcrumbActive>
         </BreadcrumbsList>
         <div className="hidden lg:block">
           <h2 className="text-primary text-center my-5">Our products</h2>
@@ -52,7 +58,7 @@ const Products = () => {
             <Filter />
           </div>
           <div>
-            <FilterTagsList />
+            {/* <FilterTagsList /> */}
             <ExploreProducts />
 
             <ProductsList loading={loading} products={products} />
@@ -61,16 +67,16 @@ const Products = () => {
               <ReactPaginate
                 breakLabel="..."
                 nextLabel="Next"
-                onPageChange={1}
+                onPageChange={handlePageClick}
                 marginPagesDisplayed={1}
                 pageRangeDisplayed={1}
-                pageCount={10}
+                pageCount={pagesCount}
                 previousLabel="Prev"
                 containerClassName={
-                  "flex justify-center items-center gap-4 shadow-mainShadow mt-8 rounded-md h-[60px]"
+                  "flex justify-center items-center gap-4 shadow-mainShadow mt-8 rounded-md h-[60px] select-none"
                 }
                 pageClassName={
-                  "border border-primary rounded-md w-[30px] h-[40px] flex justify-center items-center"
+                  "border border-primary rounded-md w-[50px] h-[40px] flex justify-center items-center"
                 }
                 // pageLinkClassName={"w-full h-full"}
                 // previousClassName={"bg-primary text-white py-2 px-4 rounded-md"}

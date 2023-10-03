@@ -34,6 +34,15 @@ const EditForm = () => {
   };
 
   useEffect(() => {
+    const { first_name, phone, hotel, room } = JSON.parse(
+      localStorage.getItem("user")
+    );
+
+    setFirst_name(first_name);
+    setPhone(phone);
+    setHotel(hotel);
+    setRoom(room);
+
     dispatch(getHotels());
     dispatch(getRooms());
   }, []);

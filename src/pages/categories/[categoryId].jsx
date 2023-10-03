@@ -11,7 +11,7 @@ import ProductsList from "@/components/Products/ProductsList";
 import FilterTagsList from "@/components/Products/Filter/FilterTagsList";
 import Footer from "@/components/Footer";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getCategoryProducts } from "@/toolkit/slices/categories/categoryProductsSlice";
 import { useRouter } from "next/router";
 import ReactPaginate from "react-paginate";
@@ -19,12 +19,26 @@ import ReactPaginate from "react-paginate";
 const Category = () => {
   const router = useRouter();
   const { categoryId } = router.query;
-  const { loading, products } = useSelector((state) => state.categoryProducts);
+  const { loading, products, pagesCount } = useSelector(
+    (state) => state.categoryProducts
+  );
   const dispatch = useDispatch();
 
+  const [activePage, setActivePage] = useState(0);
+
+  const handlePageClick = ({ selected }) => {
+    setActivePage(selected);
+    router.push(`/categories/${categoryId}?page=${selected + 1}`);
+  };
+
   useEffect(() => {
-    dispatch(getCategoryProducts(categoryId));
-  }, [categoryId]);
+    const params = {
+      categoryId,
+      activePage,
+    };
+    dispatch(getCategoryProducts(params));
+  }, [categoryId, activePage]);
+
   return (
     <div>
       <HeaderDesktop />
@@ -37,7 +51,7 @@ const Category = () => {
       <div className="container mt-5 lg:mt-36">
         <BreadcrumbsList>
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          <BreadcrumbActive href="/poducts">Our products</BreadcrumbActive>
+          <BreadcrumbActive href="/products">Our products</BreadcrumbActive>
         </BreadcrumbsList>
         <div className="hidden lg:block">
           <h2 className="text-primary text-center my-5">Our products</h2>
@@ -49,7 +63,7 @@ const Category = () => {
             <Filter />
           </div>
           <div>
-            <FilterTagsList />
+            {/* <FilterTagsList /> */}
             <ExploreProducts />
 
             <ProductsList loading={loading} products={products} />
@@ -58,16 +72,16 @@ const Category = () => {
               <ReactPaginate
                 breakLabel="..."
                 nextLabel="Next"
-                onPageChange={1}
+                onPageChange={handlePageClick}
                 marginPagesDisplayed={1}
                 pageRangeDisplayed={1}
-                pageCount={10}
+                pageCount={pagesCount}
                 previousLabel="Prev"
                 containerClassName={
                   "flex justify-center items-center gap-4 shadow-mainShadow mt-8 rounded-md h-[60px]"
                 }
                 pageClassName={
-                  "border border-primary rounded-md w-[30px] h-[40px] flex justify-center items-center"
+                  "border border-primary rounded-md w-[50px] h-[40px] flex justify-center items-center"
                 }
                 // pageLinkClassName={"w-full h-full"}
                 // previousClassName={"bg-primary text-white py-2 px-4 rounded-md"}

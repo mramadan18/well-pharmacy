@@ -40,6 +40,10 @@ body {
     background-color: #ededed !important;
   }
 }
+
+#__next {
+  overflow-x: hidden;
+}
 /* End Global */
 
 /* Start Swiper Library */

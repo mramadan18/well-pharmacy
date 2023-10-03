@@ -1,19 +1,35 @@
+import { useDispatch, useSelector } from "react-redux";
 import CategoryTagItem from "./CategoryTagItem";
+import { getCategories } from "@/toolkit/slices/categories/categoriesSlice";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const CategoriesTagsList = () => {
+  const router = useRouter();
+  const { categories } = useSelector((state) => state.categories);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, []);
+
   return (
     <div className="mt-4 overflow-x-scroll select-none">
       <div className="flex justify-start items-center gap-2 w-max pb-3">
-        <CategoryTagItem name="All" href="/products" active />
-        <CategoryTagItem name="Top 50 medicines" href="/categories/13" />
-        <CategoryTagItem name="Natural oils and herbs" href="/categories/14" />
-        <CategoryTagItem name="Cosmtics" href="/categories/15" />
-        <CategoryTagItem name="Vitamins" href="/categories/16" />
-        <CategoryTagItem name="Skin care" href="/categories/17" />
-        <CategoryTagItem name="Kids" href="/categories/18" />
-        <CategoryTagItem name="Sun and sea" href="/categories/19" />
-        <CategoryTagItem name="Expensive drugs" href="/categories/20" />
-        <CategoryTagItem name="Daily essentials" href="/categories/21" />
+        <div
+          className={`${
+            router.pathname === "/products"
+              ? "text-white bg-second"
+              : "text-black bg-[rgba(221,23,23,0.20)]"
+          } py-1 px-2 rounded-md tracking-[1px] cursor-pointer`}
+        >
+          <Link href="/products">All</Link>
+        </div>
+
+        {categories.map((category) => (
+          <CategoryTagItem key={category.id} data={category} />
+        ))}
       </div>
     </div>
   );

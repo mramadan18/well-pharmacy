@@ -1,14 +1,23 @@
+import { useState } from "react";
+
 const PromoCode = ({ className }) => {
+  const [input, setInput] = useState("");
+
   return (
     <div className={`bg-white p-6 rounded-lg ${className}`}>
       <h5 className="mb-4">Promocodes</h5>
       <div className="relative w-full">
         <input
+          className="py-2 px-3 text-primary w-full rounded-md border border-[#aeb4b9] bg-white shadow-[0_1px_0_0_#898f94_inset]"
           type="text"
           placeholder="Well20"
-          className="py-2 px-3 text-primary w-full rounded-md border border-[#aeb4b9] bg-white shadow-[0_1px_0_0_#898f94_inset]"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
         />
-        <span className="absolute top-1/2 right-2 -translate-y-1/2">
+        <span
+          className="absolute top-1/2 right-2 -translate-y-1/2"
+          onClick={() => setInput("")}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"

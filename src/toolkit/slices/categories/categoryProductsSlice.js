@@ -4,8 +4,12 @@ const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
 export const getCategoryProducts = createAsyncThunk(
   "categoryProductsSlice/fetchProducts",
-  async (id) => {
-    const { data } = await baseUrl.get(`/product/?category=${id}`);
+  async (params) => {
+    const { data } = await baseUrl.get(
+      `/product/?category=${params.categoryId}&offset=${
+        (params.activePage + 1 - 1) * 12
+      }`
+    );
     return data;
   }
 );
@@ -15,6 +19,7 @@ const categoryProductsSlice = createSlice({
   initialState: {
     loading: false,
     products: [],
+    pagesCount: 0,
     error: {},
   },
   reducers: {},
@@ -25,6 +30,7 @@ const categoryProductsSlice = createSlice({
     builder.addCase(getCategoryProducts.fulfilled, (state, action) => {
       state.loading = false;
       state.products = action.payload.results;
+      state.pagesCount = Math.ceil(action.payload.count / 12);
     });
     builder.addCase(getCategoryProducts.rejected, (state, action) => {
       state.loading = false;

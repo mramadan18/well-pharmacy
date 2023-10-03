@@ -5,6 +5,7 @@ import Button from "../Utilities/Button";
 import { addToCart } from "@/toolkit/slices/cart/addToCartSlice";
 import Loading from "../Utilities/Loading";
 import { useEffect, useState } from "react";
+import { getNotifications } from "@/toolkit/slices/notifications/notificationsSlice";
 
 const ProductCard = ({ data }) => {
   const { loading } = useSelector((state) => state.addToCart);
@@ -21,6 +22,7 @@ const ProductCard = ({ data }) => {
       await dispatch(addToCart(formData));
 
       setIsLoading(loading);
+      dispatch(getNotifications());
     }
   };
 
@@ -36,7 +38,7 @@ const ProductCard = ({ data }) => {
       >
         <img
           className="rounded-t-lg"
-          src={data.home_image}
+          src={data.home_image || "/images/not_found.png"}
           alt={data.name_en}
         />
       </Link>

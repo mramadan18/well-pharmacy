@@ -9,8 +9,6 @@ const YourInfo = () => {
   const router = useRouter();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [hotel_name, setHotel_name] = useState("");
-  const [room_number, setRoom_number] = useState("");
 
   const { hotel } = useSelector((state) => state.hotel);
   const { room } = useSelector((state) => state.room);

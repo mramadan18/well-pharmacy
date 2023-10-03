@@ -30,22 +30,13 @@ const OrderItem = ({ data }) => {
       <td className="px-6 py-4">{data?.status}</td>
       <td className="px-6 py-4">{data?.active ? "Yes" : "No"}</td>
       <td className="px-6 py-4">{data?.total_price || "No price"}</td>
-      <td className="px-6 py-4 flex justify-start items-center gap-4">
+      <td className="px-6 py-4">
         <Link
           href={`/tracking/?orderId=${data.id}`}
           className="font-medium text-primary hover:underline"
         >
           View
         </Link>
-        <a href="#" className="font-medium text-green-500 hover:underline">
-          Edit
-        </a>
-        <button
-          className="font-medium text-second hover:underline"
-          onClick={handleDeleteOrder}
-        >
-          Delete
-        </button>
       </td>
     </tr>
   );

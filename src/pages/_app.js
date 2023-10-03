@@ -5,6 +5,7 @@ import "@/styles/globals.css";
 import store from "@/toolkit/store";
 import { Provider } from "react-redux";
 import { Toaster } from "react-hot-toast";
+import Support from "@/components/Utilities/Support";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -29,6 +30,7 @@ export default function App({ Component, pageProps }) {
     <Provider store={store}>
       <Toaster position="top-center" reverseOrder={false} />
       <Component {...pageProps} />
+      <Support />
     </Provider>
   );
 }

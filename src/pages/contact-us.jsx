@@ -13,7 +13,6 @@ import Modal from "@/components/Utilities/Madal";
 import { useState } from "react";
 import RequestCallModal from "@/components/ContactUs/RequestCallModal";
 import WriteReview from "@/components/Utilities/WriteReview/WriteReview";
-import Support from "@/components/Utilities/Support";
 import BottomModal from "@/components/Utilities/BottomModal";
 
 const ContactUs = () => {
@@ -66,7 +65,6 @@ const ContactUs = () => {
 
       <Footer />
       <WriteReview />
-      <Support />
 
       <BottomModal isOpen={isOpen} setIsOpen={setIsOpen}>
         <RequestCallModal />

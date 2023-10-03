@@ -8,13 +8,17 @@ import Button from "@/components/Utilities/Button";
 import right from "#/images/right_img.png";
 import Footer from "@/components/Footer";
 import Modal from "@/components/Utilities/Madal";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
 const Confirmation = () => {
+  const router = useRouter();
+  const [showModal, setShowModal] = useState(false);
   return (
     <div>
       <HeaderDesktop />
       <HeaderMobile bg="#0F4392" title="Confirmation" btnBack={true} />
-      <div className="flex flex-col justify-center items-center gap-6 lg:bg-white p-4 rounded-lg w-auto lg:w-[500px] mx-4 lg:mx-auto mt-5 lg:mt-32 lg:shadow-secondShadow text-center">
+      <div className="flex flex-col justify-center items-center gap-6 lg:bg-white p-4 rounded-lg w-auto lg:w-[550px] mx-4 lg:mx-auto mt-5 lg:mt-32 lg:shadow-secondShadow text-center">
         <h1 className="text-primary">Thank you</h1>
         <Image src={right} alt="Thank you" />
         <p className="px-10 text-lg">
@@ -23,17 +27,24 @@ const Confirmation = () => {
         </p>
         <p className="text-lg">Get well soon!</p>
         <div className="flex justify-between items-center w-full gap-5">
-          <button className="bg-transparent text-second py-2 rounded-md font-semibold tracking-[1px] border border-second w-1/2">
+          <button
+            className="bg-transparent text-second py-2 rounded-md font-semibold tracking-[1px] border border-second w-1/2"
+            onClick={() => setShowModal(true)}
+          >
             Cancel order
           </button>
-          <Button className="w-1/2">Go it</Button>
+          <Button className="w-1/2" onClick={() => router.push("/")}>
+            Go it
+          </Button>
         </div>
-        <p className="text-[#2C6ECB] font-bold">Track your order</p>
+        <Link href="/tracking" className="text-[#2C6ECB] font-bold">
+          Track your order
+        </Link>
       </div>
 
       <Footer />
 
-      <Modal showModal={false}>
+      <Modal showModal={showModal} setShowModal={setShowModal}>
         <div className="p-4 bg-white text-center rounded-lg w-auto lg:w-[600px]">
           <h3 className="text-primary">Order cancellation</h3>
           <p className="mt-4 mb-3 text-lg">
@@ -41,10 +52,15 @@ const Confirmation = () => {
           </p>
 
           <div className="flex justify-between items-center w-full gap-5">
-            <button className="bg-transparent text-second py-2 rounded-md font-semibold tracking-[1px] border border-second w-1/2">
+            <button
+              className="bg-transparent text-second py-2 rounded-md font-semibold tracking-[1px] border border-second w-1/2"
+              onClick={() => setShowModal(false)}
+            >
               Yes, cancel
             </button>
-            <Button className="w-1/2">Keep it</Button>
+            <Button className="w-1/2" onClick={() => setShowModal(false)}>
+              Keep it
+            </Button>
           </div>
         </div>
       </Modal>

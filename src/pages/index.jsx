@@ -11,7 +11,6 @@ import OfferListMobile from "@/components/Mobile/Home/Offer/OfferListMobile";
 import StepsListMobile from "@/components/Mobile/Home/Steps/StepsListMobile";
 import NavBarMobile from "@/components/Mobile/NavBarMobile";
 import WriteReview from "@/components/Utilities/WriteReview/WriteReview";
-import Support from "@/components/Utilities/Support";
 
 const Home = () => {
   return (
@@ -31,7 +30,6 @@ const Home = () => {
       <TestimonialsSection />
       <Footer />
       <WriteReview />
-      <Support />
     </>
   );
 };

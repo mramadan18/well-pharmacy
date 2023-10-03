@@ -3,15 +3,20 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "../Utilities/Button";
 import { getCartItems } from "@/toolkit/slices/cart/cartItemsSlice";
 import { createOrder } from "@/toolkit/slices/orders/createOrderSlice";
+import Loading from "../Utilities/Loading";
+import { useRouter } from "next/router";
 
 const PlaceOrder = ({ className }) => {
+  const router = useRouter();
   const { cart_items } = useSelector((state) => state.cartItems);
+  const { loading } = useSelector((state) => state.createOrder);
   const dispatch = useDispatch();
 
   const handlePlaceOrder = () => {
     dispatch(createOrder());
     setTimeout(() => {
       dispatch(getCartItems());
+      router.push("/confirmation");
     }, 300);
   };
 
@@ -28,7 +33,7 @@ const PlaceOrder = ({ className }) => {
         <p className="text-primary text-lg">Products have been selected</p>
       </div>
       <Button className="w-full" onClick={handlePlaceOrder}>
-        Place order
+        {loading ? <Loading /> : "Place order"}
       </Button>
       <p className="text-second text-sm text-center mt-3">
         Note that: your order will not be confirmed before you receive a call

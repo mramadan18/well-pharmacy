@@ -26,7 +26,7 @@ const Orders = () => {
           My orders
         </h2>
 
-        <div className="grid grid-1 lg:mt-10 gap-6">
+        <div className="lg:mt-10 gap-6">
           <div>
             <YourInfo />
             <YourOrders />

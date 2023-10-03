@@ -3,7 +3,7 @@ import CategoryTagItem from "./CategoryTagItem";
 const CategoriesTagsList = () => {
   return (
     <div className="mt-4 overflow-x-scroll select-none">
-      <div className="flex justify-start items-center gap-2 w-[1100px] lg:w-[1200px] pb-3">
+      <div className="flex justify-start items-center gap-2 w-max pb-3">
         <CategoryTagItem name="All" href="/products" active />
         <CategoryTagItem name="Top 50 medicines" href="/categories/13" />
         <CategoryTagItem name="Natural oils and herbs" href="/categories/14" />

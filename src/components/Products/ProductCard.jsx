@@ -41,16 +41,16 @@ const ProductCard = ({ data }) => {
         />
       </Link>
       <div className="pt-5 px-0 pb-0">
-        <h5 className="mb-2 text-base font-bold tracking-tight">
+        <h5 className="mb-2 text-base font-bold tracking-tight h-6 overflow-hidden">
           {data.name_en.length <= 30
             ? data.name_en
-            : `${data.name_en.slice(0, 30)}...`}
+            : `${data.name_en.slice(0, 20)}...`}
         </h5>
 
-        <p className="mb-3 text-[#828282]">
+        <p className="mb-3 text-[#828282] h-12 overflow-hidden">
           {data.description_en.length <= 80
             ? data.description_en
-            : `${data.description_en.slice(0, 80)}...`}
+            : `${data.description_en.slice(0, 60)}...`}
         </p>
         <Button className="w-full" onClick={() => setIsLoading(true)}>
           {isLoading ? <Loading size={22} /> : "Make a request"}

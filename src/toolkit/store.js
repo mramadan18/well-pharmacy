@@ -17,9 +17,12 @@ import contactusReducer from "./slices/contactusSlice";
 import cartItemsReducer from "./slices/cart/cartItemsSlice";
 import updateCartReducer from "./slices/cart/updateCartSlice";
 import ordersReducer from "./slices/orders/ordersSlice";
+import createOrderReducer from "./slices/orders/createOrderSlice";
+import deleteOrderReducer from "./slices/orders/deleteOrderSlice";
 import categoryProductsReducer from "./slices/categories/categoryProductsSlice";
 import searchReducer from "./slices/products/searchSlice";
-import createOrderReducer from "./slices/orders/createOrderSlice";
+import orderReducer from "./slices/orders/orderSlice";
+import usesReducer from "./slices/categories/usesSlice";
 
 const store = configureStore({
   reducer: {
@@ -32,6 +35,7 @@ const store = configureStore({
     upadteProfile: updateProfileReducer,
     categories: categoriesReducer,
     categoryProducts: categoryProductsReducer,
+    uses: usesReducer,
     reviews: reviewsReducer,
     addReview: addReviewReducer,
     products: productsReducer,
@@ -41,7 +45,9 @@ const store = configureStore({
     addToCart: addToCartReducer,
     updateCart: updateCartReducer,
     orders: ordersReducer,
+    order: orderReducer,
     createOrder: createOrderReducer,
+    deleteOrder: deleteOrderReducer,
     notifications: notificationsReducer,
     contactus: contactusReducer,
   },

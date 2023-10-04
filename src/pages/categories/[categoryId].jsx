@@ -68,7 +68,7 @@ const Category = () => {
 
             <ProductsList loading={loading} products={products} />
             {/* Pagination */}
-            <div className="mx-auto w-max">
+            <div className="mx-auto w-full">
               <ReactPaginate
                 breakLabel="..."
                 nextLabel="Next"

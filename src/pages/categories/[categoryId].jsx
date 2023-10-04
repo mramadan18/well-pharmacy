@@ -68,39 +68,42 @@ const Category = () => {
 
             <ProductsList loading={loading} products={products} />
             {/* Pagination */}
-            <div className="mx-auto w-full">
-              <ReactPaginate
-                breakLabel="..."
-                nextLabel="Next"
-                onPageChange={handlePageClick}
-                marginPagesDisplayed={1}
-                pageRangeDisplayed={1}
-                pageCount={pagesCount}
-                previousLabel="Prev"
-                containerClassName={
-                  "flex justify-center items-center gap-4 shadow-mainShadow mt-8 rounded-md h-[60px]"
-                }
-                pageClassName={
-                  "border border-primary rounded-md w-[50px] h-[40px] flex justify-center items-center"
-                }
-                // pageLinkClassName={"w-full h-full"}
-                // previousClassName={"bg-primary text-white py-2 px-4 rounded-md"}
-                // nextClassName={"bg-primary text-white py-2 px-4 rounded-md"}
-                previousLinkClassName={
-                  "bg-primary text-white py-3 px-4 rounded-md h-full"
-                }
-                nextLinkClassName={
-                  "bg-primary text-white py-3 px-4 rounded-md h-full"
-                }
-                breakClassName={
-                  "border border-primary rounded-md w-[30px] h-[40px] flex justify-center items-center"
-                }
-                breakLinkClassName={"w-full h-full text-center text-lg"}
-                activeClassName={
-                  "bg-second text-white border-none w-[34px] h-[40px]"
-                }
-              />
-            </div>
+            {!loading ? (
+              <div className="mx-auto w-full">
+                <ReactPaginate
+                  breakLabel="..."
+                  nextLabel="Next"
+                  onPageChange={handlePageClick}
+                  marginPagesDisplayed={1}
+                  pageRangeDisplayed={1}
+                  pageCount={pagesCount}
+                  initialPage={router.query.page - 1}
+                  previousLabel="Prev"
+                  containerClassName={
+                    "flex justify-center items-center gap-4 shadow-mainShadow mt-8 rounded-md h-[60px]"
+                  }
+                  pageClassName={
+                    "border border-primary rounded-md w-[50px] h-[40px] flex justify-center items-center"
+                  }
+                  // pageLinkClassName={"w-full h-full"}
+                  // previousClassName={"bg-primary text-white py-2 px-4 rounded-md"}
+                  // nextClassName={"bg-primary text-white py-2 px-4 rounded-md"}
+                  previousLinkClassName={
+                    "bg-primary text-white py-3 px-4 rounded-md h-full"
+                  }
+                  nextLinkClassName={
+                    "bg-primary text-white py-3 px-4 rounded-md h-full"
+                  }
+                  breakClassName={
+                    "border border-primary rounded-md w-[30px] h-[40px] flex justify-center items-center"
+                  }
+                  breakLinkClassName={"w-full h-full text-center text-lg"}
+                  activeClassName={
+                    "bg-second text-white border-none w-[34px] h-[40px]"
+                  }
+                />
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 
 // import required modules
-import { FreeMode } from "swiper";
+import { Autoplay, FreeMode } from "swiper";
 
 // Get data with redux toolkit
 import { useDispatch, useSelector } from "react-redux";
@@ -57,8 +57,12 @@ const CategoriesList = () => {
               spaceBetween: 30,
             },
           }}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
           freeMode={true}
-          modules={[FreeMode]}
+          modules={[Autoplay, FreeMode]}
           className="mySwiper"
         >
           {loading && <Loading />}

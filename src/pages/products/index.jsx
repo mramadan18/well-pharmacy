@@ -8,7 +8,7 @@ import ExploreProducts from "@/components/Utilities/ExploreProducts";
 import SearchInput from "@/components/Utilities/SearchInput";
 import CategoriesTagsList from "@/components/Products/CategoriesTagsList";
 import ProductsList from "@/components/Products/ProductsList";
-import FilterTagsList from "@/components/Products/Filter/FilterTagsList";
+// import FilterTagsList from "@/components/Products/Filter/FilterTagsList";
 import Footer from "@/components/Footer";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -63,7 +63,7 @@ const Products = () => {
 
             <ProductsList loading={loading} products={products} />
             {/* Pagination */}
-            <div className="mx-auto w-max">
+            <div className="mx-auto w-full px-6">
               <ReactPaginate
                 breakLabel="..."
                 nextLabel="Next"
@@ -71,9 +71,10 @@ const Products = () => {
                 marginPagesDisplayed={1}
                 pageRangeDisplayed={1}
                 pageCount={pagesCount}
+                disabledClassName={"opacity-50"}
                 previousLabel="Prev"
                 containerClassName={
-                  "flex justify-center items-center gap-4 shadow-mainShadow mt-8 rounded-md h-[60px] select-none"
+                  "flex justify-center items-center gap-2 shadow-mainShadow mt-8 rounded-md h-[60px] select-none"
                 }
                 pageClassName={
                   "border border-primary rounded-md w-[50px] h-[40px] flex justify-center items-center"

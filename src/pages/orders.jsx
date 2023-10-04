@@ -1,16 +1,24 @@
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+// Components
 import HeaderDesktop from "@/components/Desktop/Header/HeaderDesktop";
 import Footer from "@/components/Footer";
 import HeaderMobile from "@/components/Mobile/HeaderMobile";
-import PromoCode from "@/components/Orders/PromoCode";
 import YourInfo from "@/components/Orders/YourInfo";
 import YourOrders from "@/components/Orders/YourOrders";
-import PlaceOrder from "@/components/Products/PlaceOrder";
 import BreadcrumbActive from "@/components/Utilities/Breadcrumbs/BreadcrumbActive";
 import BreadcrumbLink from "@/components/Utilities/Breadcrumbs/BreadcrumbLink";
 import BreadcrumbsList from "@/components/Utilities/Breadcrumbs/BreadcrumbsList";
 import SearchInput from "@/components/Utilities/SearchInput";
 
 const Orders = () => {
+  const { push } = useRouter();
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      push("/login");
+    }
+  }, []);
+
   return (
     <div>
       <HeaderDesktop />

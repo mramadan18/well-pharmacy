@@ -1,3 +1,6 @@
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+// Components
 import YourCart from "@/components/Cart/YourCart";
 import HeaderDesktop from "@/components/Desktop/Header/HeaderDesktop";
 import Footer from "@/components/Footer";
@@ -11,6 +14,13 @@ import BreadcrumbsList from "@/components/Utilities/Breadcrumbs/BreadcrumbsList"
 import SearchInput from "@/components/Utilities/SearchInput";
 
 const Cart = () => {
+  const { push } = useRouter();
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      push("/login");
+    }
+  }, []);
+
   return (
     <div>
       <HeaderDesktop />
@@ -19,7 +29,6 @@ const Cart = () => {
       <div className="container mt-5 lg:mt-32">
         <BreadcrumbsList>
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          <BreadcrumbLink href="/products">Our products</BreadcrumbLink>
           <BreadcrumbActive href="/cart">My cart</BreadcrumbActive>
         </BreadcrumbsList>
         <SearchInput className="mt-8 hidden lg:block" />

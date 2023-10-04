@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-// Toolkit
-import { useSelector } from "react-redux";
 // Components
 import Modal from "../Madal";
 import ReviewForm from "./ReviewForm";
@@ -9,14 +7,22 @@ import ThankYouModal from "./ThankYouModal";
 
 const WriteReview = () => {
   const router = useRouter();
+  const [disabled, setDisabled] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [thankYou, setThankYou] = useState(false);
-  const { loading, review, error } = useSelector((state) => state.addReview);
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setDisabled(false);
+    }
+  }, []);
+
   return (
     <>
       <button
-        className="fixed top-1/2 -right-[60px] -translate-y-1/2 -rotate-90 z-50 bg-second text-white active:bg-red-500 font-bold tracking-[1px] text-lg px-6 py-3 rounded ease-linear transition-all duration-150"
+        className="fixed top-1/2 -right-[60px] -translate-y-1/2 -rotate-90 z-50 bg-second text-white active:bg-red-500 font-bold tracking-[1px] text-lg px-6 py-3 rounded ease-linear transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed"
         type="button"
+        disabled={disabled}
         onClick={() => {
           if (innerWidth <= 991) {
             router.push("review");

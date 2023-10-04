@@ -9,14 +9,14 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 // import required modules
-import { FreeMode, Pagination } from "swiper";
+import { Autoplay, FreeMode, Pagination } from "swiper";
 // Git data with redux toolkit
 import { useDispatch, useSelector } from "react-redux";
 import { getReviews } from "@/toolkit/slices/reviews/reviewsSlice";
 import Loading from "@/components/Utilities/Loading";
 
 const TestimonialsSection = () => {
-  const { loading, reviews, error } = useSelector((state) => state.reviews);
+  const { loading, reviews } = useSelector((state) => state.reviews);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -51,7 +51,11 @@ const TestimonialsSection = () => {
                   pagination={{
                     clickable: true,
                   }}
-                  modules={[FreeMode, Pagination]}
+                  autoplay={{
+                    delay: 5000,
+                    disableOnInteraction: false,
+                  }}
+                  modules={[Autoplay, FreeMode, Pagination]}
                   className="mySwiper"
                 >
                   {reviews.map((testimonial) => (

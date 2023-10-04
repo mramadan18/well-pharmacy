@@ -30,10 +30,28 @@ const Footer = () => {
         <span className="w-full h-[1px] bg-white"></span>
         <h5 className="font-normal tracking-[1px]">Contact us</h5>
         <div className="flex justify-center items-center gap-6">
-          <Image src={telegram} alt="telegram-icon" priority />
-          <Image src={whatsapp} alt="whatsapp-icon" priority />
-          <Image src={messenger} alt="messenger-icon" priority />
-          <Image src={viber} alt="viber-icon" priority />
+          <Image
+            src={telegram}
+            alt="telegram-icon"
+            width={40}
+            height={40}
+            priority
+          />
+          <Image
+            src={whatsapp}
+            alt="whatsapp-icon"
+            width={40}
+            height={40}
+            priority
+          />
+          <Image
+            src={messenger}
+            alt="messenger-icon"
+            width={40}
+            height={40}
+            priority
+          />
+          <Image src={viber} alt="viber-icon" width={40} height={40} priority />
         </div>
       </div>
     </section>

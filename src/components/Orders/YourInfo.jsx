@@ -31,7 +31,9 @@ const YourInfo = () => {
   };
 
   useEffect(() => {
-    handleYouInfo();
+    if (localStorage.getItem("token")) {
+      handleYouInfo();
+    }
   }, []);
 
   return (

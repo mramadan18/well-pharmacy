@@ -10,9 +10,7 @@ import { motion } from "framer-motion";
 
 const SearchInput = ({ className }) => {
   const [showSearchBox, setShowSearchBox] = useState(false);
-  const { loading, products, error } = useSelector(
-    (state) => state.searchProducts
-  );
+  const { loading, products } = useSelector((state) => state.searchProducts);
   const dispatch = useDispatch();
 
   const handleSearch = (e) => {

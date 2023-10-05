@@ -58,7 +58,7 @@ const NotifyList = ({ notifyListRef, notifyAllReadRef }) => {
             <p className="text-center">Not found notification</p>
           ) : (
             <>
-              {notifications?.results.map((notification) => {
+              {notifications?.results.map((notification, index) => {
                 if (!notification.read) {
                   return (
                     <>
@@ -72,7 +72,7 @@ const NotifyList = ({ notifyListRef, notifyAllReadRef }) => {
                 }
               })}
               <hr />
-              {notifications?.results.map((notification) => {
+              {notifications?.results.map((notification, index) => {
                 if (notification.read) {
                   return (
                     <NotifyItem key={notification.id} data={notification} />

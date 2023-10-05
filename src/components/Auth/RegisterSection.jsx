@@ -47,7 +47,6 @@ const RegisterSection = () => {
   useEffect(() => {
     dispatch(getHotels());
     dispatch(getRooms());
-    console.log(showPassword);
   }, [loading]);
 
   return (
@@ -98,7 +97,7 @@ const RegisterSection = () => {
               width: "100%",
               height: "42px",
               fontSize: "1rem",
-              border: "1px solid var(#AEB4B9);",
+              border: "1px solid #AEB4B9",
               borderRadius: "2px",
             }}
             value={phone}

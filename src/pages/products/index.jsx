@@ -33,7 +33,6 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(getProducts(activePage));
-    console.log(router.query.page);
   }, [activePage, page]);
 
   return (

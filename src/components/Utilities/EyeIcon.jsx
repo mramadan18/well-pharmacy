@@ -6,7 +6,11 @@ const EyeIcon = ({ show, setShow }) => {
   return (
     <div className="absolute top-1/2 right-4 -translate-y-1/2 cursor-pointer">
       {show ? (
-        <div onClick={() => setShow(false)}>
+        <div className="w-5 h-5 opacity-50" onClick={() => setShow(false)}>
+          <Image src={eyeShow} alt="Hide" priority />
+        </div>
+      ) : (
+        <div onClick={() => setShow(true)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -26,10 +30,6 @@ const EyeIcon = ({ show, setShow }) => {
               </clipPath>
             </defs>
           </svg>
-        </div>
-      ) : (
-        <div className="w-5 h-5 opacity-50" onClick={() => setShow(true)}>
-          <Image src={eyeShow} alt="Hide" priority />
         </div>
       )}
     </div>

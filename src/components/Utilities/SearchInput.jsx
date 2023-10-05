@@ -4,14 +4,22 @@ import searchIcon from "#/images/icons/search_icon.png";
 import ProductsList from "../Products/ProductsList";
 import { useDispatch, useSelector } from "react-redux";
 import { searchProducts } from "@/toolkit/slices/products/searchSlice";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Modal from "./Madal";
 import { motion } from "framer-motion";
 
 const SearchInput = ({ className }) => {
+  const inputSearchBox = useRef();
   const [showSearchBox, setShowSearchBox] = useState(false);
   const { loading, products } = useSelector((state) => state.searchProducts);
   const dispatch = useDispatch();
+
+  const handleClick = () => {
+    setShowSearchBox(true);
+    setTimeout(() => {
+      document.getElementById("search-input").focus();
+    }, 200);
+  };
 
   const handleSearch = (e) => {
     dispatch(searchProducts(e.target.value));
@@ -29,14 +37,14 @@ const SearchInput = ({ className }) => {
           className="w-full h-[40px] lg:h-[64px] bg-[#FAFBFB] border border-[#D2D5D8] rounded-md px-8 text-sm text-[#8C9196] outline-none"
           type="text"
           placeholder="Search products"
-          onFocus={() => setShowSearchBox(true)}
+          onFocus={handleClick}
         />
       </div>
 
       <Modal showModal={showSearchBox} setShowModal={setShowSearchBox}>
         {showSearchBox && (
           <motion.div
-            className="p-4 rounded-lg bg-white w-[98vw] lg:w-[50vw] h-[80vh] overflow-y-scroll"
+            className="p-4 rounded-lg bg-white w-[96vw] lg:w-[50vw] h-[60vh] lg:h-[80vh] overflow-y-scroll"
             initial={{
               scale: 0,
             }}
@@ -52,6 +60,7 @@ const SearchInput = ({ className }) => {
                 className="absolute top-1/2 -translate-y-1/2 left-2"
               />
               <input
+                id="search-input"
                 className="w-full h-[40px] lg:h-[64px] bg-[#FAFBFB] border border-[#D2D5D8] rounded-md px-8 text-sm text-[#8C9196] outline-none"
                 type="text"
                 placeholder="Search products"

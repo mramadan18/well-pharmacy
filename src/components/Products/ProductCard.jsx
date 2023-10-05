@@ -16,24 +16,24 @@ const ProductCard = ({ data }) => {
 
   const handleRequest = async () => {
     if (isLoading) {
-      const formData = {
-        product: data.id,
-        quantity: 1,
-      };
+      if (localStorage.getItem("token")) {
+        const formData = {
+          product: data.id,
+          quantity: 1,
+        };
 
-      await dispatch(addToCart(formData));
+        await dispatch(addToCart(formData));
 
-      setIsLoading(loading);
-      dispatch(getNotifications());
+        setIsLoading(loading);
+        dispatch(getNotifications());
+      } else {
+        router.push("/login");
+      }
     }
   };
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      handleRequest();
-    } else {
-      router.push("/login");
-    }
+    handleRequest();
   }, [isLoading]);
 
   return (

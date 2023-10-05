@@ -8,12 +8,13 @@ import "react-phone-input-2/lib/style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "@/toolkit/slices/registerSlice";
 import { getHotels } from "@/toolkit/slices/hotels/hotelsSlice";
-import { login } from "@/toolkit/slices/loginSlice";
 import { getRooms } from "@/toolkit/slices/rooms/roomsSlice";
 import Loading from "../Utilities/Loading";
+import EyeIcon from "../Utilities/EyeIcon";
 
 const RegisterSection = () => {
   const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
   const [first_name, setFirst_name] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
@@ -46,6 +47,7 @@ const RegisterSection = () => {
   useEffect(() => {
     dispatch(getHotels());
     dispatch(getRooms());
+    console.log(showPassword);
   }, [loading]);
 
   return (
@@ -105,15 +107,18 @@ const RegisterSection = () => {
         </div>
         <div className="flex flex-col justify-center items-start gap-3 w-full">
           <label htmlFor="password">Your Password*</label>
-          <input
-            className="w-full py-2 px-3 border border-[#AEB4B9] shadow-inner rounded-sm text-[#8C9196] outline-none"
-            id="password"
-            type="password"
-            placeholder="Write here"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className="w-full relative">
+            <input
+              className="w-full py-2 px-3 border border-[#AEB4B9] shadow-inner rounded-sm text-[#8C9196] outline-none"
+              id="password"
+              type="password"
+              placeholder="Write here"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <EyeIcon show={showPassword} setShow={setShowPassword} />
+          </div>
         </div>
         <div className="flex flex-col justify-center items-start gap-3 w-full">
           <label htmlFor="hotel">Select Hotel Name*</label>

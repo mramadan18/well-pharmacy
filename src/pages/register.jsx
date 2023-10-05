@@ -14,7 +14,7 @@ const Register = () => {
     <div className="grid grid-col-1 lg:grid-cols-2 min-h-[100vh] bg-white relative">
       <Link
         href="/"
-        className="absolute top-4 left-4 bg-primary w-[50px] h-[50px] pt-2 flex justify-center items-center rounded-full"
+        className="absolute top-4 left-4 bg-primary w-[50px] h-[50px] flex justify-center items-center rounded-full"
       >
         <Image src={arrowLeft} alt="arrow-left-icon" priority />
       </Link>

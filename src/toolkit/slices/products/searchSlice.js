@@ -5,7 +5,7 @@ const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 export const searchProducts = createAsyncThunk(
   "searchSlice/searchProducts",
   async (name) => {
-    const { data } = await baseUrl.get(`/product/?name=${name}`);
+    const { data } = await baseUrl.get(`/product/?find=${name}`);
     return data;
   }
 );

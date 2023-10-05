@@ -12,7 +12,9 @@ const NavBarDesktop = () => {
   const { cart_items } = useSelector((state) => state.cartItems);
 
   useEffect(() => {
-    dispatch(getCartItems());
+    if (localStorage.getItem("token")) {
+      dispatch(getCartItems());
+    }
   }, []);
 
   return (
@@ -30,7 +32,7 @@ const NavBarDesktop = () => {
         </li>
         <li>
           <Link
-            href="/products"
+            href="/products?page=1"
             className={`hover:text-primary ${
               router.pathname === "/products" && "text-primary"
             }`}

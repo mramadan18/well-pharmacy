@@ -22,11 +22,11 @@ const Orders = () => {
   return (
     <div>
       <HeaderDesktop />
-      <HeaderMobile bg="#0F4392" btnBack={true} title="My oreder" />
+      <HeaderMobile bg="#0F4392" btnBack={true} title="My orders" />
       <div className="container mt-5 lg:mt-32">
         <BreadcrumbsList>
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          <BreadcrumbLink href="/products">Our products</BreadcrumbLink>
+          <BreadcrumbLink href="/products?page=1">Our products</BreadcrumbLink>
           <BreadcrumbActive href="/orders">My orders</BreadcrumbActive>
         </BreadcrumbsList>
         <SearchInput className="mt-8 hidden lg:block" />

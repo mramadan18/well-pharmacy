@@ -6,8 +6,10 @@ import { addToCart } from "@/toolkit/slices/cart/addToCartSlice";
 import Loading from "../Utilities/Loading";
 import { useEffect, useState } from "react";
 import { getNotifications } from "@/toolkit/slices/notifications/notificationsSlice";
+import { useRouter } from "next/router";
 
 const ProductCard = ({ data }) => {
+  const router = useRouter();
   const { loading } = useSelector((state) => state.addToCart);
   const [isLoading, setIsLoading] = useState(loading);
   const dispatch = useDispatch();
@@ -27,7 +29,11 @@ const ProductCard = ({ data }) => {
   };
 
   useEffect(() => {
-    handleRequest();
+    if (localStorage.getItem("token")) {
+      handleRequest();
+    } else {
+      router.push("/login");
+    }
   }, [isLoading]);
 
   return (

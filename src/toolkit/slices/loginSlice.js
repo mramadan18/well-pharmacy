@@ -22,10 +22,13 @@ const loginSlice = createSlice({
       toast.loading("Loading...");
     });
     builder.addCase(login.fulfilled, (state, action) => {
+      const loginTime = new Date();
       state.loading = false;
       state.user = action.payload;
       localStorage.setItem("token", action.payload.token);
       localStorage.setItem("user", JSON.stringify(action.payload));
+      localStorage.setItem("loginTime", loginTime);
+
       toast.remove();
       toast.success("You are logged in successfully");
     });

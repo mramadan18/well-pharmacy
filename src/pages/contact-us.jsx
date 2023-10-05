@@ -27,7 +27,7 @@ const ContactUs = () => {
       <div className="container mt-5 lg:mt-32">
         <BreadcrumbsList>
           <BreadcrumbLink href="/">Hoem</BreadcrumbLink>
-          <BreadcrumbLink href="/products">Our products</BreadcrumbLink>
+          <BreadcrumbLink href="/products?page=1">Our products</BreadcrumbLink>
           <BreadcrumbLink href="/orders">My orders</BreadcrumbLink>
           <BreadcrumbLink href="/confirmation">Confirmation</BreadcrumbLink>
           <BreadcrumbActive href="/contact-us">Contact us</BreadcrumbActive>

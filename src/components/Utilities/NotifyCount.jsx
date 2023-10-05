@@ -9,7 +9,9 @@ const NotifyCount = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getNotifications());
+    if (localStorage.getItem("token")) {
+      dispatch(getNotifications());
+    }
   }, []);
   return (
     <span className="absolute w-[25px] h-[25px] bg-second text-white top-[-12px] left-[-12px] rounded-full text-sm flex justify-center items-center">

@@ -9,6 +9,7 @@ import Support from "@/components/Utilities/Support";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
+
   useEffect(() => {
     const body = document.querySelector("body");
     if (
@@ -24,6 +25,19 @@ export default function App({ Component, pageProps }) {
       body.style.backgroundColor = "#ededed";
     } else {
       body.style.backgroundColor = "#ffffff";
+    }
+
+    if (localStorage.getItem("token")) {
+      const loginTime = new Date(localStorage.getItem("loginTime"));
+      const currentTime = new Date();
+
+      loginTime.setMinutes(loginTime.getMinutes() + 30);
+
+      if (currentTime > loginTime) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        localStorage.removeItem("loginTime");
+      }
     }
   }, [router]);
   return (

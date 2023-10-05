@@ -3,10 +3,12 @@ import HeaderMobile from "@/components/Mobile/HeaderMobile";
 import Loading from "@/components/Utilities/Loading";
 import { getNotifications } from "@/toolkit/slices/notifications/notificationsSlice";
 import { readNotifications } from "@/toolkit/slices/notifications/readNotificationsSlice";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const Notification = () => {
+  const router = useRouter();
   const { loading, notifications } = useSelector(
     (state) => state.notifications
   );
@@ -20,7 +22,11 @@ const Notification = () => {
   };
 
   useEffect(() => {
-    dispatch(getNotifications());
+    if (localStorage.getItem("token")) {
+      dispatch(getNotifications());
+    } else {
+      router.push("/login");
+    }
   }, []);
   return (
     <div>

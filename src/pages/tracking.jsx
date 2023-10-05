@@ -14,7 +14,7 @@ const Tracking = () => {
       <div className="container mt-5 lg:mt-32">
         <BreadcrumbsList>
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          <BreadcrumbLink href="/products">Our products</BreadcrumbLink>
+          <BreadcrumbLink href="/products?page=1">Our products</BreadcrumbLink>
           <BreadcrumbLink href="/orders">My orders</BreadcrumbLink>
           <BreadcrumbLink href="/confirmation">Confirmation</BreadcrumbLink>
           <BreadcrumbActive href="/tracking">Order tracking</BreadcrumbActive>

@@ -8,7 +8,7 @@ import ExploreProducts from "@/components/Utilities/ExploreProducts";
 import SearchInput from "@/components/Utilities/SearchInput";
 import CategoriesTagsList from "@/components/Products/CategoriesTagsList";
 import ProductsList from "@/components/Products/ProductsList";
-import FilterTagsList from "@/components/Products/Filter/FilterTagsList";
+// import FilterTagsList from "@/components/Products/Filter/FilterTagsList";
 import Footer from "@/components/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -18,7 +18,7 @@ import ReactPaginate from "react-paginate";
 
 const Category = () => {
   const router = useRouter();
-  const { categoryId } = router.query;
+  const { categoryId, page } = router.query;
   const { loading, products, pagesCount } = useSelector(
     (state) => state.categoryProducts
   );
@@ -51,7 +51,9 @@ const Category = () => {
       <div className="container mt-5 lg:mt-36">
         <BreadcrumbsList>
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          <BreadcrumbActive href="/products">Our products</BreadcrumbActive>
+          <BreadcrumbActive href="/products?page=1">
+            Our products
+          </BreadcrumbActive>
         </BreadcrumbsList>
         <div className="hidden lg:block">
           <h2 className="text-primary text-center my-5">Our products</h2>
@@ -77,10 +79,11 @@ const Category = () => {
                   marginPagesDisplayed={1}
                   pageRangeDisplayed={1}
                   pageCount={pagesCount}
-                  initialPage={router.query.page - 1}
+                  initialPage={page - 1}
+                  disabledClassName={"opacity-50"}
                   previousLabel="Prev"
                   containerClassName={
-                    "flex justify-center items-center gap-4 shadow-mainShadow mt-8 rounded-md h-[60px]"
+                    "flex justify-center items-center gap-2 shadow-mainShadow mt-8 rounded-md h-[60px]"
                   }
                   pageClassName={
                     "border border-primary rounded-md w-[50px] h-[40px] flex justify-center items-center"

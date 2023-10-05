@@ -18,6 +18,7 @@ import { useRouter } from "next/router";
 
 const Products = () => {
   const router = useRouter();
+  const { page } = router.query;
   const { loading, products, pagesCount } = useSelector(
     (state) => state.products
   );
@@ -27,12 +28,13 @@ const Products = () => {
 
   const handlePageClick = ({ selected }) => {
     setActivePage(selected);
-    router.push(`/products/?page=${selected + 1}`);
+    router.push(`/products?page=${selected + 1}`);
   };
 
   useEffect(() => {
     dispatch(getProducts(activePage));
-  }, [activePage]);
+    console.log(router.query.page);
+  }, [activePage, page]);
 
   return (
     <div>
@@ -46,7 +48,9 @@ const Products = () => {
       <div className="container mt-5 lg:mt-36">
         <BreadcrumbsList>
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          <BreadcrumbActive href="/products">Our products</BreadcrumbActive>
+          <BreadcrumbActive href="/products?page=1">
+            Our products
+          </BreadcrumbActive>
         </BreadcrumbsList>
         <div className="hidden lg:block">
           <h2 className="text-primary text-center my-5">Our products</h2>
@@ -63,40 +67,43 @@ const Products = () => {
 
             <ProductsList loading={loading} products={products} />
             {/* Pagination */}
-            <div className="mx-auto w-full px-6">
-              <ReactPaginate
-                breakLabel="..."
-                nextLabel="Next"
-                onPageChange={handlePageClick}
-                marginPagesDisplayed={1}
-                pageRangeDisplayed={1}
-                pageCount={pagesCount}
-                disabledClassName={"opacity-50"}
-                previousLabel="Prev"
-                containerClassName={
-                  "flex justify-center items-center gap-2 shadow-mainShadow mt-8 rounded-md h-[60px] select-none"
-                }
-                pageClassName={
-                  "border border-primary rounded-md w-[50px] h-[40px] flex justify-center items-center"
-                }
-                // pageLinkClassName={"w-full h-full"}
-                // previousClassName={"bg-primary text-white py-2 px-4 rounded-md"}
-                // nextClassName={"bg-primary text-white py-2 px-4 rounded-md"}
-                previousLinkClassName={
-                  "bg-primary text-white py-3 px-4 rounded-md h-full"
-                }
-                nextLinkClassName={
-                  "bg-primary text-white py-3 px-4 rounded-md h-full"
-                }
-                breakClassName={
-                  "border border-primary rounded-md w-[30px] h-[40px] flex justify-center items-center"
-                }
-                breakLinkClassName={"w-full h-full text-center text-lg"}
-                activeClassName={
-                  "bg-second text-white border-none w-[34px] h-[40px]"
-                }
-              />
-            </div>
+            {!loading ? (
+              <div className="mx-auto w-full px-6">
+                <ReactPaginate
+                  breakLabel="..."
+                  nextLabel="Next"
+                  onPageChange={handlePageClick}
+                  marginPagesDisplayed={1}
+                  pageRangeDisplayed={1}
+                  pageCount={pagesCount}
+                  initialPage={page - 1}
+                  disabledClassName={"opacity-50"}
+                  previousLabel="Prev"
+                  containerClassName={
+                    "flex justify-center items-center gap-2 shadow-mainShadow mt-8 rounded-md h-[60px] select-none"
+                  }
+                  pageClassName={
+                    "border border-primary rounded-md w-[50px] h-[40px] flex justify-center items-center"
+                  }
+                  // pageLinkClassName={"w-full h-full"}
+                  // previousClassName={"bg-primary text-white py-2 px-4 rounded-md"}
+                  // nextClassName={"bg-primary text-white py-2 px-4 rounded-md"}
+                  previousLinkClassName={
+                    "bg-primary text-white py-3 px-4 rounded-md h-full"
+                  }
+                  nextLinkClassName={
+                    "bg-primary text-white py-3 px-4 rounded-md h-full"
+                  }
+                  breakClassName={
+                    "border border-primary rounded-md w-[30px] h-[40px] flex justify-center items-center"
+                  }
+                  breakLinkClassName={"w-full h-full text-center text-lg"}
+                  activeClassName={
+                    "bg-second text-white border-none w-[34px] h-[40px]"
+                  }
+                />
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

@@ -24,7 +24,7 @@ const Cart = () => {
   return (
     <div>
       <HeaderDesktop />
-      <HeaderMobile bg="#0F4392" btnBack={true} title="My oreder" />
+      <HeaderMobile bg="#0F4392" btnBack={true} title="My cart" />
       <PlaceOrder className="lg:hidden" />
       <div className="container mt-5 lg:mt-32">
         <BreadcrumbsList>

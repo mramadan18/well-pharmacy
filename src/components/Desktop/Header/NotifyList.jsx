@@ -21,7 +21,9 @@ const NotifyList = ({ notifyListRef, notifyAllReadRef }) => {
   };
 
   useEffect(() => {
-    dispatch(getNotifications());
+    if (localStorage.getItem("token")) {
+      dispatch(getNotifications());
+    }
   }, []);
 
   return (

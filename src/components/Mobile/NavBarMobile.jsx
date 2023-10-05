@@ -26,7 +26,7 @@ const NavBarMobile = () => {
       id: 2,
       icon: productsIcon,
       name: "Products",
-      path: "/products",
+      path: "/products?page=1",
     },
     {
       id: 3,
@@ -50,7 +50,9 @@ const NavBarMobile = () => {
   const { cart_items } = useSelector((state) => state.cartItems);
 
   useEffect(() => {
-    dispatch(getCartItems());
+    if (localStorage.getItem("token")) {
+      dispatch(getCartItems());
+    }
   }, []);
 
   return (

@@ -8,6 +8,7 @@ const ProfileList = ({ profileMenuRef, style }) => {
   const handleLogOut = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    localStorage.removeItem("loginTime");
     router.push("/login");
   };
 

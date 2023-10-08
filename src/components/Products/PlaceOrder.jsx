@@ -13,11 +13,15 @@ const PlaceOrder = ({ className }) => {
   const dispatch = useDispatch();
 
   const handlePlaceOrder = () => {
-    dispatch(createOrder());
-    setTimeout(() => {
-      dispatch(getCartItems());
-      router.push("/confirmation");
-    }, 300);
+    if (localStorage.getItem("token")) {
+      dispatch(createOrder());
+      setTimeout(() => {
+        dispatch(getCartItems());
+        router.push("/confirmation");
+      }, 300);
+    } else {
+      router.push("/login");
+    }
   };
 
   useEffect(() => {
@@ -28,7 +32,7 @@ const PlaceOrder = ({ className }) => {
     <div className={`bg-white py-6 px-4 ${className}`}>
       <div className="flex justify-start items-center gap-2 mb-3">
         <span className="bg-primary text-white flex justify-center items-center w-[32px] h-[32px] rounded-full">
-          {cart_items?.count}
+          {cart_items?.count || 0}
         </span>
         <p className="text-primary text-lg">Products have been selected</p>
       </div>

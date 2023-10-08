@@ -79,7 +79,7 @@ const Category = () => {
                   marginPagesDisplayed={1}
                   pageRangeDisplayed={1}
                   pageCount={pagesCount}
-                  initialPage={page - 1}
+                  initialPage={page - 1 || 0}
                   disabledClassName={"opacity-50"}
                   previousLabel="Prev"
                   containerClassName={

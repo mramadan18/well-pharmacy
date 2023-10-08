@@ -4,8 +4,10 @@ import Quantity from "../Utilities/Quantity";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "@/toolkit/slices/cart/addToCartSlice";
 import Loading from "../Utilities/Loading";
+import { useRouter } from "next/router";
 
 const ProductDetails = ({ data, setIsLoadingBar }) => {
+  const router = useRouter();
   const { loading, product } = useSelector((state) => state.addToCart);
   // const [isRequest, setIsRequest] = useState(false);
   // const [count, setCount] = useState(product?.quantity);
@@ -14,15 +16,19 @@ const ProductDetails = ({ data, setIsLoadingBar }) => {
 
   const handleRequest = async () => {
     if (isLoading) {
-      const formData = {
-        product: data.id,
-        quantity: 1,
-      };
+      if (localStorage.getItem("token")) {
+        const formData = {
+          product: data.id,
+          quantity: 1,
+        };
 
-      await dispatch(addToCart(formData));
+        await dispatch(addToCart(formData));
 
-      setIsLoading(loading);
-      setIsLoadingBar(true);
+        setIsLoading(loading);
+        setIsLoadingBar(true);
+      } else {
+        router.push("/login");
+      }
     }
   };
 

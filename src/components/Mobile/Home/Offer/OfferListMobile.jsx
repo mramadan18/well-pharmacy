@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 // import required modules
-import { Pagination } from "swiper";
+import { Autoplay, Pagination } from "swiper";
 import SubTitle from "../../Utilities/SubTitle";
 
 const OfferListMobile = () => {
@@ -20,7 +20,11 @@ const OfferListMobile = () => {
           pagination={{
             clickable: true,
           }}
-          modules={[Pagination]}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay, Pagination]}
           className="mySwiper"
         >
           <SwiperSlide>

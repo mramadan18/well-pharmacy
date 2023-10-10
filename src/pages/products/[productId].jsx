@@ -47,8 +47,10 @@ const Product = () => {
       <div className="container mt-5 lg:mt-36">
         <BreadcrumbsList>
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          <BreadcrumbLink href="/poducts">Our products</BreadcrumbLink>
-          <BreadcrumbActive href="/poducts/1">Product details</BreadcrumbActive>
+          <BreadcrumbLink href="/products?page=1">Our products</BreadcrumbLink>
+          <BreadcrumbActive href={`/products/${productId}`}>
+            Product details
+          </BreadcrumbActive>
         </BreadcrumbsList>
         <div className="hidden lg:block mt-5">
           <SearchInput />

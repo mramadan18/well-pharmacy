@@ -40,7 +40,10 @@ const ProductDetails = ({ data, setIsLoadingBar }) => {
     <div className="flex flex-col justify-start items-start gap-2 lg:pr-10">
       <h5 className="text-sm">{data?.category?.name_en}</h5>
       <h4>{data?.name_en}</h4>
-      <p className="text-[#828282]">{data?.description_en}</p>
+      <p
+        className="text-[#828282]"
+        dangerouslySetInnerHTML={{ __html: data.description_en }}
+      />
 
       {/* {isRequest ? (
         <Quantity
@@ -84,9 +87,10 @@ const ProductDetails = ({ data, setIsLoadingBar }) => {
         </p>
         <p className="mb-1">
           Description:{" "}
-          <span className="text-[#4F4F4F] font-normal">
-            {data?.description_en}
-          </span>
+          <span
+            className="text-[#4F4F4F] font-normal"
+            dangerouslySetInnerHTML={{ __html: data.description_en }}
+          />
         </p>
       </div>
     </div>

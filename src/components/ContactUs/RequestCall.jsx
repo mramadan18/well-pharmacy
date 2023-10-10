@@ -1,18 +1,11 @@
-import { useRouter } from "next/router";
 import Button from "../Utilities/Button";
 
 const RequestCall = ({ setShowModal, setIsOpen }) => {
-  const { push } = useRouter();
-
   const handleShowRequest = () => {
-    if (localStorage.getItem("token")) {
-      if (window.innerWidth < 992) {
-        setIsOpen(true);
-      } else {
-        setShowModal(true);
-      }
+    if (window.innerWidth < 992) {
+      setIsOpen(true);
     } else {
-      push("/login");
+      setShowModal(true);
     }
   };
   return (

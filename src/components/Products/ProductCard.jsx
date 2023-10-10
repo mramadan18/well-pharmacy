@@ -55,11 +55,10 @@ const ProductCard = ({ data }) => {
             : `${data.name_en.slice(0, 20)}...`}
         </h5>
 
-        <p className="mb-3 text-[#828282] h-12 overflow-hidden">
-          {data.description_en.length <= 80
-            ? data.description_en
-            : `${data.description_en.slice(0, 60)}...`}
-        </p>
+        <p
+          className="mb-3 text-[#828282] h-12 overflow-hidden"
+          dangerouslySetInnerHTML={{ __html: data.description_en }}
+        />
         <Button className="w-full" onClick={() => setIsLoading(true)}>
           {isLoading ? <Loading size={22} /> : "Make a request"}
         </Button>
@@ -69,3 +68,9 @@ const ProductCard = ({ data }) => {
 };
 
 export default ProductCard;
+/**
+ *           {data.description_en.length <= 80
+            ? data.description_en
+            : `${data.description_en.slice(0, 60)}...`}
+        </p>
+ */

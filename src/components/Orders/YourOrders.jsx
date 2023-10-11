@@ -21,41 +21,43 @@ const YourOrders = () => {
           <Loading />
         </div>
       ) : (
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-          <table className="w-full text-sm text-left text-gray-500">
-            <thead className="text-xs text-white uppercase bg-primary">
-              <tr>
-                <th scope="col" className="px-6 py-3">
-                  Order_id
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Date created
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  State
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Active
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Total price
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Actions
-                </th>
-              </tr>
-            </thead>
-            {orders?.count === 0 ? (
-              <p>There are no requests</p>
-            ) : (
-              <tbody>
-                {orders?.results?.map((order) => (
-                  <OrderItem key={order.id} data={order} />
-                ))}
-              </tbody>
-            )}
-          </table>
-        </div>
+        <>
+          {orders?.count === 0 ? (
+            <p className="text-center mx-auto">There are no requests</p>
+          ) : (
+            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+              <table className="w-full text-sm text-left text-gray-500">
+                <thead className="text-xs text-white uppercase bg-primary">
+                  <tr>
+                    <th scope="col" className="px-6 py-3">
+                      Order_id
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Date created
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      State
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Active
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Total price
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {orders?.results?.map((order) => (
+                    <OrderItem key={order.id} data={order} />
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

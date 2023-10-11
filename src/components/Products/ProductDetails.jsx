@@ -41,24 +41,9 @@ const ProductDetails = ({ data, setIsLoadingBar }) => {
       <h5 className="text-sm">{data?.category?.name_en}</h5>
       <h4>{data?.name_en}</h4>
       <p
-        className="text-[#828282]"
+        className="text-[#828282] h-10 overflow-hidden"
         dangerouslySetInnerHTML={{ __html: data.description_en }}
       />
-
-      {/* {isRequest ? (
-        <Quantity
-          id={data?.id}
-          quantity={product?.quantity}
-          count={+count}
-          setCount={setCount}
-          stock={data?.product?.stock}
-        />
-      ) : (
-        <Button className="w-full" onClick={() => setIsLoading(true)}>
-          {isLoading ? <Loading size={22} /> : "Make a request"}
-        </Button>
-      )} */}
-
       <Button className="w-full" onClick={() => setIsLoading(true)}>
         {isLoading ? <Loading size={22} /> : "Make a request"}
       </Button>

@@ -7,7 +7,10 @@ import { Provider } from "react-redux";
 import { Toaster } from "react-hot-toast";
 import Support from "@/components/Utilities/Support";
 
-export default function App({ Component, pageProps }) {
+import { appWithTranslation } from "next-i18next";
+import SettingsBtn from "@/components/Utilities/Lang/SettingsBtn";
+
+const App = ({ Component, pageProps }) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -45,6 +48,9 @@ export default function App({ Component, pageProps }) {
       <Toaster position="top-center" reverseOrder={false} />
       <Component {...pageProps} />
       <Support />
+      <SettingsBtn />
     </Provider>
   );
-}
+};
+
+export default appWithTranslation(App);

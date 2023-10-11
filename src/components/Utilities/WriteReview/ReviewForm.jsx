@@ -13,20 +13,27 @@ import { motion } from "framer-motion";
 const ReviewForm = ({ setShowModal, setThankYou }) => {
   const [rate, setRate] = useState();
   const [description, setDescription] = useState();
-  const [file, setFile] = useState();
+  const [file, setFile] = useState(null);
 
   const { loading, review, error } = useSelector((state) => state.addReview);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("description", description);
-    formData.append("file", file);
-    formData.append("rate", rate);
-    formData.append("user", 1);
-
-    dispatch(addReview(formData));
+    if (file !== null) {
+      const formData = new FormData();
+      formData.append("description", description);
+      formData.append("file", file);
+      formData.append("rate", rate);
+      formData.append("user", 1);
+      dispatch(addReview(formData));
+    } else {
+      const formData = new FormData();
+      formData.append("description", description);
+      formData.append("rate", rate);
+      formData.append("user", 1);
+      dispatch(addReview(formData));
+    }
   };
 
   useEffect(() => {

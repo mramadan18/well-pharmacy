@@ -249,6 +249,17 @@ body {
 }
 /* End Tracking */
 
-/* Start Table */
+/* Start Setting Button */
+.settings-button {
+  animation: rotate 1s infinite linear;
+}
 
-/* End Table */
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* End Setting Button */

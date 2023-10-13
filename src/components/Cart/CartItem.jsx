@@ -45,9 +45,7 @@ const CartItem = ({ data }) => {
         <h5 className="mb-2 font-bold tracking-tight">
           {data?.product?.name_en}
         </h5>
-        <p className="mb-3 font-normal text-sm text-[#828282]">
-          {data?.product?.description_en}
-        </p>
+        
         <div className="w-full lg:w-[200px] mt-2">
           <Quantity
             id={data?.id}

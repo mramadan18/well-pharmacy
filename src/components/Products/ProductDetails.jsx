@@ -40,10 +40,7 @@ const ProductDetails = ({ data, setIsLoadingBar }) => {
     <div className="flex flex-col justify-start items-start gap-2 lg:pr-10">
       <h5 className="text-sm">{data?.category?.name_en}</h5>
       <h4>{data?.name_en}</h4>
-      <p
-        className="text-[#828282] h-10 overflow-hidden"
-        dangerouslySetInnerHTML={{ __html: data.description_en }}
-      />
+
       <Button className="w-full" onClick={() => setIsLoading(true)}>
         {isLoading ? <Loading size={22} /> : "Make a request"}
       </Button>
@@ -64,13 +61,13 @@ const ProductDetails = ({ data, setIsLoadingBar }) => {
         <p className="mb-1">
           Use: <span className="text-[#4F4F4F] font-normal"> Lorem Ipsum</span>
         </p>
-        <p className="mb-1">
+        <p className="mb-1 ">
           Russian similar:{" "}
           <span className="text-[#4F4F4F] font-normal">
             {data.russian_similar || ""}
           </span>
         </p>
-        <p className="mb-1">
+        <p className="mb-1 d-none">
           Description:{" "}
           <span
             className="text-[#4F4F4F] font-normal"

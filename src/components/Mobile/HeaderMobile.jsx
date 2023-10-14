@@ -60,7 +60,7 @@ const HeaderMobile = ({ bg = "#0F4392", title, logo = false, search }) => {
             {title}
           </h2>
         )}
-         {/* <SwitchLang /> */}
+         <SwitchLang />
         {isLogin ? (
           <div className="flex justify-between items-center gap-3 relative">
             <NotifyCount />

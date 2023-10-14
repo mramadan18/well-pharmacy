@@ -67,13 +67,7 @@ const ProductDetails = ({ data, setIsLoadingBar }) => {
             {data.russian_similar || ""}
           </span>
         </p>
-        <p className="mb-1 d-none">
-          Description:{" "}
-          <span
-            className="text-[#4F4F4F] font-normal"
-            dangerouslySetInnerHTML={{ __html: data.description_en }}
-          />
-        </p>
+       
       </div>
     </div>
   );

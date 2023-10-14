@@ -12,6 +12,7 @@ import BreadcrumbActive from "@/components/Utilities/Breadcrumbs/BreadcrumbActiv
 import BreadcrumbLink from "@/components/Utilities/Breadcrumbs/BreadcrumbLink";
 import BreadcrumbsList from "@/components/Utilities/Breadcrumbs/BreadcrumbsList";
 import SearchInput from "@/components/Utilities/SearchInput";
+import NavBarMobile from "@/components/Mobile/NavBarMobile";
 
 const Cart = () => {
   const { push } = useRouter();
@@ -25,6 +26,8 @@ const Cart = () => {
     <div>
       <HeaderDesktop />
       <HeaderMobile bg="#0F4392" btnBack={true} title="My cart" />
+      <NavBarMobile />
+
       <PlaceOrder className="lg:hidden" />
       <div className="container mt-5 lg:mt-32">
         <BreadcrumbsList>

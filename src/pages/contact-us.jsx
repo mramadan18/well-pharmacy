@@ -15,6 +15,7 @@ import WriteReview from "@/components/Utilities/WriteReview/WriteReview";
 import BottomModal from "@/components/Utilities/BottomModal";
 // Images
 import contactUs from "#/images/contact_us.png";
+import NavBarMobile from "@/components/Mobile/NavBarMobile";
 
 const ContactUs = () => {
   const [showModal, setShowModal] = useState(false);
@@ -24,6 +25,8 @@ const ContactUs = () => {
     <div>
       <HeaderDesktop />
       <HeaderMobile btnBack={true} bg="#0F4392" title="Contact us" />
+      <NavBarMobile />
+
       <div className="container mt-5 lg:mt-32">
         <BreadcrumbsList>
           <BreadcrumbLink href="/">Hoem</BreadcrumbLink>

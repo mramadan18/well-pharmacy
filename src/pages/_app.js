@@ -48,7 +48,7 @@ const App = ({ Component, pageProps }) => {
       <Toaster position="top-center" reverseOrder={false} />
       <Component {...pageProps} />
       <Support />
-      <SettingsBtn />
+      {/* <SettingsBtn /> */}
     </Provider>
   );
 };

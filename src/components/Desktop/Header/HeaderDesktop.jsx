@@ -6,6 +6,7 @@ import BtnsAuth from "../../BtnsAuth";
 import NotifyProfile from "./NotifyProfile";
 // Import images
 import logo from "#/images/logo-1.png";
+import SwitchLang from "@/components/Utilities/Lang/SwitchLang";
 
 const HeaderDesktop = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -21,6 +22,7 @@ const HeaderDesktop = () => {
         <div>
           <NavBarDesktop />
         </div>
+        <SwitchLang />
         {isLogin ? <NotifyProfile /> : <BtnsAuth />}
       </div>
     </header>

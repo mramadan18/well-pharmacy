@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "@/components/Utilities/Loading";
+import NavBarMobile from "@/components/Mobile/NavBarMobile";
 
 const Product = () => {
   const router = useRouter();
@@ -41,6 +42,8 @@ const Product = () => {
     <div>
       <HeaderDesktop />
       <HeaderMobile bg="#0f4392" btnBack={true} title="Product details" />
+      <NavBarMobile />
+
       <div className="lg:hidden rounded-b-lg overflow-hidden">
         <PlaceOrder />
       </div>
@@ -90,6 +93,13 @@ const Product = () => {
             </>
           )}
         </div>
+        <hr style={{border:" 2px solid grey",marginBlock:10}}/>
+        <h3 className="mb-5 mt-5">
+          <span
+            className="text-[#4F4F4F] font-normal"
+            dangerouslySetInnerHTML={{ __html: product.description_en }}
+          />
+        </h3>
       </div>
       <Footer />
     </div>

@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "@/toolkit/slices/products/productsSlice";
 import ReactPaginate from "react-paginate";
 import { useRouter } from "next/router";
+import NavBarMobile from "@/components/Mobile/NavBarMobile";
 
 const Products = () => {
   const router = useRouter();
@@ -44,6 +45,8 @@ const Products = () => {
         title="Our products"
         search={true}
       />
+            <NavBarMobile />
+
       <div className="container mt-5 lg:mt-36">
         <BreadcrumbsList>
           <BreadcrumbLink href="/">Home</BreadcrumbLink>

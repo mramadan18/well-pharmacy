@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import Modal from "@/components/Utilities/Madal";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import NavBarMobile from "@/components/Mobile/NavBarMobile";
 
 const Confirmation = () => {
   const router = useRouter();
@@ -18,6 +19,8 @@ const Confirmation = () => {
     <div>
       <HeaderDesktop />
       <HeaderMobile bg="#0F4392" title="Confirmation" btnBack={true} />
+      <NavBarMobile />
+
       <div className="flex flex-col justify-center items-center gap-6 lg:bg-white p-4 rounded-lg w-auto lg:w-[550px] mx-4 lg:mx-auto mt-5 lg:mt-32 lg:shadow-secondShadow text-center">
         <h1 className="text-primary">Thank you</h1>
         <Image src={right} alt="Thank you" />

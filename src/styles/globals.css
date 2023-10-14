@@ -263,3 +263,12 @@ body {
   }
 }
 /* End Setting Button */
+.height-cus{
+  height: 1.25rem !important;
+  width: 3rem !important;
+}
+.height-cus::after{
+  height: 1.25rem !important;
+  width: 1.25rem !important;
+  top: 0px !important;
+}

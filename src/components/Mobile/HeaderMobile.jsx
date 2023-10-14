@@ -14,6 +14,7 @@ import BottomModal from "../Utilities/BottomModal";
 import Filter from "../Products/Filter/Filter";
 import NotifyCount from "../Utilities/NotifyCount";
 import ProfileList from "../Desktop/Header/ProfileList";
+import SwitchLang from "../Utilities/Lang/SwitchLang";
 
 const HeaderMobile = ({ bg = "#0F4392", title, logo = false, search }) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -55,10 +56,11 @@ const HeaderMobile = ({ bg = "#0F4392", title, logo = false, search }) => {
           )}
         </div>
         {title && (
-          <h2 className="text-white font-semibold text-xl tracking-[1px]">
+          <h2 className="text-white font-semibold text-lg tracking-[1px]">
             {title}
           </h2>
         )}
+         {/* <SwitchLang /> */}
         {isLogin ? (
           <div className="flex justify-between items-center gap-3 relative">
             <NotifyCount />

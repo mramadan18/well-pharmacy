@@ -93,11 +93,11 @@ const Product = () => {
             </>
           )}
         </div>
-        <hr style={{border:" 2px solid grey",marginBlock:10}}/>
+        <hr style={{ border: " 2px solid grey", marginBlock: 10 }} />
         <h3 className="mb-5 mt-5">
           <span
             className="text-[#4F4F4F] font-normal"
-            dangerouslySetInnerHTML={{ __html: product.description_en }}
+            dangerouslySetInnerHTML={{ __html: product.description }}
           />
         </h3>
       </div>

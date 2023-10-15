@@ -38,8 +38,8 @@ const ProductDetails = ({ data, setIsLoadingBar }) => {
 
   return (
     <div className="flex flex-col justify-start items-start gap-2 lg:pr-10">
-      <h5 className="text-sm">{data?.category?.name_en}</h5>
-      <h4>{data?.name_en}</h4>
+      <h5 className="text-sm">{data?.category?.name}</h5>
+      <h4>{data?.name}</h4>
 
       <Button className="w-full" onClick={() => setIsLoading(true)}>
         {isLoading ? <Loading size={22} /> : "Make a request"}
@@ -55,19 +55,18 @@ const ProductDetails = ({ data, setIsLoadingBar }) => {
           Active ingredients:
           <span className="text-[#4F4F4F] font-normal">
             {" "}
-            {data?.active_ingredient_en}
+            {data?.active_ingredient}
           </span>
         </p>
         <p className="mb-1">
           Use: <span className="text-[#4F4F4F] font-normal"> Lorem Ipsum</span>
         </p>
-        <p className="mb-1 ">
+        <p className="mb-1">
           Russian similar:{" "}
           <span className="text-[#4F4F4F] font-normal">
             {data.russian_similar || ""}
           </span>
         </p>
-       
       </div>
     </div>
   );

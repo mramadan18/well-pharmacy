@@ -13,7 +13,7 @@ const CategoryTagItem = ({ data }) => {
       } py-1 px-2 rounded-md tracking-[1px] cursor-pointer`}
     >
       <Link href={`/categories/${data.id}`} className="w-full h-full block">
-        {data.name_en}
+        {data.name}
       </Link>
     </div>
   );

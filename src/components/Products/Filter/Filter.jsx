@@ -40,7 +40,7 @@ const Filter = () => {
           <option defaultChecked>All</option>
           {uses?.map((use) => (
             <option key={use.id} value={use?.name}>
-              {use?.name_en}
+              {use?.name}
             </option>
           ))}
         </select>

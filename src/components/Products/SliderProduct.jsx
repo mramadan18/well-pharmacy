@@ -54,21 +54,21 @@ const SliderProduct = ({ data }) => {
     <div className="bg-white p-4 shadow-secondShadow rounded-lg">
       <div ref={sliderRef} className="keen-slider">
         <div className="keen-slider__slide number-slide">
-          <img src={data?.home_image} alt={data?.name_en} />
+          <img src={data?.home_image} alt={data?.name} />
         </div>
         {data?.images?.map((img, index) => (
           <div key={index} className="keen-slider__slide number-slide">
-            <img src={img} alt={data?.name_en} />
+            <img src={img} alt={data?.name} />
           </div>
         ))}
       </div>
       <div ref={thumbnailRef} className="keen-slider thumbnail">
         <div className="keen-slider__slide number-slide">
-          <img src={data.home_image} alt={data.name_en} />
+          <img src={data.home_image} alt={data.name} />
         </div>
         {data?.images?.map((img, index) => (
           <div key={index} className="keen-slider__slide number-slide">
-            <img src={img} alt={data?.name_en} />
+            <img src={img} alt={data?.name} />
           </div>
         ))}
       </div>

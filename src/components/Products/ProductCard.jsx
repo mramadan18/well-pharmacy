@@ -45,14 +45,12 @@ const ProductCard = ({ data }) => {
         <img
           className="rounded-t-lg"
           src={data.home_image || "/images/not_found.png"}
-          alt={data.name_en}
+          alt={data.name}
         />
       </Link>
       <div className="pt-5 px-0 pb-0">
         <h5 className="mb-2 text-base font-bold tracking-tight h-6 overflow-hidden">
-          {data.name_en.length <= 30
-            ? data.name_en
-            : `${data.name_en.slice(0, 20)}...`}
+          {data.name.length <= 30 ? data.name : `${data.name.slice(0, 20)}...`}
         </h5>
 
         {/* <p
@@ -68,9 +66,3 @@ const ProductCard = ({ data }) => {
 };
 
 export default ProductCard;
-/**
- *           {data.description_en.length <= 80
-            ? data.description_en
-            : `${data.description_en.slice(0, 60)}...`}
-        </p>
- */

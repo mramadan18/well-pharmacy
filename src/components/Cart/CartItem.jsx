@@ -39,13 +39,11 @@ const CartItem = ({ data }) => {
       <img
         className="object-cover md:h-auto w-[120px] md:w-48 md:rounded-none md:rounded-l-lg"
         src={data?.product?.home_image}
-        alt={data?.product?.name_en}
+        alt={data?.product?.name}
       />
       <div className="flex flex-col justify-between p-4 leading-normal">
-        <h5 className="mb-2 font-bold tracking-tight">
-          {data?.product?.name_en}
-        </h5>
-        
+        <h5 className="mb-2 font-bold tracking-tight">{data?.product?.name}</h5>
+
         <div className="w-full lg:w-[200px] mt-2">
           <Quantity
             id={data?.id}

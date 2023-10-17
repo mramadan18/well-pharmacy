@@ -71,7 +71,7 @@ const RequestCall = ({ setShowModal, setIsOpen }) => {
             </defs>
           </svg>
 
-          <span>Tal avenu- white hills hotel, Sharm Elsheikh, Egypt</span>
+          <span>Tal - white hills hotel, Sharm Elsheikh, Egypt</span>
         </div>
       </div>
 

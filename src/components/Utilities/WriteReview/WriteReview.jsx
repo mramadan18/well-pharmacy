@@ -4,8 +4,10 @@ import { useRouter } from "next/router";
 import Modal from "../Madal";
 import ReviewForm from "./ReviewForm";
 import ThankYouModal from "./ThankYouModal";
+import { useTranslation } from "react-i18next";
 
 const WriteReview = () => {
+  const { t } = useTranslation();
   const router = useRouter();
   const [disabled, setDisabled] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -31,7 +33,7 @@ const WriteReview = () => {
           }
         }}
       >
-        Write Review
+        {t("Write Review")}
       </button>
       <Modal showModal={showModal} setShowModal={setShowModal}>
         <ReviewForm setShowModal={setShowModal} setThankYou={setThankYou} />

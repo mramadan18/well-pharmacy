@@ -12,15 +12,10 @@ import StepsListMobile from "@/components/Mobile/Home/Steps/StepsListMobile";
 import NavBarMobile from "@/components/Mobile/NavBarMobile";
 import WriteReview from "@/components/Utilities/WriteReview/WriteReview";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-// import { useTranslation } from "next-i18next";
 
 const Home = () => {
-  // const { t } = useTranslation();
   return (
     <>
-      {/* <div className="mt-96">
-        <h1>{t("HELLO_WORLD")}</h1>
-      </div> */}
       <HeaderDesktop />
       <HeaderMobile logo={true} bg="#EDEDED" />
       <NavBarMobile />

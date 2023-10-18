@@ -16,8 +16,11 @@ import { getProducts } from "@/toolkit/slices/products/productsSlice";
 import ReactPaginate from "react-paginate";
 import { useRouter } from "next/router";
 import NavBarMobile from "@/components/Mobile/NavBarMobile";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "react-i18next";
 
 const Products = () => {
+  const { t } = useTranslation();
   const router = useRouter();
   const { page } = router.query;
   const { loading, products, pagesCount } = useSelector(
@@ -42,20 +45,20 @@ const Products = () => {
       <HeaderMobile
         bg="#0f4392"
         btnBack={true}
-        title="Our products"
+        title={t("Our products")}
         search={true}
       />
-            <NavBarMobile />
+      <NavBarMobile />
 
       <div className="container mt-5 lg:mt-36">
         <BreadcrumbsList>
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          <BreadcrumbLink href="/">{t("Home")}</BreadcrumbLink>
           <BreadcrumbActive href="/products?page=1">
-            Our products
+            {t("Our products")}
           </BreadcrumbActive>
         </BreadcrumbsList>
         <div className="hidden lg:block">
-          <h2 className="text-primary text-center my-5">Our products</h2>
+          <h2 className="text-primary text-center my-5">{t("Our products")}</h2>
           <SearchInput />
         </div>
         <CategoriesTagsList />
@@ -73,14 +76,14 @@ const Products = () => {
               <div className="mx-auto w-full px-6">
                 <ReactPaginate
                   breakLabel="..."
-                  nextLabel="Next"
+                  nextLabel={t("Next")}
                   onPageChange={handlePageClick}
                   marginPagesDisplayed={1}
                   pageRangeDisplayed={1}
                   pageCount={pagesCount}
                   initialPage={page - 1}
                   disabledClassName={"opacity-50"}
-                  previousLabel="Prev"
+                  previousLabel={t("Prev")}
                   containerClassName={
                     "flex justify-center items-center gap-2 shadow-mainShadow mt-8 rounded-md h-[60px] select-none"
                   }
@@ -116,3 +119,12 @@ const Products = () => {
 };
 
 export default Products;
+
+export async function getStaticProps(context) {
+  const { locale } = context;
+  return {
+    props: {
+      ...(await serverSideTranslations(locale)),
+    },
+  };
+}

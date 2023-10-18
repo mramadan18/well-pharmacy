@@ -14,8 +14,10 @@ import { Autoplay, FreeMode, Pagination } from "swiper";
 import { useDispatch, useSelector } from "react-redux";
 import { getReviews } from "@/toolkit/slices/reviews/reviewsSlice";
 import Loading from "@/components/Utilities/Loading";
+import { useTranslation } from "react-i18next";
 
 const TestimonialsSection = () => {
+  const { t } = useTranslation();
   const { loading, reviews } = useSelector((state) => state.reviews);
   const dispatch = useDispatch();
 
@@ -25,7 +27,7 @@ const TestimonialsSection = () => {
   return (
     <>
       <section className="testimonials mt-[30px] lg:mt-[80px]">
-        <h2 className="text-primary mb-8 text-center">Testimonials</h2>
+        <h2 className="text-primary mb-8 text-center">{t("Testimonials")}</h2>
         <div className="container relative h-[210px] text-center">
           {loading ? (
             <Loading />
@@ -72,7 +74,7 @@ const TestimonialsSection = () => {
           href="/all-reviews"
           className="text-[#2c6ecb] text-center font-bold mt-8 block"
         >
-          Check all reviews
+          {t("Check all reviews")}
         </Link>
       </section>
     </>

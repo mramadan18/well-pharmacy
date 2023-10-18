@@ -1,5 +1,6 @@
 import NotifyItem from "@/components/Desktop/Header/NotifyItem";
 import HeaderMobile from "@/components/Mobile/HeaderMobile";
+import NavBarMobile from "@/components/Mobile/NavBarMobile";
 import Loading from "@/components/Utilities/Loading";
 import { getNotifications } from "@/toolkit/slices/notifications/notificationsSlice";
 import { readNotifications } from "@/toolkit/slices/notifications/readNotificationsSlice";
@@ -31,6 +32,7 @@ const Notification = () => {
   return (
     <div>
       <HeaderMobile title="Notification" />
+      <NavBarMobile />
 
       <div className="bg-white shadow-[0_18px_40px_0_rgba(0,0,0,0.16)] rounded-lg p-4 mt-4 w-full h-[600px] overflow-y-scroll">
         <div

@@ -16,11 +16,11 @@ import { Autoplay, FreeMode } from "swiper";
 // Get data with redux toolkit
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "@/toolkit/slices/categories/categoriesSlice";
+import { useTranslation } from "react-i18next";
 
 const CategoriesList = () => {
-  const { loading, categories, error } = useSelector(
-    (state) => state.categories
-  );
+  const { t } = useTranslation();
+  const { loading, categories } = useSelector((state) => state.categories);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,13 +30,13 @@ const CategoriesList = () => {
   return (
     <section className="categories mt-[30px] lg:mt-[60px] text-center">
       <h2 className="text-primary tracking-[0.5px] mb-8 hidden lg:block">
-        Categories
+        {t("Categories")}
       </h2>
       <div className="container">
         <SubTitle
-          title="Categories"
+          title={t("Categories")}
           href="categories"
-          link="View all"
+          link={t("View all")}
           className="mb-7"
         />
 

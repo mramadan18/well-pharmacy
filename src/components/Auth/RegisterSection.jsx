@@ -110,7 +110,7 @@ const RegisterSection = () => {
             <input
               className="w-full py-2 px-3 border border-[#AEB4B9] shadow-inner rounded-sm text-[#8C9196] outline-none"
               id="password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Write here"
               required
               value={password}

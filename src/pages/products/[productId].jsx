@@ -14,13 +14,14 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "@/components/Utilities/Loading";
 import NavBarMobile from "@/components/Mobile/NavBarMobile";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "react-i18next";
 
 const Product = () => {
+  const { t } = useTranslation();
   const router = useRouter();
   const { productId } = router.query;
-  const { loading: addLoading, product: addProduct } = useSelector(
-    (state) => state.addToCart
-  );
+  const { product: addProduct } = useSelector((state) => state.addToCart);
   const [isLoading, setIsLoading] = useState(false);
   const { loading, product } = useSelector((state) => state.product);
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ const Product = () => {
   return (
     <div>
       <HeaderDesktop />
-      <HeaderMobile bg="#0f4392" btnBack={true} title="Product details" />
+      <HeaderMobile bg="#0f4392" btnBack={true} title={t("Product details")} />
       <NavBarMobile />
 
       <div className="lg:hidden rounded-b-lg overflow-hidden">
@@ -49,16 +50,18 @@ const Product = () => {
       </div>
       <div className="container mt-5 lg:mt-36">
         <BreadcrumbsList>
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          <BreadcrumbLink href="/products?page=1">Our products</BreadcrumbLink>
+          <BreadcrumbLink href="/">{t("Home")}</BreadcrumbLink>
+          <BreadcrumbLink href="/products/?page=1">
+            {t("Our products")}
+          </BreadcrumbLink>
           <BreadcrumbActive href={`/products/${productId}`}>
-            Product details
+            {t("Product details")}
           </BreadcrumbActive>
         </BreadcrumbsList>
         <div className="hidden lg:block mt-5">
           <SearchInput />
           <h2 className="text-primary text-center mt-5 mb-12">
-            Product details
+            {t("Product details")}
           </h2>
           {isLoading && (
             <div className="bg-[#219653] py-2 px-3 rounded-md text-white flex justify-start items-center gap-4 my-4">
@@ -77,8 +80,8 @@ const Product = () => {
                 </svg>
               </span>
               <span>
-                {addProduct?.quantity} panadol Extra have been added to your
-                requests
+                {addProduct?.quantity}{" "}
+                {t("panadol Extra have been added to your requests")}
               </span>
             </div>
           )}
@@ -107,3 +110,12 @@ const Product = () => {
 };
 
 export default Product;
+
+export async function getStaticProps(context) {
+  const { locale } = context;
+  return {
+    props: {
+      ...(await serverSideTranslations(locale)),
+    },
+  };
+}

@@ -12,16 +12,16 @@ const SwitchLang = () => {
   };
 
   return (
-    <div className="flex items-center gap-4">
-      <span className="ml-3 text-sm  text-dark">EN</span>
+    <div className="flex items-center gap-2">
+      <span className="ml-3 text-sm text-dark">EN</span>
       <label className="relative inline-flex items-center cursor-pointer">
         <input
           type="checkbox"
           className="sr-only peer"
           onChange={handleSwitch}
         />
-        <div className="w-20 h-10 bg-primary height-cus rounded-full peer-checked:after:translate-x-full after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-9 after:w-9 after:transition-all"></div>
-        <span className="ml-3 text-sm  text-dark">RS</span>
+        <div className="w-10 h-6 bg-primary  rounded-full peer-checked:after:translate-x-full after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+        <span className="ml-3 text-sm text-dark">RS</span>
       </label>
     </div>
   );

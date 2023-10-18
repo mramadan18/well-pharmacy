@@ -9,12 +9,19 @@ import "swiper/css/pagination";
 // import required modules
 import { Autoplay, Pagination } from "swiper";
 import SubTitle from "../../Utilities/SubTitle";
+import { useTranslation } from "react-i18next";
 
 const OfferListMobile = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="offer-mob mt-6 lg:hidden">
       <div className="container">
-        <SubTitle title="Big deals" link="Check offers" className="my-2" />
+        <SubTitle
+          title={t("Big deals")}
+          link={t("Check offers")}
+          className="my-2"
+        />
 
         <Swiper
           pagination={{

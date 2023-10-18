@@ -7,6 +7,7 @@ import NotifyProfile from "./NotifyProfile";
 // Import images
 import logo from "#/images/logo-1.png";
 import SwitchLang from "@/components/Utilities/Lang/SwitchLang";
+import Link from "next/link";
 
 const HeaderDesktop = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -15,14 +16,14 @@ const HeaderDesktop = () => {
   }, []);
   return (
     <header className="py-4 shadow-mainShadow fixed top-0 left-0 w-full z-30 bg-white hidden lg:block">
-      <div className="container flex justify-between items-center gap-8">
-        <div>
+      <div className="container flex justify-between items-center gap-1">
+        <Link href="/">
           <Image src={logo} alt="Well-logo" priority />
-        </div>
-        <div>
+        </Link>
+        <div className="flex justify-center items-center gap-4">
           <NavBarDesktop />
+          <SwitchLang />
         </div>
-        <SwitchLang />
         {isLogin ? <NotifyProfile /> : <BtnsAuth />}
       </div>
     </header>

@@ -5,9 +5,11 @@ import OrdersCount from "@/components/Utilities/OrdersCount";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getCartItems } from "@/toolkit/slices/cart/cartItemsSlice";
+import { useTranslation } from "next-i18next";
 
 const NavBarDesktop = () => {
   const router = useRouter();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { cart_items } = useSelector((state) => state.cartItems);
 
@@ -19,7 +21,7 @@ const NavBarDesktop = () => {
 
   return (
     <nav>
-      <ul className="flex justify-center items-center gap-6 text-lg font-medium">
+      <ul className="flex justify-center items-center gap-3 text-sm xl:text-lg font-medium">
         <li>
           <Link
             href="/"
@@ -27,17 +29,17 @@ const NavBarDesktop = () => {
               router.pathname === "/" && "text-primary"
             }`}
           >
-            Home
+            {t("Home")}
           </Link>
         </li>
         <li>
           <Link
-            href="/products?page=1"
+            href="/products/?page=1"
             className={`hover:text-primary ${
               router.pathname === "/products" && "text-primary"
             }`}
           >
-            Our products
+            {t("Our products")}
           </Link>
         </li>
         <li className="relative">
@@ -48,7 +50,7 @@ const NavBarDesktop = () => {
               router.pathname === "/orders" && "text-primary"
             }`}
           >
-            My orders
+            {t("My orders")}
           </Link>
         </li>
         <li className="relative">
@@ -59,7 +61,7 @@ const NavBarDesktop = () => {
               router.pathname === "/cart" && "text-primary"
             }`}
           >
-            My cart
+            {t("My cart")}
           </Link>
         </li>
         <li>
@@ -69,7 +71,7 @@ const NavBarDesktop = () => {
               router.pathname === "/contact-us" && "text-primary"
             }`}
           >
-            Contact us
+            {t("Contact us")}
           </Link>
         </li>
       </ul>

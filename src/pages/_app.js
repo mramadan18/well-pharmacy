@@ -8,7 +8,7 @@ import { Toaster } from "react-hot-toast";
 import Support from "@/components/Utilities/Support";
 
 import { appWithTranslation } from "next-i18next";
-import SettingsBtn from "@/components/Utilities/Lang/SettingsBtn";
+// import SettingsBtn from "@/components/Utilities/Lang/SettingsBtn";
 
 const App = ({ Component, pageProps }) => {
   const router = useRouter();

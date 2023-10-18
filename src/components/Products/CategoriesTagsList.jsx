@@ -24,7 +24,7 @@ const CategoriesTagsList = () => {
               : "text-black bg-[rgba(221,23,23,0.20)]"
           } py-1 px-2 rounded-md tracking-[1px] cursor-pointer`}
         >
-          <Link href="/products">All</Link>
+          <Link href="/products?page=1">All</Link>
         </div>
 
         {categories.map((category) => (

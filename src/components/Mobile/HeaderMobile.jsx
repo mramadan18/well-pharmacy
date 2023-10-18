@@ -60,7 +60,7 @@ const HeaderMobile = ({ bg = "#0F4392", title, logo = false, search }) => {
             {title}
           </h2>
         )}
-         <SwitchLang />
+        <SwitchLang />
         {isLogin ? (
           <div className="flex justify-between items-center gap-3 relative">
             <NotifyCount />
@@ -92,10 +92,10 @@ const HeaderMobile = ({ bg = "#0F4392", title, logo = false, search }) => {
       </div>
       {search && (
         <>
-          <div className="container mt-6 flex justify-around items-center gap-2">
-            <SearchInput />
+          <div className="mt-6 flex justify-around items-center gap-4 px-4">
+            <SearchInput className="w-full" />
             <div
-              className="flex justify-center items-center gap-2 text-white tracking-[1px] text-lg border border-white py-1 px-2 rounded-md cursor-pointer"
+              className="flex justify-center items-center gap-2 text-white tracking-[1px] text-lg border border-white py-1 px-4 rounded-md cursor-pointer"
               onClick={() => setIsOpen(true)}
             >
               <Image src={filterIcon} alt="filter" priority />

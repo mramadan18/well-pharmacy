@@ -10,40 +10,42 @@ import OrdersCount from "../Utilities/OrdersCount";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCartItems } from "@/toolkit/slices/cart/cartItemsSlice";
+import { useTranslation } from "next-i18next";
 
 const NavBarMobile = () => {
   const router = useRouter();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const linksData = [
     {
       id: 1,
       icon: homeIcon,
-      name: "Home",
+      name: t("Home"),
       path: "/",
     },
     {
       id: 2,
       icon: productsIcon,
-      name: "Products",
+      name: t("Our products"),
       path: "/products?page=1",
     },
     {
       id: 3,
       icon: requestsIcon,
-      name: "My cart",
+      name: t("My cart"),
       path: "/cart",
     },
     {
       id: 4,
       icon: requestsIcon,
-      name: "My orders",
+      name: t("My orders"),
       path: "/orders",
     },
     {
       id: 5,
       icon: contactIcon,
-      name: "Contact us",
+      name: t("Contact us"),
       path: "/contact-us",
     },
   ];

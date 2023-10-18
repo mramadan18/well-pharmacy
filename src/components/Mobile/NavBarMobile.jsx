@@ -11,41 +11,44 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCartItems } from "@/toolkit/slices/cart/cartItemsSlice";
 import { useTranslation } from "next-i18next";
+import { useTrans } from "@/locales/Helper";
 
 const NavBarMobile = () => {
   const router = useRouter();
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
+  const t=useTrans()
+
   const dispatch = useDispatch();
 
   const linksData = [
     {
       id: 1,
       icon: homeIcon,
-      name: t("Home"),
+      name: t["Home"],
       path: "/",
     },
     {
       id: 2,
       icon: productsIcon,
-      name: t("Our products"),
+      name: t["Our products"],
       path: "/products?page=1",
     },
     {
       id: 3,
       icon: requestsIcon,
-      name: t("My cart"),
+      name: t["My cart"],
       path: "/cart",
     },
     {
       id: 4,
       icon: requestsIcon,
-      name: t("My orders"),
+      name: t["My orders"],
       path: "/orders",
     },
     {
       id: 5,
       icon: contactIcon,
-      name: t("Contact us"),
+      name: t["Contact us"],
       path: "/contact-us",
     },
   ];

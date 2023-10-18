@@ -36,25 +36,25 @@ const StepsListMobile = () => {
   const steps = [
     {
       id: 1,
-      title: t("Select your products"),
+      title: t["Select your products"],
       img: "step_1.png",
-      desc: t("You can contact our pharmacists for help and consultations"),
+      desc: t["You can contact our pharmacists for help and consultations"],
     },
     {
       id: 2,
-      title: t("Confirm your order"),
+      title: t["Confirm your order"],
       img: "step_2.png",
-      desc: t(
+      desc: t[
         "We will contact you with prices before we ship the order to you"
-      ),
+      ],
     },
     {
       id: 3,
-      title: t("Shipment and delivery"),
+      title: t["Shipment and delivery"],
       img: "step_3.png",
-      desc: t(
+      desc: t[
         "After confirming your order price, we will deliver the order to your address"
-      ),
+      ],
     },
   ];
   return (

@@ -12,8 +12,19 @@ import StepsListMobile from "@/components/Mobile/Home/Steps/StepsListMobile";
 import NavBarMobile from "@/components/Mobile/NavBarMobile";
 import WriteReview from "@/components/Utilities/WriteReview/WriteReview";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-
+import { useEffect, useState } from "react";
+ 
 const Home = () => {
+ 
+  useEffect( () => {
+    // console.log( lang,"getLang");
+if( !localStorage.getItem("lang")){
+  localStorage.setItem("lang",'en')
+
+}
+
+  }, [])
+  
   return (
     <>
       <HeaderDesktop />

@@ -55,7 +55,16 @@ const RequestCallModal = () => {
         </div>
         <div className="flex flex-col justify-center items-start gap-3 w-full">
           <label htmlFor="phone">Phone Number*</label>
-          <PhoneInput
+          <input
+            className="w-full py-2 px-3 border border-[#AEB4B9] shadow-inner rounded-sm text-[#8C9196] outline-none"
+            id="name"
+            type="number"
+            placeholder="000 000 000 00"
+            value={phone}
+            onChange={(value) => setPhone(value)}
+            required
+          />
+          {/* <PhoneInput
             placeholder="000 000 000 00"
             country="eg"
             disableDropdown={true}
@@ -74,7 +83,7 @@ const RequestCallModal = () => {
             }}
             value={phone}
             onChange={(value) => setPhone(value)}
-          />
+          /> */}
         </div>
 
         <button

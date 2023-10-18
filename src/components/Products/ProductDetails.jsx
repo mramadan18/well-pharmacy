@@ -48,25 +48,25 @@ const ProductDetails = ({ data, setIsLoadingBar }) => {
       <div className="mt-3 text-[#585859] font-semibold">
         <h5 className="text-primary mb-4">Product details</h5>
         <p className="mb-1">
-          Brand:
-          <span className="text-[#4F4F4F] font-normal"> Lorem Ipsum</span>
+        Short Description:
+          <span className="text-[#4F4F4F] font-normal"> {data?.short_description} </span>
         </p>
-        <p className="mb-1">
+        {data?.active_ingredient &&  <p className="mb-1">
           Active ingredients:
           <span className="text-[#4F4F4F] font-normal">
             {" "}
             {data?.active_ingredient}
           </span>
-        </p>
-        <p className="mb-1">
-          Use: <span className="text-[#4F4F4F] font-normal"> Lorem Ipsum</span>
-        </p>
-        <p className="mb-1">
+        </p>}
+       
+       
+        {data.russian_similar &&  <p className="mb-1">
           Russian similar:{" "}
           <span className="text-[#4F4F4F] font-normal">
             {data.russian_similar || ""}
           </span>
-        </p>
+        </p>}
+       
       </div>
     </div>
   );

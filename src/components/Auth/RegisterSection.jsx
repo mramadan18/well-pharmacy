@@ -138,22 +138,16 @@ const RegisterSection = () => {
         </div>
         <div className="flex flex-col justify-center items-start gap-3 w-full">
           <label htmlFor="room">Room Number*</label>
-          <select
+          <input
             className="w-full py-2 px-3 border border-[#AEB4B9] shadow-inner rounded-sm text-[#8C9196] outline-none"
-            id="room"
+            id="room_id"
             type="number"
             placeholder="Write here"
             required
             value={room_id}
             onChange={(e) => setRoom_id(e.target.value)}
-          >
-            <option defaultChecked>Select here</option>
-            {rooms?.results?.map((room) => (
-              <option key={room.id} value={room.id}>
-                {room.room_number}
-              </option>
-            ))}
-          </select>
+          />
+      
         </div>
 
         <button

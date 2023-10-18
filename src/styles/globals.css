@@ -272,3 +272,6 @@ body {
   width: 1.25rem !important;
   top: 0px !important;
 }
+ .bg-black-switch{
+  background-color: black !important;
+}

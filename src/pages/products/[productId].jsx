@@ -50,12 +50,10 @@ const Product = () => {
       <div className="container mt-5 lg:mt-36">
         <BreadcrumbsList>
           <BreadcrumbLink href="/">{"Home"}</BreadcrumbLink>
-          <BreadcrumbLink href="/products/?page=1">
-          
-            Our products
-          </BreadcrumbLink>
+          <BreadcrumbLink href="/products/?page=1">Our products</BreadcrumbLink>
           <BreadcrumbActive href={`/products/${productId}`}>
-          Product details          </BreadcrumbActive>
+            Product details{" "}
+          </BreadcrumbActive>
         </BreadcrumbsList>
         <div className="hidden lg:block mt-5">
           <SearchInput />
@@ -79,9 +77,8 @@ const Product = () => {
                 </svg>
               </span>
               <span>
-                {addProduct?.quantity}{" "}
-             
-                panadol Extra have been added to your requests
+                {addProduct?.quantity} panadol Extra have been added to your
+                requests
               </span>
             </div>
           )}

@@ -5,7 +5,9 @@ const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 export const getProduct = createAsyncThunk(
   "productSlice/fetchProduct",
   async (params) => {
-    const { data } = await baseUrl.get(`/product/${params}`);
+    const { data } = await baseUrl.get(`/product/${params}`, {
+      headers: { "Accept-Language": localStorage.getItem("lang") },
+    });
     return data;
   }
 );

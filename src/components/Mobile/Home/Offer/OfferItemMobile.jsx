@@ -1,20 +1,20 @@
 import Image from "next/image";
 // Import Images
 import offer from "#/images/offer-2.png";
-import { useTranslation } from "react-i18next";
+import { useTrans } from "@/locales/Helper";
 
 const OfferItemMobile = () => {
-  const { t } = useTranslation();
+  const t=useTrans()
   return (
     <div className="bg-white rounded-lg pt-4 pb-10 px-4 mt-3">
       <div className="grid grid-cols-2 gap-2">
         <div>
           <h5 className="text-primary font-normal tracking-[0.5px] text-base">
-            {t("Write the offer here")}
+            {t["Write the offer here"]}
           </h5>
           <p className="my-1 text-sm">Any description (lorem ipsum)</p>
           <button className="text-sm py-2 px-8 bg-primary text-white rounded-sm mt-3 font-medium">
-            {t("Get The Offer")}
+            {t["Get The Offer"]}
           </button>
         </div>
         <div>

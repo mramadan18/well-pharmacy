@@ -16,13 +16,11 @@ import { Autoplay, FreeMode } from "swiper";
 // Get data with redux toolkit
 import { useDispatch, useSelector } from "react-redux";
 import { getCategories } from "@/toolkit/slices/categories/categoriesSlice";
-import { useTranslation } from "react-i18next";
 import { useTrans } from "@/locales/Helper";
 
 const CategoriesList = () => {
   const t=useTrans()
 
-  // const { t } = useTranslation();
   const { loading, categories } = useSelector((state) => state.categories);
   const dispatch = useDispatch();
 

@@ -8,7 +8,10 @@ export const getCategoryProducts = createAsyncThunk(
     const { data } = await baseUrl.get(
       `/product/?category=${params.categoryId}&offset=${
         (params.activePage + 1 - 1) * 12
-      }`
+      }`,
+      {
+        headers: { "Accept-Language": localStorage.getItem("lang") },
+      }
     );
     return data;
   }

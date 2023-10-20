@@ -3,7 +3,9 @@ import baseUrl from "@/baseURL";
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
 export const getUses = createAsyncThunk("usesSlice/fetchUses", async () => {
-  const { data } = await baseUrl.get("/category/uses");
+  const { data } = await baseUrl.get("/category/uses", {
+    headers: { "Accept-Language": localStorage.getItem("lang") },
+  });
   return data;
 });
 

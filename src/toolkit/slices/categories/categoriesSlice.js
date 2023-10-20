@@ -5,7 +5,9 @@ const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 export const getCategories = createAsyncThunk(
   "categoriesSlice/fetchCategories",
   async () => {
-    const { data } = await baseUrl.get("/category");
+    const { data } = await baseUrl.get("/category", {
+      headers: { "Accept-Language": localStorage.getItem("lang") },
+    });
     return data;
   }
 );

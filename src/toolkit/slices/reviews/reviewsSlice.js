@@ -5,7 +5,9 @@ const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 export const getReviews = createAsyncThunk(
   "reviewsSlice/fetchReviews",
   async () => {
-    const { data } = await baseUrl.get("/reviews");
+    const { data } = await baseUrl.get("/reviews", {
+      headers: { "Accept-Language": localStorage.getItem("lang") },
+    });
     return data;
   }
 );

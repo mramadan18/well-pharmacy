@@ -1,10 +1,8 @@
-import { useTranslation } from "react-i18next";
 import StepItemDesktop from "./StepItemDesktop";
 import { useEffect, useState } from "react";
 import { useTrans } from "@/locales/Helper";
 
 const StepsListDesktop = () => {
-  // const { t } = useTranslation();
   const t=useTrans()
 
   const [isClient, setIsClient] = useState(false)

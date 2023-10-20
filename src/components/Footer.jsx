@@ -6,11 +6,9 @@ import telegram from "#/images/icons/telegram.png";
 import whatsapp from "#/images/icons/whatsapp.png";
 import messenger from "#/images/icons/messenger.png";
 import viber from "#/images/icons/viber.png";
-import { useTranslation } from "react-i18next";
 import { useTrans } from "@/locales/Helper";
 
 const Footer = () => {
-  // const { t } = useTranslation();
   const t=useTrans()
 
   return (

@@ -11,21 +11,21 @@ import badGold from "#/images/icons/badGold.png";
 import okGold from "#/images/icons/okGold.png";
 import goodGold from "#/images/icons/goodGold.png";
 import greetGold from "#/images/icons/greetGold.png";
-import { useTranslation } from "react-i18next";
+import { useTrans } from "@/locales/Helper";
 
 const Rates = ({ rate, setRate }) => {
-  const { t } = useTranslation();
+  const t=useTrans()
   const handleStarClick = (selectedRating) => {
     setRate(selectedRating);
   };
 
   const renderStars = () => {
     const starImgs = [
-      { imgSrc: terrible, nameImg: t("Terrible"), targetImg: terribleGold },
-      { imgSrc: bad, nameImg: t("Bad"), targetImg: badGold },
-      { imgSrc: ok, nameImg: t("Ok"), targetImg: okGold },
-      { imgSrc: good, nameImg: t("Good"), targetImg: goodGold },
-      { imgSrc: greet, nameImg: t("Greet"), targetImg: greetGold },
+      { imgSrc: terrible, nameImg: t["Terrible"], targetImg: terribleGold },
+      { imgSrc: bad, nameImg: t["Bad"], targetImg: badGold },
+      { imgSrc: ok, nameImg: t["Ok"], targetImg: okGold },
+      { imgSrc: good, nameImg: t["Good"], targetImg: goodGold },
+      { imgSrc: greet, nameImg: t["Greet"], targetImg: greetGold },
     ];
     const starElements = starImgs.map((item, index) => {
       return (

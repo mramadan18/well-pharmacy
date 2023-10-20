@@ -1,7 +1,8 @@
-import { useTranslation } from "react-i18next";
+import { useTrans } from "@/locales/Helper";
 
 const Loading = ({ size = 40, style }) => {
-  const { t } = useTranslation();
+  const t=useTrans()
+
   return (
     <div role="status" style={style}>
       <svg
@@ -24,7 +25,7 @@ const Loading = ({ size = 40, style }) => {
           fill="currentFill"
         />
       </svg>
-      <span className="sr-only">{t("Loading...")}</span>
+      <span className="sr-only">{t["Loading..."]}</span>
     </div>
   );
 };

@@ -1,10 +1,10 @@
+import { useTrans } from "@/locales/Helper";
 import { getUses } from "@/toolkit/slices/categories/usesSlice";
 import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 const Filter = () => {
-  const { t } = useTranslation();
+  const t=useTrans()
   const { uses } = useSelector((state) => state.uses);
   const dispatch = useDispatch();
 
@@ -14,7 +14,7 @@ const Filter = () => {
 
   return (
     <div className="p-6 lg:shadow-secondShadow rounded-md bg-white">
-      <h2 className="text-primary text-center mb-3">{t("Filter by")}</h2>
+      <h2 className="text-primary text-center mb-3">{t["Filter by"]}</h2>
       {/* <div>
         <label htmlFor="by-diseases" className="block mb-4 font-bold">
           By diseases
@@ -33,13 +33,13 @@ const Filter = () => {
 
       <div>
         <label htmlFor="by-uses" className="block mb-4 font-bold">
-          {t("By uses")}
+          {t["By uses"]}
         </label>
         <select
           id="by-uses"
           className="block w-full p-2 mb-6 bg-[#F6F6F7] text-gray-900 border border-[#AEB4B9] focus:border-[#AEB4B9] rounded-md"
         >
-          <option defaultChecked>{t("All")}</option>
+          <option defaultChecked>{t["All"]}</option>
           {uses?.map((use) => (
             <option key={use.id} value={use?.name}>
               {use?.name}
@@ -66,10 +66,10 @@ const Filter = () => {
 
       <div className="flex justify-between items-center gap-2">
         <button className="border border-primary py-3 w-32 rounded-md font-bold bg-white text-primary">
-          {t("Clear All")}
+          {t["Clear All"]}
         </button>
         <button className="border border-primary py-3 w-32 rounded-md font-bold bg-primary text-white">
-          {t("Apply")}
+          {t["Apply"]}
         </button>
       </div>
     </div>

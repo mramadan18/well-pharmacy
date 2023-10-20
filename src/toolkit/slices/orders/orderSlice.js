@@ -9,8 +9,10 @@ export const getOrder = createAsyncThunk(
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
+        "Accept-Language": localStorage.getItem("lang"),
       },
     };
+
     const { data } = await baseUrl.get(`/order/history/${id}`, config);
     return data;
   }

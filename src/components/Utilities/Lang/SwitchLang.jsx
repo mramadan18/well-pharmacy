@@ -21,6 +21,7 @@ const SwitchLang = () => {
   useEffect(()=>{
     setchecked(localStorage?.getItem('lang')=="ru"?true:false)
   },[])
+  
 
   return (
     <div className="flex items-center gap-2">

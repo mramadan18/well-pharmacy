@@ -1,12 +1,12 @@
+import { useTrans } from "@/locales/Helper";
 import Image from "next/image";
-import { useTranslation } from "react-i18next";
 const StepItemDesktop = ({ data }) => {
-  const { t } = useTranslation();
+  const t=useTrans()
 
   return (
     <div className="bg-[#0f43921a] p-5 text-primary rounded-2xl">
       <h3 className="font-normal">
-        {t("Home")} {data.id}
+        {t["Home"]} {data.id}
       </h3>
       <h3>{data.title}</h3>
       <Image

@@ -3,7 +3,9 @@ import baseUrl from "@/baseURL";
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
 export const getRoom = createAsyncThunk("roomSlice/fetchRoom", async (id) => {
-  const { data } = await baseUrl.get(`/hotels/rooms/${id}`);
+  const { data } = await baseUrl.get(`/hotels/rooms/${id}`, {
+    headers: { "Accept-Language": localStorage.getItem("lang") },
+  });
   return data;
 });
 

@@ -14,11 +14,9 @@ import { Autoplay, FreeMode, Pagination } from "swiper";
 import { useDispatch, useSelector } from "react-redux";
 import { getReviews } from "@/toolkit/slices/reviews/reviewsSlice";
 import Loading from "@/components/Utilities/Loading";
-import { useTranslation } from "react-i18next";
 import { useTrans } from "@/locales/Helper";
 
 const TestimonialsSection = () => {
-  // const { t } = useTranslation();
   const { loading, reviews } = useSelector((state) => state.reviews);
   const dispatch = useDispatch();
   const t=useTrans()

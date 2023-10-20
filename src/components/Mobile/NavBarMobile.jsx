@@ -10,12 +10,10 @@ import OrdersCount from "../Utilities/OrdersCount";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCartItems } from "@/toolkit/slices/cart/cartItemsSlice";
-import { useTranslation } from "next-i18next";
 import { useTrans } from "@/locales/Helper";
 
 const NavBarMobile = () => {
   const router = useRouter();
-  // const { t } = useTranslation();
   const t=useTrans()
 
   const dispatch = useDispatch();

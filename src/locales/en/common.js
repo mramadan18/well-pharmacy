@@ -75,4 +75,23 @@ export const EnTrans = {
   "Password*": "Password*",
   "Remember me": "Remember me",
   "Forget password": "Forget password",
+  /********************************************************************** */
+  "By uses": "By uses",
+  "Sign in": "Sign in",
+  "Sign up": "Sign up",
+  Previous: "Previous",
+  Next: "Next",
+  "Don’t have an account?": "Don’t have an account?",
+  "Your Phone*": "Your Phone*",
+  "Remember me": "Remember me",
+  "Forgot password?": "Forgot password?",
+  "Your Password*": "Your Password*",
+  "live healthy … live well": "live healthy … live well",
+  "Contact us": "Contact us",
+  "Social media contacts": "Social media contacts",
+  "We are here for you": "We are here for you",
+  "If you need a help from our pharmacists or want to order a specific prescription contact us via":
+    "If you need a help from our pharmacists or want to order a specific prescription contact us via",
+  "Reach us via": "Reach us via",
+  "Call now": "Call now",
 };

@@ -17,7 +17,6 @@ import NavBarMobile from "@/components/Mobile/NavBarMobile";
 import { useTranslation } from "react-i18next";
 
 const Product = () => {
-  // const { t } = useTranslation();
   const router = useRouter();
   const { productId } = router.query;
   const { product: addProduct } = useSelector((state) => state.addToCart);

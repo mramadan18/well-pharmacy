@@ -9,9 +9,10 @@ import Loading from "@/components/Utilities/Loading";
 import { motion } from "framer-motion";
 import { readNotifications } from "@/toolkit/slices/notifications/readNotificationsSlice";
 import { useTranslation } from "react-i18next";
+import { useTrans } from "@/locales/Helper";
 
 const NotifyList = ({ notifyListRef, notifyAllReadRef }) => {
-  const { t } = useTranslation();
+  const t=useTrans()
   // const [isFoundNewNotify, setIsFoundNewNotify] = useState(false);
   const { loading, notifications } = useSelector(
     (state) => state.notifications
@@ -47,9 +48,9 @@ const NotifyList = ({ notifyListRef, notifyAllReadRef }) => {
         className="text-right text-[#2C6ECB] font-semibold tracking-[1px] mb-4 cursor-pointer"
         onClick={handleReadAllNotifications}
       >
-        {t("Make all as read")}
+        {t["Make all as read"]}
       </div>
-      <h6 className="mb-3 font-semibold tracking-[1px]">{t("New")}</h6>
+      <h6 className="mb-3 font-semibold tracking-[1px]">{t["New"]}</h6>
       {loading ? (
         <div className="text-center mx-auto absolute top-10 left-1/2 -translate-x-1/2">
           <Loading />
@@ -57,7 +58,7 @@ const NotifyList = ({ notifyListRef, notifyAllReadRef }) => {
       ) : (
         <>
           {notifications?.results?.length === 0 ? (
-            <p className="text-center">{t("Not found notification")}</p>
+            <p className="text-center">{t["Not found notification"]}</p>
           ) : (
             <>
               {notifications?.results.map((notification) => {

@@ -1,10 +1,8 @@
 import SubTitle from "@/components/Mobile/Utilities/SubTitle";
 import ServiceItem from "./ServiceItem";
-import { useTranslation } from "react-i18next";
 import { useTrans } from "@/locales/Helper";
 
 const ServicesList = () => {
-  // const { t } = useTranslation();
   const t=useTrans()
 
   const services = [

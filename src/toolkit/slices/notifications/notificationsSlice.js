@@ -9,6 +9,8 @@ export const getNotifications = createAsyncThunk(
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
+
+        "Accept-Language": localStorage.getItem("lang"),
       },
     };
     const { data } = await baseUrl.get("/notification/", config);

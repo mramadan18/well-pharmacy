@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 
 // import required modules
 import { Autoplay, Pagination } from "swiper";
-import { useTranslation } from "react-i18next";
+import { useTrans } from "@/locales/Helper";
 
 const steps = [
   {
@@ -32,7 +32,7 @@ const steps = [
 ];
 
 const StepsListMobile = () => {
-  const { t } = useTranslation();
+  const t=useTrans()
   const steps = [
     {
       id: 1,

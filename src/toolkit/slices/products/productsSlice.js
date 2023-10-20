@@ -6,7 +6,10 @@ export const getProducts = createAsyncThunk(
   "productsSlice/fetchProducts",
   async (page) => {
     const { data } = await baseUrl.get(
-      `/product/?limit=12&offset=${(page + 1 - 1) * 12}`
+      `/product/?limit=12&offset=${(page + 1 - 1) * 12}`,
+      {
+        headers: { "Accept-Language": localStorage.getItem("lang") },
+      }
     );
     return data;
   }

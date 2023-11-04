@@ -3,8 +3,10 @@ import Image from "next/image";
 import received from "#/images/received.png";
 import Button from "../Utilities/Button";
 import Link from "next/link";
+import { useTrans } from "@/locales/Helper";
 
 const Delivered = () => {
+  const t=useTrans()
   return (
     <div>
       <div className="w-[80%] mx-auto h-1 bg-[#ECC1C1] relative delivered">
@@ -51,17 +53,16 @@ const Delivered = () => {
       </svg>
 
       <p className="text-2xl mt-10 max-w-[400px] mx-auto tracking-[1px]">
-        Your order has een delivered <br /> successfully. <br /> We wish you
-        speedy recovery.
+        {t['Your order has een delivered']} <br /> {t['successfully']} . <br /> {t['We wish you speedy recovery.']}
       </p>
 
-      <Button className="w-full mt-5">Write a review</Button>
+      <Button className="w-full mt-5">{t['Write a review']} </Button>
 
       <Link
         href="/"
         className="text-[#2C6ECB] font-semibold mt-4 block tracking-[1px]"
       >
-        Contact us
+       {t['Contact us']}
       </Link>
     </div>
   );

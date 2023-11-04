@@ -10,8 +10,10 @@ import { login } from "@/toolkit/slices/loginSlice";
 // Components
 import Loading from "../Utilities/Loading";
 import EyeIcon from "../Utilities/EyeIcon";
+import { useTrans } from "@/locales/Helper";
 
 const LoginSection = () => {
+  const t=useTrans()
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [phone, setPhone] = useState("");
@@ -39,51 +41,43 @@ const LoginSection = () => {
   return (
     <div className="flex flex-col justify-center items-center gap-8 pt-5 pb-10 lg:pt-0 lg:pb-0">
       <div className="text-center tracking-[1px]">
-        <h2 className="mb-3">Welcome to Well+ pharmacy</h2>
-        <h4 className="text-second">live healthy … live well</h4>
+        <h2 className="mb-3">  {t["Welcome to Well+ pharmacy"]} </h2>
+        <h4 className="text-second">{t['live healthy … live well']}</h4>
       </div>
       <form
         className="bg-mainBg p-6 rounded-lg flex flex-col justify-center items-center gap-6 w-[90%] lg:w-[440px]"
         onSubmit={handleSubmit}
       >
         <div className="text-center tracking-[1px]">
-          <h2 className="text-primary mb-4">Sign in</h2>
+          <h2 className="text-primary mb-4"> {t["Sign in"]} </h2>
           <span>
-            Don’t have an account?
+            {t["Don’t have an account?"]}
+           
             <Link
               href="/register"
               className="text-[#2C6ECB] font-semibold ms-2"
             >
-              Sign up
+              
+              {t["Sign up"]}
             </Link>
           </span>
         </div>
 
         <div className="flex flex-col justify-center items-start gap-3 w-full">
-          <label htmlFor="phone">Your Phone*</label>
-          <PhoneInput
-            placeholder="000 000 000 00"
-            country="eg"
-            disableDropdown={true}
-            disableCountryCode={true}
-            autoFormat={true}
-            inputProps={{
-              id: "phone",
-              required: true,
-            }}
-            inputStyle={{
-              width: "100%",
-              height: "42px",
-              fontSize: "1rem",
-              border: "1px solid #AEB4B9",
-              borderRadius: "2px",
-            }}
-            value={phone}
-            onChange={(value) => setPhone(value)}
-          />
+          <label htmlFor="phone">{t['Your Phone*']}</label>
+          <input
+              className="w-full py-2 px-3 border border-[#AEB4B9] shadow-inner rounded-sm text-[#8C9196] outline-none"
+              id="number"
+              type='number'
+              placeholder="Write here"
+              required
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+         
         </div>
         <div className="flex flex-col justify-center items-start gap-3 w-full">
-          <label htmlFor="password">Your Password*</label>
+          <label htmlFor="password">{t['Your Password*']} </label>
           <div className="relative w-full">
             <input
               className="w-full py-2 px-3 border border-[#AEB4B9] shadow-inner rounded-sm text-[#8C9196] outline-none"
@@ -98,15 +92,10 @@ const LoginSection = () => {
           </div>
         </div>
         <div className="flex justify-between items-center w-full">
-          <div>
-            <input type="checkbox" name="remember" id="remember" />
-            <label htmlFor="remember" className="ms-2">
-              Remember me
-            </label>
-          </div>
+         
 
           <Link href="/" className="text-[#2C6ECB] font-semibold">
-            Forgot password?
+            {t["Forgot password?"]}
           </Link>
         </div>
 

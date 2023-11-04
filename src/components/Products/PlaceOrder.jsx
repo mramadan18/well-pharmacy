@@ -16,11 +16,14 @@ const PlaceOrder = ({ className }) => {
 
   const handlePlaceOrder = () => {
     if (localStorage.getItem("token")) {
-      dispatch(createOrder());
-      setTimeout(() => {
-        dispatch(getCartItems());
-        router.push("/confirmation");
-      }, 300);
+      if(cart_items?.length>0){
+        dispatch(createOrder());
+        setTimeout(() => {
+          dispatch(getCartItems());
+          router.push("/confirmation");
+        }, 300);
+      }
+     
     } else {
       router.push("/login");
     }

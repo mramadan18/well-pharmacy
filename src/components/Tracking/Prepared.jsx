@@ -2,6 +2,7 @@ import Image from "next/image";
 // Images
 import receivedImg from "#/images/received.png";
 import Button from "../Utilities/Button";
+import Link from "next/link";
 
 const Prepared = () => {
   return (
@@ -35,8 +36,10 @@ const Prepared = () => {
       <p className="text-2xl mt-10 max-w-[400px] mx-auto tracking-[1px]">
         We are preparing your order now. Get well soon!
       </p>
+      <Link href={'/products?page=1'}>
 
       <Button className="w-full mt-5">Back to our products</Button>
+      </Link>
     </div>
   );
 };

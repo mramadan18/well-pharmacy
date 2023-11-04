@@ -27,7 +27,7 @@ const TestimonialsSection = () => {
   return (
     <>
       <section className="testimonials mt-[30px] lg:mt-[80px]">
-        <h2 className="text-primary mb-8 text-center">{t["Testimonials"]}</h2>
+        <h2 className="text-primary mb-8 text-center">{t["Reviews"]}</h2>
         <div className="container relative h-[210px] text-center">
           {loading ? (
             <Loading />

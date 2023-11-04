@@ -1,4 +1,5 @@
 import baseUrl from "@/baseURL";
+import toast from "react-hot-toast";
 
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
@@ -26,6 +27,9 @@ const contactusSlice = createSlice({
       state.loading = false;
       state.contact = action.payload;
       console.log(action.payload);
+      setTimeout(() => {
+        toast.success("Your request sent successfully");
+      }, 2000);
     });
     builder.addCase(requestCall.rejected, (state, action) => {
       state.loading = false;

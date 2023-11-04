@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Switch from "react-switch";
 
 const SwitchLang = () => {
-  const [checked,setchecked]=useState(null)
+  const [checked,setchecked]=useState(false)
 
   const router = useRouter();
 

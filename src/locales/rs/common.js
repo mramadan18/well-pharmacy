@@ -118,4 +118,8 @@ export const RsTrans = {
   "Welcome to Well+ pharmacy": "Welcome to Well+ pharmacy",
   Confirmation: "Confirmation",
   "Request a call": "Request a call",
+  "Or drop files to upload": "Or drop files to upload",
+  Profile: "Profile",
+  "Orders History": "Orders History",
+  "Log Out": "Log Out",
 };

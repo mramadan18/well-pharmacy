@@ -29,7 +29,7 @@ const ProfileList = ({ profileMenuRef, style }) => {
       className="absolute py-3 flex flex-col justify-center items-center gap-2 bg-white rounded-lg top-[40px] -right-[50px] shadow-[0_18px_40px_0_rgba(0,0,0,0.16)] w-[130px] text-center z-10"
       style={style}
     >
-      <Link href="/edit-info">{t["Profile"]}</Link>
+      <Link href="/edit-info">{t["Profile"]} </Link>
       <Link href="/orders">{t["Orders History"]}</Link>
       <button onClick={handleLogOut}>{t["Log Out"]}</button>
     </motion.div>

@@ -7,8 +7,10 @@ import Loading from "../../Utilities/Button";
 import { useEffect, useState } from "react";
 import { getNotifications } from "@/toolkit/slices/notifications/notificationsSlice";
 import { useRouter } from "next/router";
+import { useTrans } from "@/locales/Helper";
 
 const ProductCard = ({ data }) => {
+  const t=useTrans()
   const router = useRouter();
   const { loading } = useSelector((state) => state.addToCart);
   const [isLoading, setIsLoading] = useState(loading);
@@ -58,7 +60,7 @@ const ProductCard = ({ data }) => {
           dangerouslySetInnerHTML={{ __html: data.description_en }}
         /> */}
         <Button className="w-full" onClick={() => setIsLoading(true)}>
-          {isLoading ? <Loading size={22} /> : "Make a request"}
+          {isLoading ? <Loading size={22} /> : t["Make A Request"]}
         </Button>
       </div>
     </div>

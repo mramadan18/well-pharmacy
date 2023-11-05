@@ -5,8 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "@/toolkit/slices/cart/addToCartSlice";
 import Loading from "../Utilities/Loading";
 import { useRouter } from "next/router";
+import { useTrans } from "@/locales/Helper";
 
 const ProductDetails = ({ data, setIsLoadingBar }) => {
+  const t=useTrans()
+
   const router = useRouter();
   const { loading, product } = useSelector((state) => state.addToCart);
   // const [isRequest, setIsRequest] = useState(false);
@@ -42,7 +45,7 @@ const ProductDetails = ({ data, setIsLoadingBar }) => {
       <h4>{data?.name}</h4>
 
       <Button className="w-full" onClick={() => setIsLoading(true)}>
-        {isLoading ? <Loading size={22} /> : "Make a request"}
+        {isLoading ? <Loading size={22} /> : t["Make A Request"]}
       </Button>
 
       <div className="mt-3 text-[#585859] font-semibold">

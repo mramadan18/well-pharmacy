@@ -16,7 +16,8 @@ const PlaceOrder = ({ className }) => {
 
   const handlePlaceOrder = () => {
     if (localStorage.getItem("token")) {
-      if(cart_items?.length>0){
+      console.log("doneeee",cart_items?.results);
+      if(cart_items?.results?.length>0){
         dispatch(createOrder());
         setTimeout(() => {
           dispatch(getCartItems());

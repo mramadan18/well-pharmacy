@@ -83,7 +83,7 @@ const Products = () => {
                   pageCount={pagesCount}
                   initialPage={page - 1}
                   disabledClassName={"opacity-50"}
-                  previousLabel={t["Prev"]}
+                  previousLabel={t["Previous"]}
                   containerClassName={
                     "flex justify-center items-center gap-2 shadow-mainShadow mt-8 rounded-md h-[60px] select-none"
                   }

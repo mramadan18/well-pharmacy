@@ -15,9 +15,11 @@ import { useEffect, useState } from "react";
 import { getCategoryProducts } from "@/toolkit/slices/categories/categoryProductsSlice";
 import { useRouter } from "next/router";
 import ReactPaginate from "react-paginate";
+import { useTrans } from "@/locales/Helper";
 
 const Category = () => {
   const router = useRouter();
+  const t=useTrans()
   const { categoryId, page } = router.query;
   const { loading, products, pagesCount } = useSelector(
     (state) => state.categoryProducts
@@ -74,14 +76,14 @@ const Category = () => {
               <div className="mx-auto w-full">
                 <ReactPaginate
                   breakLabel="..."
-                  nextLabel="Next"
+                  nextLabel={t["Next"]}
                   onPageChange={handlePageClick}
                   marginPagesDisplayed={1}
                   pageRangeDisplayed={1}
                   pageCount={pagesCount}
                   initialPage={page - 1 || 0}
                   disabledClassName={"opacity-50"}
-                  previousLabel="Prev"
+                  previousLabel={t["Previous"]}
                   containerClassName={
                     "flex justify-center items-center gap-2 shadow-mainShadow mt-8 rounded-md h-[60px]"
                   }

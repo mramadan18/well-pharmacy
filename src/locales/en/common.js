@@ -128,4 +128,6 @@ export const EnTrans = {
   Profile: "Profile",
   "Orders History": "Orders History",
   "Log Out": "Log Out",
+  "Make all as read": "Make all as read",
+  New: "New",
 };

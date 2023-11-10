@@ -34,7 +34,7 @@ const RequestCall = ({ setShowModal, setIsOpen }) => {
           </div>
 
           <a href="tel:+201050777117">
-            <button className="border-2 border-primary bg-white text-primary font-bold py-1 px-6 flex justify-center items-center gap-4">
+            <button className="border-2 border-primary bg-white text-primary font-bold py-1 p-1 flex justify-center items-center gap-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="18"

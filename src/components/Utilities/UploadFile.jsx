@@ -23,7 +23,8 @@ const UploadFile = ({ setFile }) => {
       >
         <Image src={img} alt="Next.js Logo" width={100} height={100} priority />
         <div className="flex justify-center items-center mt-5 w-[120px] h-[40px] border border-[#858383] font-bold">
-          {t["Add Files"]}
+          {/* {t["Browse"]} */}
+          Browse
         </div>
       </label>
       <p className="text-[#6B7177] mt-3 text-sm">

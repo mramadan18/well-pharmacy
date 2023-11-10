@@ -43,7 +43,7 @@ const HeaderMobile = ({ bg = "#0F4392", title, logo = false, search }) => {
       }}
     >
       <div className="container flex justify-between items-center">
-        <div>
+        <div style={{width:"40px"}}>
           {logo ? (
             <Image src={logoImg} alt="logo" priority />
           ) : (

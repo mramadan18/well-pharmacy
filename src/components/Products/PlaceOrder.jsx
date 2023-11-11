@@ -11,7 +11,7 @@ const PlaceOrder = ({ className }) => {
   const t=useTrans()
   const router = useRouter();
   const { cart_items } = useSelector((state) => state.cartItems);
-  const { loading } = useSelector((state) => state.createOrder);
+  const { loading ,order} = useSelector((state) => state.createOrder);
   const dispatch = useDispatch();
 
   const handlePlaceOrder = () => {
@@ -21,7 +21,7 @@ const PlaceOrder = ({ className }) => {
         dispatch(createOrder());
         setTimeout(() => {
           dispatch(getCartItems());
-          router.push("/confirmation");
+          router.push(`/confirmation/?orderId=${order.id}`);
         }, 300);
       }
      

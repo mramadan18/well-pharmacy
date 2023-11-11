@@ -12,11 +12,37 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import NavBarMobile from "@/components/Mobile/NavBarMobile";
 import { useTrans } from "@/locales/Helper";
+import baseUrl from "@/baseURL";
+import { useSelector } from "react-redux";
 
 const Confirmation = () => {
   const t=useTrans()
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
+  const { query } = useRouter();
+  const  orderId  = query;
+
+   const CancelOrder = 
+    async () => {
+      const token = localStorage.getItem("token");
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      try {
+        const { data } = await baseUrl.patch(`/order/${orderId?.orderId}/`, {canseld:true},config);
+        router.push('orders')
+
+        return data;
+
+      } catch (error) {
+        
+      }
+   
+    }
+  
+
   return (
     <div>
       <HeaderDesktop />
@@ -59,7 +85,13 @@ const Confirmation = () => {
           <div className="flex justify-between items-center w-full gap-5">
             <button
               className="bg-transparent text-second py-2 rounded-md font-semibold tracking-[1px] border border-second w-1/2"
-              onClick={() => setShowModal(false)}
+              onClick={() => {
+                CancelOrder()
+                setTimeout(() => {
+                  setShowModal(false)
+
+                }, 2000);
+              }}
             >
               {t['Yes, cancel']}
             </button>

@@ -9,8 +9,6 @@ export const updateProfile = createAsyncThunk(
     const token = localStorage.getItem("token");
     const { id } = JSON.parse(localStorage.getItem("user"));
 
-    console.log("params", params);
-    console.log("id", id);
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,

@@ -5,7 +5,7 @@ import upload from "#/images/icons/arrow_up.png";
 import { useTrans } from "@/locales/Helper";
 
 const UploadFile = ({ setFile }) => {
-  const t=useTrans()
+  const t = useTrans();
 
   const [img, setImg] = useState(upload);
 

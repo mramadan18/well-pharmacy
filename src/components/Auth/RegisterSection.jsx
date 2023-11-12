@@ -6,7 +6,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 // Get data with redux toolkit
 import { useDispatch, useSelector } from "react-redux";
-import { register } from "@/toolkit/slices/registerSlice";
+import { register } from "@/toolkit/slices/auth/registerSlice";
 import { getHotels } from "@/toolkit/slices/hotels/hotelsSlice";
 import { getRooms } from "@/toolkit/slices/rooms/roomsSlice";
 import Loading from "../Utilities/Loading";
@@ -86,14 +86,13 @@ const RegisterSection = () => {
           <input
             className="w-full py-2 px-3 border border-[#AEB4B9] shadow-inner rounded-sm text-[#8C9196] outline-none"
             id="name"
-            type="number"
+            type="tel"
+            autoComplete="phone"
             placeholder="Write here"
             required
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-         
           />
-        
         </div>
         <div className="flex flex-col justify-center items-start gap-3 w-full">
           <label htmlFor="password">Your Password*</label>
@@ -138,7 +137,6 @@ const RegisterSection = () => {
             value={room_id}
             onChange={(e) => setRoom_id(e.target.value)}
           />
-      
         </div>
 
         <button

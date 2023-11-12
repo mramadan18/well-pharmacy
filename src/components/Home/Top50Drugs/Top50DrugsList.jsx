@@ -21,26 +21,24 @@ import baseUrl from "@/baseURL";
 import ProductCard from "./ProductCard";
 
 const CategoriesList = () => {
-  const t=useTrans()
-const [Data, setData] = useState([])
+  const t = useTrans();
+  const [Data, setData] = useState([]);
   const { loading, categories } = useSelector((state) => state.categories);
   const dispatch = useDispatch();
-  const CallApi =async()=>{
+  const CallApi = async () => {
     try {
       const { data } = await baseUrl.get("/product/?limit=50", {
-         headers: { "Accept-Language": localStorage.getItem("lang") },
+        headers: { "Accept-Language": localStorage.getItem("lang") },
       });
-      setData(data?.results)
-      console.log(data,"dataaa");
+      setData(data?.results);
+      console.log(data, "dataaa");
     } catch (error) {
-      console.log(error,"error error");
-
+      console.log(error, "error error");
     }
-  
-  }
-useEffect(() => {
-  CallApi()
-}, [])
+  };
+  useEffect(() => {
+    CallApi();
+  }, []);
 
   useEffect(() => {
     dispatch(getCategories());
@@ -60,20 +58,20 @@ useEffect(() => {
         /> */}
 
         <Swiper
-          slidesPerView={2.5}
-          spaceBetween={30}
+          slidesPerView={1.5}
+          spaceBetween={10}
           breakpoints={{
-            640: {
-              slidesPerView: 3.5,
-              spaceBetween: 30,
+            450: {
+              slidesPerView: 2.5,
+              spaceBetween: 10,
             },
             768: {
-              slidesPerView: 3,
-              spaceBetween: 20,
+              slidesPerView: 3.5,
+              spaceBetween: 10,
             },
             1024: {
-              slidesPerView: 3,
-              spaceBetween: 30,
+              slidesPerView: 4.5,
+              spaceBetween: 10,
             },
           }}
           autoplay={{

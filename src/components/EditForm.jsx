@@ -11,6 +11,8 @@ import { useRouter } from "next/router";
 
 const EditForm = () => {
   const router = useRouter();
+  const [img, setImg] = useState("");
+  const [urlImg, setUrlImg] = useState("");
   const [first_name, setFirst_name] = useState("");
   const [phone, setPhone] = useState("");
   const [hotel, setHotel] = useState("");
@@ -21,30 +23,48 @@ const EditForm = () => {
   const { loading } = useSelector((state) => state.upadteProfile);
   const dispatch = useDispatch();
 
+  const handleChangeImage = (e) => {
+    const imgUpload = URL.createObjectURL(e.target.files[0]);
+    setImg(imgUpload);
+    setUrlImg(e.target.files[0]);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const formData = {
-      phone,
-      hotel,
-      room,
-    };
-
-    await dispatch(updateProfile(formData));
+    if (urlImg !== null) {
+      const formData = new FormData();
+      formData.append("image", urlImg);
+      formData.append("first_name", first_name);
+      formData.append("phone", phone);
+      formData.append("hotel", hotel);
+      formData.append("room", room);
+      dispatch(updateProfile(formData));
+    } else {
+      const formData = new FormData();
+      formData.append("first_name", first_name);
+      formData.append("phone", phone);
+      formData.append("hotel", hotel);
+      formData.append("room", room);
+      dispatch(updateProfile(formData));
+    }
   };
 
   useEffect(() => {
-    const { first_name, phone, hotel, room } = JSON.parse(
-      localStorage.getItem("user")
-    );
+    if (!localStorage.getItem("token")) {
+      router.push("/login");
+    } else {
+      const { image, first_name, phone, hotel, room } = JSON.parse(
+        localStorage.getItem("user")
+      );
+      setImg(image);
+      setFirst_name(first_name);
+      setPhone(phone);
+      setHotel(hotel);
+      setRoom(room);
 
-    setFirst_name(first_name);
-    setPhone(phone);
-    setHotel(hotel);
-    setRoom(room);
-
-    dispatch(getHotels());
-    dispatch(getRooms());
+      dispatch(getHotels());
+      dispatch(getRooms());
+    }
   }, []);
 
   return (
@@ -54,6 +74,21 @@ const EditForm = () => {
         className="flex flex-col justify-center items-center gap-6"
         onSubmit={handleSubmit}
       >
+        <div className="mt-4">
+          <label
+            htmlFor="profile-img"
+            className="flex justify-center items-center rounded-full overflow-hidden"
+          >
+            <img src={img} alt="Next.js Logo" width={150} height={150} />
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            id="profile-img"
+            className="w-full h-full bg-transparent opacity-0 hidden cursor-pointer"
+            onChange={handleChangeImage}
+          />
+        </div>
         <div className="flex flex-col justify-center items-start gap-3 w-full">
           <label htmlFor="name">Your Name*</label>
           <input

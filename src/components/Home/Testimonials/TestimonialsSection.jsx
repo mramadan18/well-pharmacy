@@ -19,7 +19,7 @@ import { useTrans } from "@/locales/Helper";
 const TestimonialsSection = () => {
   const { loading, reviews } = useSelector((state) => state.reviews);
   const dispatch = useDispatch();
-  const t=useTrans()
+  const t = useTrans();
 
   useEffect(() => {
     dispatch(getReviews());

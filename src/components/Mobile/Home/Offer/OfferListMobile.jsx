@@ -9,11 +9,20 @@ import "swiper/css/pagination";
 // import required modules
 import { Autoplay, Pagination } from "swiper";
 import SubTitle from "../../Utilities/SubTitle";
-import { useTranslation } from "react-i18next";
 import { useTrans } from "@/locales/Helper";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getSliderOffers } from "@/toolkit/slices/sliderOffersSlice";
+import Loading from "@/components/Utilities/Loading";
 
 const OfferListMobile = () => {
-  const t=useTrans()
+  const t = useTrans();
+  const { loading, offers } = useSelector((state) => state.sliderOffers);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getSliderOffers());
+  }, []);
 
   return (
     <section className="offer-mob mt-6 lg:hidden">
@@ -35,15 +44,12 @@ const OfferListMobile = () => {
           modules={[Autoplay, Pagination]}
           className="mySwiper"
         >
-          <SwiperSlide>
-            <OfferItemMobile />
-          </SwiperSlide>
-          <SwiperSlide>
-            <OfferItemMobile />
-          </SwiperSlide>
-          <SwiperSlide>
-            <OfferItemMobile />
-          </SwiperSlide>
+          {loading && <Loading />}
+          {offers?.map((offer) => (
+            <SwiperSlide key={offer.id}>
+              <OfferItemMobile data={offer} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </section>

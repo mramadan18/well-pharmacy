@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import registerReducer from "./slices/registerSlice";
+import registerReducer from "./slices/auth/registerSlice";
 import hotelsReducer from "./slices/hotels/hotelsSlice";
 import hotelReducer from "./slices/hotels/hotelSlice";
 import roomsReducer from "./slices/rooms/roomsSlice";
 import roomReducer from "./slices/rooms/roomSlice";
-import loginReducer from "./slices/loginSlice";
+import loginReducer from "./slices/auth/loginSlice";
 import updateProfileReducer from "./slices/updateProfileSlice";
 import categoriesReducer from "./slices/categories/categoriesSlice";
 import reviewsReducer from "./slices/reviews/reviewsSlice";
@@ -23,6 +23,7 @@ import categoryProductsReducer from "./slices/categories/categoryProductsSlice";
 import searchReducer from "./slices/products/searchSlice";
 import orderReducer from "./slices/orders/orderSlice";
 import usesReducer from "./slices/categories/usesSlice";
+import sliderOffersReducer from "./slices/sliderOffersSlice";
 
 const store = configureStore({
   reducer: {
@@ -38,6 +39,7 @@ const store = configureStore({
     uses: usesReducer,
     reviews: reviewsReducer,
     addReview: addReviewReducer,
+    sliderOffers: sliderOffersReducer,
     products: productsReducer,
     product: productReducer,
     searchProducts: searchReducer,

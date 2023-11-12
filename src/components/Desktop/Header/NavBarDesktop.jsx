@@ -49,6 +49,7 @@ const NavBarDesktop = () => {
               router.pathname === "/orders" && "text-primary"
             }`}
           >
+            
             {t["My orders"]}
           </Link>
         </li>

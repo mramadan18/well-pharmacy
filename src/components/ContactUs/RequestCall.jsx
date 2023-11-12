@@ -1,6 +1,8 @@
+import { useTrans } from "@/locales/Helper";
 import Button from "../Utilities/Button";
 
 const RequestCall = ({ setShowModal, setIsOpen }) => {
+  const t=useTrans()
   const handleShowRequest = () => {
     if (window.innerWidth < 992) {
       setIsOpen(true);
@@ -10,7 +12,9 @@ const RequestCall = ({ setShowModal, setIsOpen }) => {
   };
   return (
     <div className="bg-white p-6 flex flex-col justify-center items-center gap-6 text-center lg:shadow-secondShadow lg:rounded-lg">
-      <h3>Reach us via</h3>
+      <h3>
+        {t['Reach us via']}
+      </h3>
       <div className="w-full flex flex-col justify-center gap-6">
         <div className="flex justify-between items-center">
           <div className="flex justify-center items-center gap-4">
@@ -30,7 +34,7 @@ const RequestCall = ({ setShowModal, setIsOpen }) => {
           </div>
 
           <a href="tel:+201050777117">
-            <button className="border-2 border-primary bg-white text-primary font-bold py-1 px-6 flex justify-center items-center gap-4">
+            <button className="border-2 border-primary bg-white text-primary font-bold py-1 p-1 flex justify-center items-center gap-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="18"
@@ -43,7 +47,7 @@ const RequestCall = ({ setShowModal, setIsOpen }) => {
                   fill="#0F4392"
                 />
               </svg>
-              <span>Call now</span>
+              <span>{t['Call now']} </span>
             </button>
           </a>
         </div>
@@ -76,7 +80,7 @@ const RequestCall = ({ setShowModal, setIsOpen }) => {
       </div>
 
       <Button className="w-full" onClick={handleShowRequest}>
-        Request a call
+        {t['Request a call']}
       </Button>
     </div>
   );

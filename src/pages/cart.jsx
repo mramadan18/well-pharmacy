@@ -28,7 +28,6 @@ const Cart = () => {
       <HeaderMobile bg="#0F4392" btnBack={true} title="My cart" />
       <NavBarMobile />
 
-      <PlaceOrder className="lg:hidden" />
       <div className="container mt-5 lg:mt-32">
         <BreadcrumbsList>
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
@@ -42,6 +41,8 @@ const Cart = () => {
         <div className="grid grid-1 lg:grid-cols-[1fr_40%] lg:mt-10 gap-6">
           <div>
             <YourInfo />
+            <PlaceOrder className="lg:hidden" />
+
             <YourCart />
           </div>
           <div className="lg:mt-11 hidden lg:block">

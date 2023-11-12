@@ -1,16 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 // Components
-import Button from "../Utilities/Button";
+import Button from "../../Utilities/Button";
 import { addToCart } from "@/toolkit/slices/cart/addToCartSlice";
-import Loading from "../Utilities/Loading";
+import Loading from "../../Utilities/Button";
 import { useEffect, useState } from "react";
 import { getNotifications } from "@/toolkit/slices/notifications/notificationsSlice";
 import { useRouter } from "next/router";
 import { useTrans } from "@/locales/Helper";
 
 const ProductCard = ({ data }) => {
-const t=  useTrans()
+  const t=useTrans()
   const router = useRouter();
   const { loading } = useSelector((state) => state.addToCart);
   const [isLoading, setIsLoading] = useState(loading);

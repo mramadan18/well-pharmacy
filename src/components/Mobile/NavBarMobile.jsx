@@ -75,6 +75,7 @@ const NavBarMobile = () => {
             )}
             <Image src={link.icon} alt={link.name} priority />
             <div>
+              
               <span>{link.name}</span>
             </div>
           </div>

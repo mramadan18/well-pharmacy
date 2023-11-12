@@ -101,7 +101,7 @@ body {
 }
 
 .nav-mobile .nav-item .box div {
-  width: 70px;
+  /* width: 70px; */
   height: 25px;
   margin-top: 6px;
   display: flex;
@@ -115,6 +115,11 @@ body {
 .nav-mobile .nav-item.active .box div {
   color: white;
   background-color: #0f4392;
+  padding: 10px;
+  height: 30px;
+}
+.nav-mobile .nav-item .box div span{
+  text-align: center;
 }
 /* End Navbar Mobile */
 

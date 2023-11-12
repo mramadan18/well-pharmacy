@@ -13,8 +13,8 @@ export const useTrans = () => {
       return;
     }
     const lang = localStorage.getItem("lang");
-    setFile(lang == "en" ? EnTrans : RsTrans);
-    return lang == "en" ? EnTrans : RsTrans;
+    setFile(lang == "en" || !lang ? EnTrans : RsTrans);
+    return lang == "en" || !lang ? EnTrans : RsTrans;
   };
 
   useEffect(() => {

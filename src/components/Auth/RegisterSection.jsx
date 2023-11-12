@@ -83,26 +83,17 @@ const RegisterSection = () => {
         </div>
         <div className="flex flex-col justify-center items-start gap-3 w-full">
           <label htmlFor="phone">Your Phone*</label>
-          <PhoneInput
-            placeholder="000 000 000 00"
-            country="eg"
-            disableDropdown={true}
-            disableCountryCode={true}
-            autoFormat={true}
-            inputProps={{
-              id: "phone",
-              required: true,
-            }}
-            inputStyle={{
-              width: "100%",
-              height: "42px",
-              fontSize: "1rem",
-              border: "1px solid #AEB4B9",
-              borderRadius: "2px",
-            }}
+          <input
+            className="w-full py-2 px-3 border border-[#AEB4B9] shadow-inner rounded-sm text-[#8C9196] outline-none"
+            id="name"
+            type="number"
+            placeholder="Write here"
+            required
             value={phone}
-            onChange={(e) => setPhone(e)}
+            onChange={(e) => setPhone(e.target.value)}
+         
           />
+        
         </div>
         <div className="flex flex-col justify-center items-start gap-3 w-full">
           <label htmlFor="password">Your Password*</label>

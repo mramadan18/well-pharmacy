@@ -9,6 +9,8 @@ const YourInfo = () => {
   const router = useRouter();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  
+  const [roomNum, setRoom] = useState("");
 
   const { hotel } = useSelector((state) => state.hotel);
   const { room } = useSelector((state) => state.room);
@@ -28,6 +30,8 @@ const YourInfo = () => {
 
     setName(first_name);
     setPhone(phone);
+    setRoom(room);
+
   };
 
   useEffect(() => {
@@ -50,7 +54,7 @@ const YourInfo = () => {
           <span>
             Room Number:{" "}
             <span className="text-second font-semibold">
-              {room?.room_number}
+              {roomNum}
             </span>
           </span>
         </div>

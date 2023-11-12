@@ -1,4 +1,5 @@
 import baseUrl from "@/baseURL";
+import toast from "react-hot-toast";
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
 export const addReview = createAsyncThunk(
@@ -34,6 +35,9 @@ const addReviewSlice = createSlice({
       state.loading = false;
       state.review = action.payload;
       state.error = {};
+      setTimeout(() => {
+        toast.success("Your review sent successfully");
+      }, 2000);
     });
     builder.addCase(addReview.rejected, (state, action) => {
       state.loading = false;

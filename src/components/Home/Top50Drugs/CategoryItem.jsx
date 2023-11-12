@@ -5,7 +5,7 @@ const CategoryItem = ({ data }) => {
   return (
     <Link href={`/categories/${data?.id}`}>
       <div className="bg-[url('/images/bg_category.png')] bg-no-repeat bg-contain h-[140px] flex justify-center items-center">
-        <img
+        <Image
           src={data.icon_image || "/images/not_found.png"}
           alt={data.name}
           width={100}

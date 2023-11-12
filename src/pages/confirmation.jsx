@@ -11,10 +11,38 @@ import Modal from "@/components/Utilities/Madal";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import NavBarMobile from "@/components/Mobile/NavBarMobile";
+import { useTrans } from "@/locales/Helper";
+import baseUrl from "@/baseURL";
+import { useSelector } from "react-redux";
 
 const Confirmation = () => {
+  const t=useTrans()
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
+  const { query } = useRouter();
+  const  orderId  = query;
+
+   const CancelOrder = 
+    async () => {
+      const token = localStorage.getItem("token");
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      try {
+        const { data } = await baseUrl.patch(`/order/${orderId?.orderId}/`, {canseld:true},config);
+        router.push('orders')
+
+        return data;
+
+      } catch (error) {
+        
+      }
+   
+    }
+  
+
   return (
     <div>
       <HeaderDesktop />
@@ -22,26 +50,26 @@ const Confirmation = () => {
       <NavBarMobile />
 
       <div className="flex flex-col justify-center items-center gap-6 lg:bg-white p-4 rounded-lg w-auto lg:w-[550px] mx-4 lg:mx-auto mt-5 lg:mt-32 lg:shadow-secondShadow text-center">
-        <h1 className="text-primary">Thank you</h1>
+        <h1 className="text-primary">{t['Thank you']} </h1>
         <Image src={right} alt="Thank you" />
         <p className="px-10 text-lg">
-          Your order has been placed successfully, you will receive a call to
-          confirm.
+          {t['Your order has been placed successfully, you will receive a call to confirm.']}
+         
         </p>
-        <p className="text-lg">Get well soon!</p>
+        <p className="text-lg">{t['Get well soon!']} </p>
         <div className="flex justify-between items-center w-full gap-5">
           <button
             className="bg-transparent text-second py-2 rounded-md font-semibold tracking-[1px] border border-second w-1/2"
             onClick={() => setShowModal(true)}
           >
-            Cancel order
+            {t['Cancel order']}
           </button>
           <Button className="w-1/2" onClick={() => router.push("/")}>
-            Go it
+            {t['Go it']}
           </Button>
         </div>
         <Link href="/tracking" className="text-[#2C6ECB] font-bold">
-          Track your order
+          {t['Track your order']}
         </Link>
       </div>
 
@@ -49,20 +77,26 @@ const Confirmation = () => {
 
       <Modal showModal={showModal} setShowModal={setShowModal}>
         <div className="p-4 bg-white text-center rounded-lg w-auto lg:w-[600px]">
-          <h3 className="text-primary">Order cancellation</h3>
+          <h3 className="text-primary">{t['Order cancellation']} </h3>
           <p className="mt-4 mb-3 text-lg">
-            Are you sure you want to cancel your order?
+            {t['Are you sure you want to cancel your order?']}
           </p>
 
           <div className="flex justify-between items-center w-full gap-5">
             <button
               className="bg-transparent text-second py-2 rounded-md font-semibold tracking-[1px] border border-second w-1/2"
-              onClick={() => setShowModal(false)}
+              onClick={() => {
+                CancelOrder()
+                setTimeout(() => {
+                  setShowModal(false)
+
+                }, 2000);
+              }}
             >
-              Yes, cancel
+              {t['Yes, cancel']}
             </button>
             <Button className="w-1/2" onClick={() => setShowModal(false)}>
-              Keep it
+              {t['Keep it']}
             </Button>
           </div>
         </div>

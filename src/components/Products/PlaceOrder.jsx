@@ -11,16 +11,20 @@ const PlaceOrder = ({ className }) => {
   const t=useTrans()
   const router = useRouter();
   const { cart_items } = useSelector((state) => state.cartItems);
-  const { loading } = useSelector((state) => state.createOrder);
+  const { loading ,order} = useSelector((state) => state.createOrder);
   const dispatch = useDispatch();
 
   const handlePlaceOrder = () => {
     if (localStorage.getItem("token")) {
-      dispatch(createOrder());
-      setTimeout(() => {
-        dispatch(getCartItems());
-        router.push("/confirmation");
-      }, 300);
+      console.log("doneeee",cart_items?.results);
+      if(cart_items?.results?.length>0){
+        dispatch(createOrder());
+        setTimeout(() => {
+          dispatch(getCartItems());
+          router.push(`/confirmation/?orderId=${order.id}`);
+        }, 300);
+      }
+     
     } else {
       router.push("/login");
     }

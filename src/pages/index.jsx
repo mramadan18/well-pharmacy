@@ -1,5 +1,7 @@
 import Footer from "@/components/Footer";
 import CategoriesList from "@/components/Home/Category/CategoriesList";
+import Top50Drugs from  "@/components/Home/Top50Drugs/Top50DrugsList";
+
 import ServicesList from "@/components/Home/Services/ServicesList";
 import TestimonialsSection from "@/components/Home/Testimonials/TestimonialsSection";
 import SearchInput from "@/components/Utilities/SearchInput";
@@ -38,6 +40,8 @@ if( !localStorage.getItem("lang")){
       <OfferDesktop />
       <OfferListMobile />
       <CategoriesList />
+      <Top50Drugs />
+
       <ServicesList />
       <TestimonialsSection />
       <Footer />

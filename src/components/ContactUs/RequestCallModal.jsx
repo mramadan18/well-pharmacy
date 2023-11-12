@@ -10,7 +10,7 @@ import "react-phone-input-2/lib/style.css";
 // animate
 import { motion } from "framer-motion";
 
-const RequestCallModal = () => {
+const RequestCallModal = ({setIsOpen}) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState(null);
 
@@ -24,6 +24,10 @@ const RequestCallModal = () => {
       phone_number: phone,
     };
     dispatch(requestCall(formData));
+    setTimeout(() => {
+      setIsOpen(false)
+    }, 1000);
+   
   };
 
   return (
@@ -61,7 +65,7 @@ const RequestCallModal = () => {
             type="number"
             placeholder="000 000 000 00"
             value={phone}
-            onChange={(value) => setPhone(value)}
+            onChange={(e) => setPhone(e.target.value)}
             required
           />
           {/* <PhoneInput

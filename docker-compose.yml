@@ -5,7 +5,7 @@ services:
     container_name: well_pharmacy
     image: a7medabdo6/well_pharmacy
       ports:
-        - "3000":"3000"
+        - 3000:3000
   
   watchtower:
     image: containrrr/watchtower

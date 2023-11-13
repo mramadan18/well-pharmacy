@@ -10,7 +10,7 @@ const CategoryItem = ({ data }) => {
           alt={data.name}
           width={100}
           height={80}
-          priority
+          
         />
       </div>
       <p className="mt-6 w-[150px]">{data.name}</p>

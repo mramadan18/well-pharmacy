@@ -105,7 +105,7 @@ export const EnTrans = {
   "Get well soon!": "Get well soon!",
   "Cancel order": "Cancel order",
   "Track your order": "Track your order",
-  "Go it": "Go it",
+  "Go it": "Got it",
   "Order cancellation": "Order cancellation",
   " Are you sure you want to cancel your order?":
     " Are you sure you want to cancel your order?",

@@ -15,8 +15,21 @@ import "swiper/css/pagination";
 
 // import required modules
 import { Pagination } from "swiper";
+import baseUrl from "@/baseURL";
+import { useEffect, useState } from "react";
 
 const OfferDesktop = () => {
+  const [data, setdata] = useState([]);
+  const GetSlides = async () => {
+    const { data } = await baseUrl.get("/settings/sliders/", {
+      headers: { "Accept-Language": localStorage.getItem("lang") },
+    });
+    setdata(data?.results);
+  };
+  useEffect(() => {
+    GetSlides();
+  }, []);
+
   return (
     <section className="offer hidden lg:flex justify-between items-center mt-[60px] w-full h-[355px] bg-[#f5b9b9]">
       <div className="relative flex justify-center items-center w-[60%] h-[315px] ml-[2%]">
@@ -45,15 +58,11 @@ const OfferDesktop = () => {
           modules={[Pagination]}
           className="mySwiper mt-[60px]"
         >
-          <SwiperSlide>
-            <OfferItemDesktop />
-          </SwiperSlide>
-          <SwiperSlide>
-            <OfferItemDesktop />
-          </SwiperSlide>
-          <SwiperSlide>
-            <OfferItemDesktop />
-          </SwiperSlide>
+          {data?.map((item) => (
+            <SwiperSlide>
+              <OfferItemDesktop item={item} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
       <div className="mr-[12rem]">

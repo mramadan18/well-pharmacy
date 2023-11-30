@@ -4,13 +4,21 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const Filter = () => {
-  const t=useTrans()
+  const t = useTrans();
   const { uses } = useSelector((state) => state.uses);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUses());
   }, []);
+  const [selectedUse, setSelectedUse] = useState(""); // State to hold the selected value
+
+  const handleSelectChange = (event) => {
+    const selectedValue = event.target.value;
+    setSelectedUse(selectedValue);
+    // Perform actions or logic based on the selected value here
+    console.log("Selected value:", selectedValue);
+  };
 
   return (
     <div className="p-6 lg:shadow-secondShadow rounded-md bg-white">
@@ -36,6 +44,8 @@ const Filter = () => {
           {t["By uses"]}
         </label>
         <select
+          onChange={handleSelectChange} // Adding onchange method here
+          value={selectedUse} // Bind the value of the select element to the state
           id="by-uses"
           className="block w-full p-2 mb-6 bg-[#F6F6F7] text-gray-900 border border-[#AEB4B9] focus:border-[#AEB4B9] rounded-md"
         >

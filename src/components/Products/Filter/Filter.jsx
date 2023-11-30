@@ -1,9 +1,12 @@
 import { useTrans } from "@/locales/Helper";
 import { getUses } from "@/toolkit/slices/categories/usesSlice";
+import { getProducts } from "@/toolkit/slices/products/productsSlice";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const Filter = () => {
+  const { query } = useRouter();
   const t = useTrans();
   const { uses } = useSelector((state) => state.uses);
   const dispatch = useDispatch();
@@ -11,13 +14,12 @@ const Filter = () => {
   useEffect(() => {
     dispatch(getUses());
   }, []);
-  const [selectedUse, setSelectedUse] = useState(""); // State to hold the selected value
 
   const handleSelectChange = (event) => {
-    const selectedValue = event.target.value;
-    setSelectedUse(selectedValue);
-    // Perform actions or logic based on the selected value here
-    console.log("Selected value:", selectedValue);
+    const { value } = event.target;
+    const { page } = query;
+    console.log({ query, value });
+    dispatch(getProducts({ page, use: value }));
   };
 
   return (
@@ -44,8 +46,7 @@ const Filter = () => {
           {t["By uses"]}
         </label>
         <select
-          onChange={handleSelectChange} // Adding onchange method here
-          value={selectedUse} // Bind the value of the select element to the state
+          onChange={handleSelectChange}
           id="by-uses"
           className="block w-full p-2 mb-6 bg-[#F6F6F7] text-gray-900 border border-[#AEB4B9] focus:border-[#AEB4B9] rounded-md"
         >

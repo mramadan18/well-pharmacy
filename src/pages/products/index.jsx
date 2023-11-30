@@ -20,7 +20,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTrans } from "@/locales/Helper";
 
 const Products = () => {
-  const t=useTrans()
+  const t = useTrans();
   const router = useRouter();
   const { page } = router.query;
   const { loading, products, pagesCount } = useSelector(
@@ -36,7 +36,7 @@ const Products = () => {
   };
 
   useEffect(() => {
-    dispatch(getProducts(activePage));
+    dispatch(getProducts({ page: activePage }));
   }, [activePage, page]);
 
   return (

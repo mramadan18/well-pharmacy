@@ -77,12 +77,15 @@ const Filter = ({ setuses }) => {
       </div> */}
 
       <div className="flex justify-between items-center gap-2">
-        <button className="border border-primary py-3 w-32 rounded-md font-bold bg-white text-primary">
+        <button
+          onClick={() => setuses("")}
+          className="border border-primary py-3 w-32 rounded-md font-bold bg-white text-primary"
+        >
           {t["Clear All"]}
         </button>
-        <button className="border border-primary py-3 w-32 rounded-md font-bold bg-primary text-white">
+        {/* <button className="border border-primary py-3 w-32 rounded-md font-bold bg-primary text-white">
           {t["Apply"]}
-        </button>
+        </button> */}
       </div>
     </div>
   );

@@ -46,6 +46,7 @@ const Products = () => {
       <HeaderMobile
         bg="#0f4392"
         btnBack={true}
+        setuses={setuses}
         title={t["Our products"]}
         search={true}
       />

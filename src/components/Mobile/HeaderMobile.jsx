@@ -18,7 +18,13 @@ import SwitchLang from "../Utilities/Lang/SwitchLang";
 import { getProducts } from "@/toolkit/slices/products/productsSlice";
 import { useDispatch } from "react-redux";
 
-const HeaderMobile = ({ bg = "#0F4392", title, logo = false, search }) => {
+const HeaderMobile = ({
+  bg = "#0F4392",
+  title,
+  logo = false,
+  search,
+  setuses,
+}) => {
   const [isLogin, setIsLogin] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [showProfileList, setShowProfileList] = useState(false);
@@ -30,7 +36,6 @@ const HeaderMobile = ({ bg = "#0F4392", title, logo = false, search }) => {
   useEffect(() => {
     localStorage.getItem("token") ? setIsLogin(true) : setIsLogin(false);
   }, []);
-  const [uses, setuses] = useState("");
 
   useEffect(() => {
     // Handle open & close profile list
@@ -40,9 +45,6 @@ const HeaderMobile = ({ bg = "#0F4392", title, logo = false, search }) => {
       }
     });
   }, []);
-  useEffect(() => {
-    dispatch(getProducts({ uses }));
-  }, [uses]);
 
   return (
     <header

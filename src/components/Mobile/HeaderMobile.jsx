@@ -15,17 +15,22 @@ import Filter from "../Products/Filter/Filter";
 import NotifyCount from "../Utilities/NotifyCount";
 import ProfileList from "../Desktop/Header/ProfileList";
 import SwitchLang from "../Utilities/Lang/SwitchLang";
+import { getProducts } from "@/toolkit/slices/products/productsSlice";
+import { useDispatch } from "react-redux";
 
 const HeaderMobile = ({ bg = "#0F4392", title, logo = false, search }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [showProfileList, setShowProfileList] = useState(false);
   // Profile
+  const dispatch = useDispatch();
+
   const profileMenuRef = useRef();
   const profileImgRef = useRef();
   useEffect(() => {
     localStorage.getItem("token") ? setIsLogin(true) : setIsLogin(false);
   }, []);
+  const [uses, setuses] = useState("");
 
   useEffect(() => {
     // Handle open & close profile list
@@ -35,6 +40,10 @@ const HeaderMobile = ({ bg = "#0F4392", title, logo = false, search }) => {
       }
     });
   }, []);
+  useEffect(() => {
+    dispatch(getProducts({ uses }));
+  }, [uses]);
+
   return (
     <header
       className="lg:hidden py-6 rounded-b-lg"
@@ -43,7 +52,7 @@ const HeaderMobile = ({ bg = "#0F4392", title, logo = false, search }) => {
       }}
     >
       <div className="container flex justify-between items-center">
-        <div style={{width:"40px"}}>
+        <div style={{ width: "40px" }}>
           {logo ? (
             <Image src={logoImg} alt="logo" priority />
           ) : (
@@ -103,7 +112,7 @@ const HeaderMobile = ({ bg = "#0F4392", title, logo = false, search }) => {
             </div>
           </div>
           <BottomModal isOpen={isOpen} setIsOpen={setIsOpen}>
-            <Filter />
+            <Filter setuses={setuses} />
           </BottomModal>
         </>
       )}

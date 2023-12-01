@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const Filter = () => {
+const Filter = ({ setuses }) => {
   const { query } = useRouter();
   const t = useTrans();
   const { uses } = useSelector((state) => state.uses);
@@ -18,8 +18,9 @@ const Filter = () => {
   const handleSelectChange = (event) => {
     const { value } = event.target;
     const { page } = query;
-    console.log({ query, value });
-    dispatch(getProducts({ page, uses: value }));
+    setuses(value);
+    // console.log({ query, value });
+    // dispatch(getProducts({ page, uses: value }));
   };
 
   return (

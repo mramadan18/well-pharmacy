@@ -13,9 +13,9 @@ const OfferItemMobile = ({ data }) => {
             {data?.header_title}
           </h5>
           <p className="my-1 text-sm">{data?.description}</p>
-          <button className="text-sm py-2 px-8 bg-primary text-white rounded-sm mt-3 font-medium">
+          {/* <button className="text-sm py-2 px-8 bg-primary text-white rounded-sm mt-3 font-medium">
             {t["Get this offer"]}
-          </button>
+          </button> */}
         </div>
         <div>
           <img

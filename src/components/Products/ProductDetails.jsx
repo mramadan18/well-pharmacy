@@ -6,9 +6,10 @@ import { addToCart } from "@/toolkit/slices/cart/addToCartSlice";
 import Loading from "../Utilities/Loading";
 import { useRouter } from "next/router";
 import { useTrans } from "@/locales/Helper";
+import { getCartItems } from "@/toolkit/slices/cart/cartItemsSlice";
 
 const ProductDetails = ({ data, setIsLoadingBar }) => {
-  const t=useTrans()
+  const t = useTrans();
 
   const router = useRouter();
   const { loading, product } = useSelector((state) => state.addToCart);
@@ -26,7 +27,8 @@ const ProductDetails = ({ data, setIsLoadingBar }) => {
         };
 
         await dispatch(addToCart(formData));
-
+        setTimeout(() => {}, 1000);
+        dispatch(getCartItems());
         setIsLoading(loading);
         setIsLoadingBar(true);
       } else {
@@ -51,25 +53,30 @@ const ProductDetails = ({ data, setIsLoadingBar }) => {
       <div className="mt-3 text-[#585859] font-semibold">
         <h5 className="text-primary mb-4">Product details</h5>
         <p className="mb-1">
-        Short Description:
-          <span className="text-[#4F4F4F] font-normal"> {data?.short_description} </span>
-        </p>
-        {data?.active_ingredient &&  <p className="mb-1">
-          Active ingredients:
+          Short Description:
           <span className="text-[#4F4F4F] font-normal">
             {" "}
-            {data?.active_ingredient}
+            {data?.short_description}{" "}
           </span>
-        </p>}
-       
-       
-        {data.russian_similar &&  <p className="mb-1">
-          Russian similar:{" "}
-          <span className="text-[#4F4F4F] font-normal">
-            {data.russian_similar || ""}
-          </span>
-        </p>}
-       
+        </p>
+        {data?.active_ingredient && (
+          <p className="mb-1">
+            Active ingredients:
+            <span className="text-[#4F4F4F] font-normal">
+              {" "}
+              {data?.active_ingredient}
+            </span>
+          </p>
+        )}
+
+        {data.russian_similar && (
+          <p className="mb-1">
+            Russian similar:{" "}
+            <span className="text-[#4F4F4F] font-normal">
+              {data.russian_similar || ""}
+            </span>
+          </p>
+        )}
       </div>
     </div>
   );

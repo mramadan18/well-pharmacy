@@ -22,6 +22,7 @@ import { useTrans } from "@/locales/Helper";
 const Products = () => {
   const t = useTrans();
   const router = useRouter();
+  const [uses, setuses] = useState("");
   const { page } = router.query;
   const { loading, products, pagesCount } = useSelector(
     (state) => state.products
@@ -36,8 +37,8 @@ const Products = () => {
   };
 
   useEffect(() => {
-    dispatch(getProducts({ page: activePage }));
-  }, [activePage, page]);
+    dispatch(getProducts({ page: activePage, uses }));
+  }, [activePage, page, uses]);
 
   return (
     <div>
@@ -64,7 +65,7 @@ const Products = () => {
         <CategoriesTagsList />
         <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-6 mt-6">
           <div className="hidden lg:block">
-            <Filter />
+            <Filter setuses={setuses} />
           </div>
           <div>
             {/* <FilterTagsList /> */}

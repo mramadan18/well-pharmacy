@@ -8,9 +8,10 @@ import { useEffect, useState } from "react";
 import { getNotifications } from "@/toolkit/slices/notifications/notificationsSlice";
 import { useRouter } from "next/router";
 import { useTrans } from "@/locales/Helper";
+import { getCartItems } from "@/toolkit/slices/cart/cartItemsSlice";
 
 const ProductCard = ({ data }) => {
-const t=  useTrans()
+  const t = useTrans();
   const router = useRouter();
   const { loading } = useSelector((state) => state.addToCart);
   const [isLoading, setIsLoading] = useState(loading);
@@ -28,6 +29,8 @@ const t=  useTrans()
 
         setIsLoading(loading);
         dispatch(getNotifications());
+        setTimeout(() => {}, 1000);
+        dispatch(getCartItems());
       } else {
         router.push("/login");
       }

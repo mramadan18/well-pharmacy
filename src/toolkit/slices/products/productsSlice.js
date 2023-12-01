@@ -4,9 +4,9 @@ const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
 export const getProducts = createAsyncThunk(
   "productsSlice/fetchProducts",
-  async ({ page, use }) => {
+  async ({ page, uses }) => {
     const { data } = await baseUrl.get(
-      `/product/?limit=12&offset=${(page + 1 - 1) * 12}&use=${use}`,
+      `/product/?limit=12&offset=${(page + 1 - 1) * 12}&uses=${uses}`,
       {
         headers: { "Accept-Language": localStorage.getItem("lang") },
       }

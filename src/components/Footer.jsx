@@ -7,9 +7,22 @@ import whatsapp from "#/images/icons/whatsapp.png";
 import messenger from "#/images/icons/messenger.png";
 import viber from "#/images/icons/viber.png";
 import { useTrans } from "@/locales/Helper";
+import baseUrl from "@/baseURL";
+import { useEffect, useState } from "react";
 
 const Footer = () => {
-  const t=useTrans()
+  const t = useTrans();
+  const [dataR, setdataR] = useState([]);
+  const Socials = async () => {
+    const { data } = await baseUrl.get(`/settings/social_media_links/`, {
+      headers: { "Accept-Language": localStorage.getItem("lang") },
+    });
+    setdataR(data?.results);
+    return data;
+  };
+  useEffect(() => {
+    Socials();
+  }, []);
 
   return (
     <section className="bg-second mt-[30px] lg:mt-[50px] text-center py-8 text-white">
@@ -33,28 +46,11 @@ const Footer = () => {
         <span className="w-full h-[1px] bg-white"></span>
         <h5 className="font-normal tracking-[1px]">{t["Contact us"]}</h5>
         <div className="flex justify-center items-center gap-6">
-          <Image
-            src={telegram}
-            alt="telegram-icon"
-            width={40}
-            height={40}
-            priority
-          />
-          <Image
-            src={whatsapp}
-            alt="whatsapp-icon"
-            width={40}
-            height={40}
-            priority
-          />
-          <Image
-            src={messenger}
-            alt="messenger-icon"
-            width={40}
-            height={40}
-            priority
-          />
-          <Image src={viber} alt="viber-icon" width={40} height={40} priority />
+          {dataR?.map((item) => (
+            <a href={item?.link}>
+              <img src={item?.icone_image} width={40} height={40} priority />
+            </a>
+          ))}
         </div>
       </div>
     </section>

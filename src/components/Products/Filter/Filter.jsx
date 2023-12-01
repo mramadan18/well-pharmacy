@@ -19,7 +19,7 @@ const Filter = () => {
     const { value } = event.target;
     const { page } = query;
     console.log({ query, value });
-    dispatch(getProducts({ page, use: value }));
+    dispatch(getProducts({ page, uses: value }));
   };
 
   return (
@@ -52,7 +52,7 @@ const Filter = () => {
         >
           <option defaultChecked>{t["All"]}</option>
           {uses?.map((use) => (
-            <option key={use.id} value={use?.name}>
+            <option key={use.id} value={use?.id}>
               {use?.name}
             </option>
           ))}

@@ -18,7 +18,10 @@ import contactUs from "#/images/contact_us.png";
 import NavBarMobile from "@/components/Mobile/NavBarMobile";
 import { useTrans } from "@/locales/Helper";
 import baseUrl from "@/baseURL";
-
+export const metadata = {
+  title: 'well-pharmacy',
+  description: 'well-pharmacy',
+}
 const ContactUs = () => {
   const t = useTrans();
   const [showModal, setShowModal] = useState(false);

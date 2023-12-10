@@ -14,7 +14,10 @@ import NavBarMobile from "@/components/Mobile/NavBarMobile";
 import { useTrans } from "@/locales/Helper";
 import baseUrl from "@/baseURL";
 import { useSelector } from "react-redux";
-
+export const metadata = {
+  title: 'well-pharmacy',
+  description: 'well-pharmacy',
+}
 const Confirmation = () => {
   const t=useTrans()
   const router = useRouter();

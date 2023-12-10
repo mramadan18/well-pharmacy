@@ -5,6 +5,6 @@ export default function robots() {
       allow: '/',
       
     },
-    sitemap: 'https://acme.com/sitemap.xml',
+    sitemap: 'https://well-pharmacy.com/sitemap.xml',
   }
 }

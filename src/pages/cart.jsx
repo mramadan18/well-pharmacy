@@ -13,7 +13,10 @@ import BreadcrumbLink from "@/components/Utilities/Breadcrumbs/BreadcrumbLink";
 import BreadcrumbsList from "@/components/Utilities/Breadcrumbs/BreadcrumbsList";
 import SearchInput from "@/components/Utilities/SearchInput";
 import NavBarMobile from "@/components/Mobile/NavBarMobile";
-
+export const metadata = {
+  title: 'well-pharmacy',
+  description: 'well-pharmacy',
+}
 const Cart = () => {
   const { push } = useRouter();
   useEffect(() => {

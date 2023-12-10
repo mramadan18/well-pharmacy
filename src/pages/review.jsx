@@ -2,7 +2,10 @@ import HeaderMobile from "@/components/Mobile/HeaderMobile";
 import NavBarMobile from "@/components/Mobile/NavBarMobile";
 import ReviewForm from "@/components/Utilities/WriteReview/ReviewForm";
 import { useState } from "react";
-
+export const metadata = {
+  title: 'well-pharmacy',
+  description: 'well-pharmacy',
+}
 const Review = () => {
   const [showModal, setShowModal] = useState(false);
   const [thankYou, setThankYou] = useState(false);

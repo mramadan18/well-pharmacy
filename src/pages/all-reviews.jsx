@@ -11,7 +11,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getReviews } from "@/toolkit/slices/reviews/reviewsSlice";
 import Loading from "@/components/Utilities/Loading";
 import WriteReview from "@/components/Utilities/WriteReview/WriteReview";
-
+export const metadata = {
+  title: 'well-pharmacy',
+  description: 'well-pharmacy',
+}
 const AllReviews = () => {
   const { loading, reviews } = useSelector((state) => state.reviews);
   const dispatch = useDispatch();

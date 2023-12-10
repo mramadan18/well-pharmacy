@@ -5,7 +5,10 @@ import ExploreProducts from "@/components/Utilities/ExploreProducts";
 import { getCategories } from "@/toolkit/slices/categories/categoriesSlice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+export const metadata = {
+  title: 'well-pharmacy',
+  description: 'well-pharmacy',
+}
 const Categories = () => {
   const { loading, categories } = useSelector((state) => state.categories);
   const dispatch = useDispatch();

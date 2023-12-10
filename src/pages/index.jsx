@@ -14,7 +14,10 @@ import NavBarMobile from "@/components/Mobile/NavBarMobile";
 import WriteReview from "@/components/Utilities/WriteReview/WriteReview";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useEffect } from "react";
-
+export const metadata = {
+  title: 'well-pharmacy',
+  description: 'well-pharmacy',
+}
 const Home = () => {
   useEffect(() => {
     if (!localStorage.getItem("lang")) {

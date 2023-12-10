@@ -10,7 +10,11 @@ export default function Document() {
         <meta name="description" content="well-medic,pharmacy,drugs,medicine" />
         <meta name="keywords" content="well-medic,pharmacy,drugs,medicine" />
         <meta name="author" content="well-medic,pharmacy,drugs,medicine" />
-      </Head>
+     
+    <link rel="shortcut icon" href="https://fra1.digitaloceanspaces.com/well-medic/ta5feed/categoryIconImg/aid_6134607.png" />
+    
+    
+    </Head>
       <body className="pb-[80px] lg:pb-0">
         <Main />
         <NextScript />
